@@ -1,0 +1,603 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Kiota.SharePoint Mock API description",
+    "version": "v5.0-beta"
+  },
+  "paths": {
+    "/_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesignMetadata": {
+      "post": {
+        "tags": [
+          "SiteDesign"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadata"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadata"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/_api/Web": {
+      "get": {
+        "tags": [
+          "Web"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Web"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Web"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Web"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChangeToken": {
+        "type": "object",
+        "properties": {
+          "stringValue": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FooterLayoutType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "GetSiteDesignMetadataRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Group": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isHiddenInUI": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "principalType": {
+            "$ref": "#/components/schemas/SPPrincipalType"
+          },
+          "loginName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowMembersEditMembership": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allowRequestToJoinLeave": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "autoAcceptRequestToJoinLeave": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "onlyAllowMembersViewMembership": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "ownerNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "owner": {
+            "$ref": "#/components/schemas/Principal"
+          },
+          "ownerTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "requestToJoinLeaveEmailSetting": {
+            "type": "string",
+            "nullable": true
+          },
+          "usersNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Principal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isHiddenInUI": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "principalType": {
+            "$ref": "#/components/schemas/SPPrincipalType"
+          },
+          "loginName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegionalSettings": {
+        "type": "object",
+        "properties": {
+          "adjustHijriDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alternateCalendarType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "am": {
+            "type": "string",
+            "nullable": true
+          },
+          "calendarType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "collation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "collationLCID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateFormat": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateSeparator": {
+            "type": "string",
+            "nullable": true
+          },
+          "decimalSeparator": {
+            "type": "string",
+            "nullable": true
+          },
+          "digitGrouping": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstDayOfWeek": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstWeekOfYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isEastAsia": {
+            "type": "boolean"
+          },
+          "isRightToLeft": {
+            "type": "boolean"
+          },
+          "isUIRightToLeft": {
+            "type": "boolean"
+          },
+          "listSeparator": {
+            "type": "string",
+            "nullable": true
+          },
+          "localeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "negativeSign": {
+            "type": "string",
+            "nullable": true
+          },
+          "negNumberMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pm": {
+            "type": "string",
+            "nullable": true
+          },
+          "positiveSign": {
+            "type": "string",
+            "nullable": true
+          },
+          "showWeeks": {
+            "type": "boolean"
+          },
+          "thousandSeparator": {
+            "type": "string",
+            "nullable": true
+          },
+          "time24": {
+            "type": "boolean"
+          },
+          "timeMarkerPosition": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeSeparator": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeZone": {
+            "$ref": "#/components/schemas/TimeZone"
+          },
+          "workDayEndHour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workDayStartHour": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SPPrincipalType": {
+        "enum": [
+          0,
+          1,
+          2,
+          4,
+          8,
+          15
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SiteDesignMetadata": {
+        "type": "object",
+        "properties": {
+          "designPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "designType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "isOutOfBoxTemplate": {
+            "type": "boolean"
+          },
+          "isTenantAdminOnly": {
+            "type": "boolean"
+          },
+          "listColor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "listIcon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "previewImageAltText": {
+            "type": "string",
+            "nullable": true
+          },
+          "previewImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "requiresGroupConnected": {
+            "type": "boolean"
+          },
+          "requiresTeamsConnected": {
+            "type": "boolean"
+          },
+          "requiresYammerConnected": {
+            "type": "boolean"
+          },
+          "siteScriptIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          },
+          "supportedWebTemplates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "templateFeatures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "webTemplate": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeZone": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "information": {
+            "$ref": "#/components/schemas/TimeZoneInformation"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeZoneInformation": {
+        "type": "object",
+        "properties": {
+          "bias": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "daylightBias": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "standardBias": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isHiddenInUI": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "principalType": {
+            "$ref": "#/components/schemas/SPPrincipalType"
+          },
+          "loginName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSiteAdmin": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isEmailAuthenticationGuestUser": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isShareByEmailGuestUser": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "userPrincipalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "$ref": "#/components/schemas/UserId"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserId": {
+        "type": "object",
+        "properties": {
+          "nameId": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameIdIssuer": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Web": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentChangeToken": {
+            "$ref": "#/components/schemas/ChangeToken"
+          },
+          "footerEnabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "footerLayout": {
+            "$ref": "#/components/schemas/FooterLayoutType"
+          },
+          "usersNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "associatedMemberGroupNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "associatedMemberGroup": {
+            "$ref": "#/components/schemas/Group"
+          },
+          "associatedOwnerGroupNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "associatedOwnerGroup": {
+            "$ref": "#/components/schemas/Group"
+          },
+          "associatedVisitorGroupNavigationLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "associatedVisitorGroup": {
+            "$ref": "#/components/schemas/Group"
+          },
+          "welcomePage": {
+            "type": "string",
+            "nullable": true
+          },
+          "regionalSettings": {
+            "$ref": "#/components/schemas/RegionalSettings"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

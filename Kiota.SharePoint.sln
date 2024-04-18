@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{DE8A8B98-38E7-4918-AAA7-09C6D2D2E6FB}"
+	ProjectSection(SolutionItems) = preProject
+		build-commands.txt = build-commands.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kiota.SharePoint.MockApi", "mockapi\Kiota.SharePoint.MockApi.csproj", "{71221217-7F92-4957-94D5-E70104EABAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiota.SharePoint", "lib\Kiota.SharePoint.csproj", "{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiota.SharePoint.Test", "test\Kiota.SharePoint.Test.csproj", "{4C7EFF36-319F-450E-9F25-7CB303D8143A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71221217-7F92-4957-94D5-E70104EABAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71221217-7F92-4957-94D5-E70104EABAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71221217-7F92-4957-94D5-E70104EABAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71221217-7F92-4957-94D5-E70104EABAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {001C97DC-F852-44F1-9EC6-DD0438026A97}
+	EndGlobalSection
+EndGlobal
