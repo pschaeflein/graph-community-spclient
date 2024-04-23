@@ -1,4 +1,5 @@
-﻿using Azure.Core;
+using Azure.Core;
+using Graph.Community.Middleware;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Authentication.Azure;
 using Microsoft.Kiota.Http.HttpClientLibrary;
@@ -25,14 +26,21 @@ namespace Graph.Community
     };
 
     /*  
-     *  Consider overload that accepts the various handler options
-     *  
+     *  Summary of factory methods:
+     *  - TokenCredential or AuthenticationProvider
+     *  - With or without list of middleware handlers to register
     */
 
     public static SPClient Create(string spoTenantUrl, TokenCredential tokenCredential, SPClientOptions? options = null, IEnumerable<string>? scopes = null)
     {
       var authProvider = new BaseBearerTokenAuthenticationProvider(new AzureIdentityAccessTokenProvider(tokenCredential, null, null, scopes?.ToArray() ?? Array.Empty<string>()));
       return Create(spoTenantUrl, authProvider, options);
+    }
+
+    public static SPClient Create(string spoTenantUrl, TokenCredential tokenCredential, List<DelegatingHandler> handlers, SPClientOptions? options = null, IEnumerable<string>? scopes = null)
+    {
+      var authProvider = new BaseBearerTokenAuthenticationProvider(new AzureIdentityAccessTokenProvider(tokenCredential, null, null, scopes?.ToArray() ?? Array.Empty<string>()));
+      return Create(spoTenantUrl, authProvider, handlers, options);
     }
 
     public static SPClient Create(string spoTenantUrl, IAuthenticationProvider authenticationProvider, SPClientOptions? options = null)
@@ -58,8 +66,44 @@ namespace Graph.Community
         new HeadersInspectionHandler(),
       };
 
+      return Create(spoTenantUrl, authenticationProvider, handlers, options);
+    }
 
-      if (options.MessageLogger != null)
+    public  static SPClient Create(string spoTenantUrl, IAuthenticationProvider authenticationProvider, List<DelegatingHandler> handlers, SPClientOptions? options = null)
+    {
+      if (string.IsNullOrWhiteSpace(spoTenantUrl))
+      {
+        throw new ArgumentException($"'{nameof(spoTenantUrl)}' cannot be null or whitespace.", nameof(spoTenantUrl));
+      }
+
+      if (authenticationProvider is null)
+      {
+        throw new ArgumentNullException(nameof(authenticationProvider));
+      }
+
+      if (handlers is null)
+      {
+        throw new ArgumentNullException(nameof(handlers));
+      }
+
+      // add our handler if not included...
+      bool spHandlerIncluded = false;
+      foreach (var handler in handlers)
+      {
+        if (handler is SharePointServiceHandler)
+        {
+          spHandlerIncluded=true;
+          break;
+        }
+      }
+
+      if (!spHandlerIncluded)
+      {
+        handlers.Insert(0, new SharePointServiceHandler());
+      }
+
+      // if configured, add the logger to the handlers
+      if (options?.MessageLogger != null)
       {
         handlers.Insert(0, new LoggingMessageHandler(options.MessageLogger));
       }

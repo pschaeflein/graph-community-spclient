@@ -1,4 +1,5 @@
-﻿using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
+using Graph.Community.Middleware;
+using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 using System.Net.Http.Headers;
 
 namespace Graph.Community

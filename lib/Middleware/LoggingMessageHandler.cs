@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Graph.Community
+namespace Graph.Community.Middleware
 {
   public class LoggingMessageHandler : DelegatingHandler
   {

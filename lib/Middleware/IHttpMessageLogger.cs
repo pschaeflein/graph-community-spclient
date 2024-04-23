@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Graph.Community
+namespace Graph.Community.Middleware
 {
   public interface IHttpMessageLogger
   {
