@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{DE8A8B98-38E7-4918-AAA7-09C6D2D2E6FB}"
 	ProjectSection(SolutionItems) = preProject
 		build-commands.txt = build-commands.txt
+		.github\workflows\build.yml = .github\workflows\build.yml
+		CONTRIBUTING.md = CONTRIBUTING.md
+		.github\workflows\deploy.yml = .github\workflows\deploy.yml
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Community.SPClient.MockApi", "mockapi\Graph.Community.SPClient.MockApi.csproj", "{71221217-7F92-4957-94D5-E70104EABAFA}"
