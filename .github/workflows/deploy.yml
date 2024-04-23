@@ -10,7 +10,7 @@ env:
   # Disable sending usage data to Microsoft
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   # Project name to pack and publish
-  PROJECT_NAME: Graph.Community
+  PROJECT_NAME: Graph.Community.SPClient
   # Official NuGet Feed settings
   NUGET_FEED: https://api.nuget.org/v3/index.json
   NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
