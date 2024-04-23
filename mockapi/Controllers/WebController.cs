@@ -10,7 +10,10 @@ namespace Graph.Community.Controllers
   {
     [HttpGet("/{serverRelativeSiteUrl}/_api/Web")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Web))]
-    public Web GetWeb(string serverRelativeSiteUrl)
+    public Web GetWeb(
+      [FromRoute] string serverRelativeSiteUrl,
+      [FromQuery(Name = "$select")] string[] select,
+      [FromQuery(Name = "$expand")] string[] expand)
     {
       return new();
     }

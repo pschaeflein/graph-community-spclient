@@ -18,6 +18,26 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -166,7 +186,7 @@
             "type": "integer",
             "format": "int32"
           },
-          " AM": {
+          "AM": {
             "type": "string",
             "nullable": true
           },

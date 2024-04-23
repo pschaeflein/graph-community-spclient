@@ -151,7 +151,7 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {" AM", n => { AM = n.GetStringValue(); } },
+                {"AM", n => { AM = n.GetStringValue(); } },
                 {"AdjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
                 {"AlternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
                 {"CalendarType ", n => { CalendarType = n.GetIntValue(); } },
@@ -192,7 +192,7 @@ namespace Graph.Community.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("AdjustHijriDays", AdjustHijriDays);
             writer.WriteIntValue("AlternateCalendarType", AlternateCalendarType);
-            writer.WriteStringValue(" AM", AM);
+            writer.WriteStringValue("AM", AM);
             writer.WriteIntValue("CalendarType ", CalendarType);
             writer.WriteIntValue("Collation", Collation);
             writer.WriteIntValue("CollationLCID", CollationLCID);
