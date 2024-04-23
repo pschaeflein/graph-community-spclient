@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class ChangeToken : IParsable 
     {
-        /// <summary>The stringValue property</summary>
+        /// <summary>The StringValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StringValue { get; set; }
@@ -33,7 +33,7 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"stringValue", n => { StringValue = n.GetStringValue(); } },
+                {"StringValue", n => { StringValue = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("stringValue", StringValue);
+            writer.WriteStringValue("StringValue", StringValue);
         }
     }
 }

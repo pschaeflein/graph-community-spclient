@@ -1,200 +1,54 @@
-using Kiota.SharePoint.Client;
-using Kiota.SharePoint.Client.Models;
+using Graph.Community.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using NSubstitute;
+using System.ComponentModel.DataAnnotations;
 
-namespace Kiota.SharePoint.Test
+namespace Graph.Community.Tests
 {
   public class WebRequestTests
   {
 
-    private readonly string mockWebUrl = "https://mock.sharepoint.com/sites/mockSite";
-
-    private static readonly Web mockWeb = new()
-    {
-      RegionalSettings = new()
-      {
-        TimeZone = new()
-        {
-          Description = "(UTC-08:00) Pacific Time (US and Canada)",
-          Id = 13,
-          Information = new()
-          {
-            Bias = 480,
-            DaylightBias = -60,
-            StandardBias = 0
-          }
-        },
-        AdjustHijriDays = 0,
-        AlternateCalendarType = 0,
-        //AM = "AM",
-        CalendarType = 1,
-        Collation = 25,
-        CollationLCID = 2070,
-        DateFormat = 0,
-        DateSeparator = "/",
-        DecimalSeparator = ".",
-        DigitGrouping = "3;0",
-        FirstDayOfWeek = 0,
-        FirstWeekOfYear = 0,
-        IsEastAsia = false,
-        IsRightToLeft = false,
-        IsUIRightToLeft = false,
-        ListSeparator = ",",
-        LocaleId = 1033,
-        NegativeSign = "-",
-        NegNumberMode = 1,
-        //PM = "PM",
-        PositiveSign = "",
-        ShowWeeks = false,
-        ThousandSeparator = ",",
-        Time24 = false,
-        TimeMarkerPosition = 0,
-        TimeSeparator = ":",
-        WorkDayEndHour = 1020,
-        WorkDays = 62,
-        WorkDayStartHour = 480
-      },
-      //AllowRssFeeds = true,
-      //AlternateCssUrl = "",
-      //AppInstanceId = "00000000-0000-0000-0000-000000000000",
-      //ClassicWelcomePage = null,
-      //Configuration = 0,
-      //Created = "2022-05-25T23:07:10.863-07:00",
-      CurrentChangeToken = new()
-      {
-        StringValue = "1;2;b3bb5585-bb7b-4fba-8619-a2bcfa2ff24e;637908031948500000;353893883"
-      },
-      //CustomMasterUrl = "/sites/mockSite/_catalogs/masterpage/seattle.master",
-      //Description = "",
-      //DesignPackageId = "96c933ac-3698-44c7-9f4a-5fd17d71af9e",
-      //DocumentLibraryCalloutOfficeWebAppPreviewersDisabled = false,
-      //EnableMinimalDownload = false,
-      //FooterEmphasis = 0,
-      FooterEnabled = true,
-      FooterLayout = 0,
-      //HeaderEmphasis = 0,
-      //HeaderLayout = 2,
-      //HideTitleInHeader = false,
-      //HorizontalQuickLaunch = false,
-      Id = "b3bb5585-bb7b-4fba-8619-a2bcfa2ff24e",
-      //IsEduClass = false,
-      //IsEduClassProvisionChecked = false,
-      //IsEduClassProvisionPending = false,
-      //IsHomepageModernized = false,
-      //IsMultilingual = true,
-      //IsRevertHomepageLinkHidden = false,
-      //Language = 1033,
-      //LastItemModifiedDate = "2022-06-09T15:46:56Z",
-      //LastItemUserModifiedDate = "2022-06-09T14:35:38Z",
-      //LogoAlignment = 0,
-      //MasterUrl = "/sites/mockSite/_catalogs/masterpage/seattle.master",
-      //MegaMenuEnabled = true,
-      //NavAudienceTargetingEnabled = false,
-      //NoCrawl = false,
-      //ObjectCacheEnabled = false,
-      //OverwriteTranslationsOnChange = false,
-      //ResourcePath = new()
-      //{
-      //  DecodedUrl = "https://mock.sharepoint.com/sites/mockSite"
-      //},
-      //QuickLaunchEnabled = true,
-      //RecycleBinEnabled = true,
-      //SearchScope = 0,
-      //ServerRelativeUrl = "/sites/mockSite",
-      //SiteLogoUrl = null,
-      //SyndicationEnabled = true,
-      //TenantAdminMembersCanShare = 0,
-      Title = "Mock Site",
-      //TreeViewEnabled = false,
-      //UIVersion = 15,
-      //UIVersionConfigurationEnabled = false,
-      //Url = "https://mock.sharepoint.com/sites/mockSite",
-      //WebTemplate = "SITEPAGEPUBLISHING",
-      WelcomePage = "SitePages/This-one-is-not-posted.aspx"
-    };
+    private readonly string mockSpoUrl = "https://mock.sharepoint.com";
+    private readonly string mockServerRelativeSiteUrl = "mockSite";
 
     [Fact]
-    public async Task GetAsync()
+    public async Task GetAsyncBuildsCorrectUrlTemplate()
     {
       // Arrange
       var adapter = Substitute.For<IRequestAdapter>();
-      adapter.BaseUrl = mockWebUrl;
-
-      var client = new KiotaSharePointClient(adapter);
-
-      // Return the mocked web
-      adapter.SendAsync(
-          Arg.Any<RequestInformation>(),
-          Arg.Any<ParsableFactory<Web>>(),
-          Arg.Any<Dictionary<string, ParsableFactory<IParsable>>>(),
-          Arg.Any<CancellationToken>())
-          .ReturnsForAnyArgs(mockWeb);
+      adapter.BaseUrl = mockSpoUrl;
+      var client = new Graph.Community.SPClient(adapter);
 
       // Act
-      var webRequest = client._api.Web.ToGetRequestInformation();
+      var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation();
 
-      var web = await client._api.Web.GetAsync();
 
       // Assert
-      Assert.Equal("{+baseurl}/_api/Web", webRequest.UrlTemplate);
-
-      Assert.NotNull(web);
-      Assert.Equal(mockWeb.Title, web.Title);
+      Assert.Equal("{+baseurl}/{serverRelativeSiteUrl}/_api/Web", webRequest.UrlTemplate);
     }
 
+    [Fact]
+    public async void Get_ReturnsCorrectResponse()
+    {
+      // ARRANGE
+      var responseStream = ResourceManager.GetEmbeddedResource("GetWebResponse.json");
 
-    //[Fact]
-    //public void GeneratesCorrectRequestHeaders()
-    //{
-    //  // TODO: move this to a base test class...
+      //  need the client before calling the serialize
+      var adapter = Substitute.For<IRequestAdapter>();
+      adapter.BaseUrl = mockSpoUrl;
+      var client = new Graph.Community.SPClient(adapter);
 
-    //  using HttpResponseMessage response = new HttpResponseMessage();
-    //  using GraphServiceTestClient gsc = GraphServiceTestClient.Create(response);
+      // ACT
+      var actual = KiotaJsonSerializer.Deserialize<Web>(responseStream);
 
-    //  // ACT
-    //  var request = gsc.GraphServiceClient
-    //                      .SharePointAPI(mockWebUrl)
-    //                      .Web
-    //                      .Request()
-    //                      .GetHttpRequestMessage();
+      // ASSERT
+      Assert.Equal("Mock Site", actual.Title);
+      Assert.Equal("SitePages/This-one-is-not-posted.aspx", actual.WelcomePage);
+      Assert.NotNull(actual.RegionalSettings);
+      Assert.Equal(13, actual.RegionalSettings.TimeZone.Id);
 
-    //  // ASSERT
-    //  Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, request.Headers.Accept.ToString());
-    //  Assert.True(request.Headers.Contains(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName), $"Header does not contain {SharePointAPIRequestConstants.Headers.ODataVersionHeaderName} header");
-    //  Assert.Equal(SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue, string.Join(',', request.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName)));
-    //}
-
-    //[Fact]
-    //public async void Get_ReturnsCorrectResponse()
-    //{
-    //  // ARRANGE
-    //  var responseContent = ResourceManager.GetHttpResponseContent("GetWebResponse.json");
-    //  var responseMessage = new HttpResponseMessage()
-    //  {
-    //    StatusCode = HttpStatusCode.OK,
-    //    Content = new StringContent(responseContent),
-    //  };
-
-    //  using (responseMessage)
-    //  using (GraphServiceTestClient gsc = GraphServiceTestClient.Create(responseMessage))
-    //  {
-    //    // ACT
-    //    var actual = await gsc.GraphServiceClient
-    //                              .SharePointAPI(mockWebUrl)
-    //                              .Web
-    //                              .Request()
-    //                              .Expand("RegionalSettings,RegionalSettings/TimeZone")
-    //                              .GetAsync();
-
-    //    // ASSERT
-    //    Assert.Equal("Mock Site", actual.Title);
-    //    Assert.Equal("SitePages/This-one-is-not-posted.aspx", actual.WelcomePage);
-    //    Assert.NotNull(actual.RegionalSettings);
-    //    Assert.Equal(13, actual.RegionalSettings.TimeZone.Id);
-    //  }
-    //}
+    }
 
     //[Fact]
     //public async Task Get_GeneratesCorrectRequest()

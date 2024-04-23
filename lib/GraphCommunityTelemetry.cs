@@ -2,14 +2,14 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
-  internal class KiotaSharePointTelemetry
+  internal class GraphCommunityTelemetry
   {
     private static readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
     private static readonly TelemetryClient telemetryClient;
 
-    static KiotaSharePointTelemetry()
+    static GraphCommunityTelemetry()
     {
       telemetryConfiguration.ConnectionString= "InstrumentationKey=d882bd7a-a378-4117-bd7c-71fc95a44cd1;IngestionEndpoint=https://centralus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://centralus.livediagnostics.monitor.azure.com/";
       telemetryClient = new TelemetryClient(telemetryConfiguration);
@@ -22,23 +22,23 @@ namespace Kiota.SharePoint
       System.Net.HttpStatusCode statusCode,
       string rawResponseContent)
     {
-      if (KiotaSharePointClientFactory.TelemetryDisabled)
+      if (SPClientFactory.TelemetryDisabled)
       {
         return;
       }
 
       Dictionary<string, string> properties = new Dictionary<string, string>(5)
       {
-        { KiotaSharePointConstants.Headers.LibraryVersionHeaderName, KiotaSharePointConstants.Library.AssemblyVersion },
-        { KiotaSharePointConstants.TelemetryProperties.ResourceUri, resourceUri },
-        { KiotaSharePointConstants.TelemetryProperties.RequestMethod, requestMethod.ToString() },
-        { KiotaSharePointConstants.TelemetryProperties.ClientRequestId, clientRequestId },
-        { KiotaSharePointConstants.TelemetryProperties.ResponseStatus, $"{statusCode} ({(int)statusCode})" }
+        { SPCommunityConstants.Headers.LibraryVersionHeaderName, SPCommunityConstants.Library.AssemblyVersion },
+        { SPCommunityConstants.TelemetryProperties.ResourceUri, resourceUri },
+        { SPCommunityConstants.TelemetryProperties.RequestMethod, requestMethod.ToString() },
+        { SPCommunityConstants.TelemetryProperties.ClientRequestId, clientRequestId },
+        { SPCommunityConstants.TelemetryProperties.ResponseStatus, $"{statusCode} ({(int)statusCode})" }
       };
 
       if (!string.IsNullOrEmpty(rawResponseContent))
       {
-        properties.Add(KiotaSharePointConstants.TelemetryProperties.RawErrorResponse, rawResponseContent);
+        properties.Add(SPCommunityConstants.TelemetryProperties.RawErrorResponse, rawResponseContent);
       }
 
       telemetryClient.TrackEvent("KiotaSharePointRequest", properties);

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class User : IParsable 
     {
-        /// <summary>The email property</summary>
+        /// <summary>The Email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -17,13 +17,13 @@ namespace Kiota.SharePoint.Client.Models {
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; set; }
-        /// <summary>The isEmailAuthenticationGuestUser property</summary>
+        /// <summary>The IsEmailAuthenticationGuestUser property</summary>
         public bool? IsEmailAuthenticationGuestUser { get; set; }
         /// <summary>The isHiddenInUI property</summary>
         public bool? IsHiddenInUI { get; set; }
-        /// <summary>The isShareByEmailGuestUser property</summary>
+        /// <summary>The IsShareByEmailGuestUser property</summary>
         public bool? IsShareByEmailGuestUser { get; set; }
-        /// <summary>The isSiteAdmin property</summary>
+        /// <summary>The IsSiteAdmin property</summary>
         public bool? IsSiteAdmin { get; set; }
         /// <summary>The loginName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,15 +43,15 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The userId property</summary>
+        /// <summary>The UserId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Kiota.SharePoint.Client.Models.UserId? UserId { get; set; }
+        public Graph.Community.Models.UserId? UserId { get; set; }
 #nullable restore
 #else
-        public Kiota.SharePoint.Client.Models.UserId UserId { get; set; }
+        public Graph.Community.Models.UserId UserId { get; set; }
 #endif
-        /// <summary>The userPrincipalName property</summary>
+        /// <summary>The UserPrincipalName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserPrincipalName { get; set; }
@@ -77,17 +77,17 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"email", n => { Email = n.GetStringValue(); } },
+                {"Email", n => { Email = n.GetStringValue(); } },
                 {"id", n => { Id = n.GetIntValue(); } },
-                {"isEmailAuthenticationGuestUser", n => { IsEmailAuthenticationGuestUser = n.GetBoolValue(); } },
+                {"IsEmailAuthenticationGuestUser", n => { IsEmailAuthenticationGuestUser = n.GetBoolValue(); } },
                 {"isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                {"isShareByEmailGuestUser", n => { IsShareByEmailGuestUser = n.GetBoolValue(); } },
-                {"isSiteAdmin", n => { IsSiteAdmin = n.GetBoolValue(); } },
+                {"IsShareByEmailGuestUser", n => { IsShareByEmailGuestUser = n.GetBoolValue(); } },
+                {"IsSiteAdmin", n => { IsSiteAdmin = n.GetBoolValue(); } },
                 {"loginName", n => { LoginName = n.GetStringValue(); } },
                 {"principalType", n => { PrincipalType = n.GetIntValue(); } },
                 {"title", n => { Title = n.GetStringValue(); } },
-                {"userId", n => { UserId = n.GetObjectValue<Kiota.SharePoint.Client.Models.UserId>(Kiota.SharePoint.Client.Models.UserId.CreateFromDiscriminatorValue); } },
-                {"userPrincipalName", n => { UserPrincipalName = n.GetStringValue(); } },
+                {"UserId", n => { UserId = n.GetObjectValue<Graph.Community.Models.UserId>(Graph.Community.Models.UserId.CreateFromDiscriminatorValue); } },
+                {"UserPrincipalName", n => { UserPrincipalName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -97,17 +97,17 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("email", Email);
+            writer.WriteStringValue("Email", Email);
             writer.WriteIntValue("id", Id);
-            writer.WriteBoolValue("isEmailAuthenticationGuestUser", IsEmailAuthenticationGuestUser);
+            writer.WriteBoolValue("IsEmailAuthenticationGuestUser", IsEmailAuthenticationGuestUser);
             writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
-            writer.WriteBoolValue("isShareByEmailGuestUser", IsShareByEmailGuestUser);
-            writer.WriteBoolValue("isSiteAdmin", IsSiteAdmin);
+            writer.WriteBoolValue("IsShareByEmailGuestUser", IsShareByEmailGuestUser);
+            writer.WriteBoolValue("IsSiteAdmin", IsSiteAdmin);
             writer.WriteStringValue("loginName", LoginName);
             writer.WriteIntValue("principalType", PrincipalType);
             writer.WriteStringValue("title", Title);
-            writer.WriteObjectValue<Kiota.SharePoint.Client.Models.UserId>("userId", UserId);
-            writer.WriteStringValue("userPrincipalName", UserPrincipalName);
+            writer.WriteObjectValue<Graph.Community.Models.UserId>("UserId", UserId);
+            writer.WriteStringValue("UserPrincipalName", UserPrincipalName);
         }
     }
 }

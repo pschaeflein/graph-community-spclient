@@ -1,6 +1,6 @@
 using Microsoft.Kiota.Abstractions;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
   public class SharePointServiceHandlerOption : IRequestOption
   {

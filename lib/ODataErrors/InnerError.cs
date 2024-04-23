@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Kiota.SharePoint.ODataErrors
+namespace Graph.Community
 {
   public class InnerError : IAdditionalDataHolder, IParsable
   {

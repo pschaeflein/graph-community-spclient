@@ -1,4 +1,4 @@
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
   public static class SharePointAPIRequestConstants
   {

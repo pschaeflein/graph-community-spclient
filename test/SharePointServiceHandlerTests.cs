@@ -1,16 +1,9 @@
-﻿using Microsoft.Kiota.Abstractions.Authentication;
-using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
-using Microsoft.Kiota.Http.HttpClientLibrary.Middleware;
+﻿using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 
-namespace Kiota.SharePoint.Test
+namespace Graph.Community.Tests
 {
   public class SharePointServiceHandlerTests
   {

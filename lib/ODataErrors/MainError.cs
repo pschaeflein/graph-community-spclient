@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Kiota.SharePoint.ODataErrors
+namespace Graph.Community
 {
   public class MainError : IAdditionalDataHolder, IParsable
   {

@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class Group : IParsable 
     {
-        /// <summary>The allowMembersEditMembership property</summary>
+        /// <summary>The AllowMembersEditMembership property</summary>
         public bool? AllowMembersEditMembership { get; set; }
-        /// <summary>The allowRequestToJoinLeave property</summary>
+        /// <summary>The AllowRequestToJoinLeave property</summary>
         public bool? AllowRequestToJoinLeave { get; set; }
-        /// <summary>The autoAcceptRequestToJoinLeave property</summary>
+        /// <summary>The AutoAcceptRequestToJoinLeave property</summary>
         public bool? AutoAcceptRequestToJoinLeave { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>The Description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -33,9 +33,9 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string LoginName { get; set; }
 #endif
-        /// <summary>The onlyAllowMembersViewMembership property</summary>
+        /// <summary>The OnlyAllowMembersViewMembership property</summary>
         public bool? OnlyAllowMembersViewMembership { get; set; }
-        /// <summary>The owner property</summary>
+        /// <summary>The Owner property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Principal? Owner { get; set; }
@@ -43,7 +43,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public Principal Owner { get; set; }
 #endif
-        /// <summary>The ownerNavigationLink property</summary>
+        /// <summary>The OwnerNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OwnerNavigationLink { get; set; }
@@ -51,7 +51,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string OwnerNavigationLink { get; set; }
 #endif
-        /// <summary>The ownerTitle property</summary>
+        /// <summary>The OwnerTitle property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OwnerTitle { get; set; }
@@ -61,7 +61,7 @@ namespace Kiota.SharePoint.Client.Models {
 #endif
         /// <summary>The principalType property</summary>
         public int? PrincipalType { get; set; }
-        /// <summary>The requestToJoinLeaveEmailSetting property</summary>
+        /// <summary>The RequestToJoinLeaveEmailSetting property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RequestToJoinLeaveEmailSetting { get; set; }
@@ -77,7 +77,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The users property</summary>
+        /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<User>? Users { get; private set; }
@@ -85,7 +85,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public List<User> Users { get; private set; }
 #endif
-        /// <summary>The usersNavigationLink property</summary>
+        /// <summary>The UsersNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UsersNavigationLink { get; set; }
@@ -111,22 +111,22 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"allowMembersEditMembership", n => { AllowMembersEditMembership = n.GetBoolValue(); } },
-                {"allowRequestToJoinLeave", n => { AllowRequestToJoinLeave = n.GetBoolValue(); } },
-                {"autoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
+                {"AllowMembersEditMembership", n => { AllowMembersEditMembership = n.GetBoolValue(); } },
+                {"AllowRequestToJoinLeave", n => { AllowRequestToJoinLeave = n.GetBoolValue(); } },
+                {"AutoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
+                {"Description", n => { Description = n.GetStringValue(); } },
                 {"id", n => { Id = n.GetIntValue(); } },
                 {"isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
                 {"loginName", n => { LoginName = n.GetStringValue(); } },
-                {"onlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
-                {"owner", n => { Owner = n.GetObjectValue<Principal>(Principal.CreateFromDiscriminatorValue); } },
-                {"ownerNavigationLink", n => { OwnerNavigationLink = n.GetStringValue(); } },
-                {"ownerTitle", n => { OwnerTitle = n.GetStringValue(); } },
+                {"OnlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
+                {"Owner", n => { Owner = n.GetObjectValue<Principal>(Principal.CreateFromDiscriminatorValue); } },
+                {"OwnerNavigationLink", n => { OwnerNavigationLink = n.GetStringValue(); } },
+                {"OwnerTitle", n => { OwnerTitle = n.GetStringValue(); } },
                 {"principalType", n => { PrincipalType = n.GetIntValue(); } },
-                {"requestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
+                {"RequestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
                 {"title", n => { Title = n.GetStringValue(); } },
-                {"users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"usersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
+                {"Users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
+                {"UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -136,21 +136,21 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("allowMembersEditMembership", AllowMembersEditMembership);
-            writer.WriteBoolValue("allowRequestToJoinLeave", AllowRequestToJoinLeave);
-            writer.WriteBoolValue("autoAcceptRequestToJoinLeave", AutoAcceptRequestToJoinLeave);
-            writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("AllowMembersEditMembership", AllowMembersEditMembership);
+            writer.WriteBoolValue("AllowRequestToJoinLeave", AllowRequestToJoinLeave);
+            writer.WriteBoolValue("AutoAcceptRequestToJoinLeave", AutoAcceptRequestToJoinLeave);
+            writer.WriteStringValue("Description", Description);
             writer.WriteIntValue("id", Id);
             writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
             writer.WriteStringValue("loginName", LoginName);
-            writer.WriteBoolValue("onlyAllowMembersViewMembership", OnlyAllowMembersViewMembership);
-            writer.WriteObjectValue<Principal>("owner", Owner);
-            writer.WriteStringValue("ownerNavigationLink", OwnerNavigationLink);
-            writer.WriteStringValue("ownerTitle", OwnerTitle);
+            writer.WriteBoolValue("OnlyAllowMembersViewMembership", OnlyAllowMembersViewMembership);
+            writer.WriteObjectValue<Principal>("Owner", Owner);
+            writer.WriteStringValue("OwnerNavigationLink", OwnerNavigationLink);
+            writer.WriteStringValue("OwnerTitle", OwnerTitle);
             writer.WriteIntValue("principalType", PrincipalType);
-            writer.WriteStringValue("requestToJoinLeaveEmailSetting", RequestToJoinLeaveEmailSetting);
+            writer.WriteStringValue("RequestToJoinLeaveEmailSetting", RequestToJoinLeaveEmailSetting);
             writer.WriteStringValue("title", Title);
-            writer.WriteStringValue("usersNavigationLink", UsersNavigationLink);
+            writer.WriteStringValue("UsersNavigationLink", UsersNavigationLink);
         }
     }
 }

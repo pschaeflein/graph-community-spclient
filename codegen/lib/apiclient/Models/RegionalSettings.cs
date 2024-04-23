@@ -4,30 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class RegionalSettings : IParsable 
     {
-        /// <summary>The adjustHijriDays property</summary>
+        /// <summary>The AdjustHijriDays property</summary>
         public int? AdjustHijriDays { get; set; }
-        /// <summary>The alternateCalendarType property</summary>
+        /// <summary>The AlternateCalendarType property</summary>
         public int? AlternateCalendarType { get; set; }
-        /// <summary>The am property</summary>
+        /// <summary>The AM property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Am { get; set; }
+        public string? AM { get; set; }
 #nullable restore
 #else
-        public string Am { get; set; }
+        public string AM { get; set; }
 #endif
-        /// <summary>The calendarType property</summary>
+        /// <summary>The CalendarType property</summary>
         public int? CalendarType { get; set; }
-        /// <summary>The collation property</summary>
+        /// <summary>The Collation property</summary>
         public int? Collation { get; set; }
-        /// <summary>The collationLCID property</summary>
+        /// <summary>The CollationLCID property</summary>
         public int? CollationLCID { get; set; }
-        /// <summary>The dateFormat property</summary>
+        /// <summary>The DateFormat property</summary>
         public int? DateFormat { get; set; }
-        /// <summary>The dateSeparator property</summary>
+        /// <summary>The DateSeparator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DateSeparator { get; set; }
@@ -35,7 +35,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string DateSeparator { get; set; }
 #endif
-        /// <summary>The decimalSeparator property</summary>
+        /// <summary>The DecimalSeparator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DecimalSeparator { get; set; }
@@ -43,7 +43,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string DecimalSeparator { get; set; }
 #endif
-        /// <summary>The digitGrouping property</summary>
+        /// <summary>The DigitGrouping property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DigitGrouping { get; set; }
@@ -51,17 +51,17 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string DigitGrouping { get; set; }
 #endif
-        /// <summary>The firstDayOfWeek property</summary>
+        /// <summary>The FirstDayOfWeek property</summary>
         public int? FirstDayOfWeek { get; set; }
-        /// <summary>The firstWeekOfYear property</summary>
+        /// <summary>The FirstWeekOfYear property</summary>
         public int? FirstWeekOfYear { get; set; }
-        /// <summary>The isEastAsia property</summary>
+        /// <summary>The IsEastAsia property</summary>
         public bool? IsEastAsia { get; set; }
-        /// <summary>The isRightToLeft property</summary>
+        /// <summary>The IsRightToLeft property</summary>
         public bool? IsRightToLeft { get; set; }
-        /// <summary>The isUIRightToLeft property</summary>
+        /// <summary>The IsUIRightToLeft property</summary>
         public bool? IsUIRightToLeft { get; set; }
-        /// <summary>The listSeparator property</summary>
+        /// <summary>The ListSeparator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ListSeparator { get; set; }
@@ -69,9 +69,9 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string ListSeparator { get; set; }
 #endif
-        /// <summary>The localeId property</summary>
+        /// <summary>The LocaleId property</summary>
         public int? LocaleId { get; set; }
-        /// <summary>The negativeSign property</summary>
+        /// <summary>The NegativeSign property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NegativeSign { get; set; }
@@ -79,17 +79,17 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string NegativeSign { get; set; }
 #endif
-        /// <summary>The negNumberMode property</summary>
+        /// <summary>The NegNumberMode property</summary>
         public int? NegNumberMode { get; set; }
-        /// <summary>The pm property</summary>
+        /// <summary>The PM property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Pm { get; set; }
+        public string? PM { get; set; }
 #nullable restore
 #else
-        public string Pm { get; set; }
+        public string PM { get; set; }
 #endif
-        /// <summary>The positiveSign property</summary>
+        /// <summary>The PositiveSign property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PositiveSign { get; set; }
@@ -97,9 +97,9 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string PositiveSign { get; set; }
 #endif
-        /// <summary>The showWeeks property</summary>
+        /// <summary>The ShowWeeks property</summary>
         public bool? ShowWeeks { get; set; }
-        /// <summary>The thousandSeparator property</summary>
+        /// <summary>The ThousandSeparator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ThousandSeparator { get; set; }
@@ -107,11 +107,11 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string ThousandSeparator { get; set; }
 #endif
-        /// <summary>The time24 property</summary>
+        /// <summary>The Time24 property</summary>
         public bool? Time24 { get; set; }
-        /// <summary>The timeMarkerPosition property</summary>
+        /// <summary>The TimeMarkerPosition property</summary>
         public int? TimeMarkerPosition { get; set; }
-        /// <summary>The timeSeparator property</summary>
+        /// <summary>The TimeSeparator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TimeSeparator { get; set; }
@@ -119,7 +119,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string TimeSeparator { get; set; }
 #endif
-        /// <summary>The timeZone property</summary>
+        /// <summary>The TimeZone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public TimeZoneObject? TimeZone { get; set; }
@@ -127,11 +127,11 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public TimeZoneObject TimeZone { get; set; }
 #endif
-        /// <summary>The workDayEndHour property</summary>
+        /// <summary>The WorkDayEndHour property</summary>
         public int? WorkDayEndHour { get; set; }
-        /// <summary>The workDays property</summary>
+        /// <summary>The WorkDays property</summary>
         public int? WorkDays { get; set; }
-        /// <summary>The workDayStartHour property</summary>
+        /// <summary>The WorkDayStartHour property</summary>
         public int? WorkDayStartHour { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -151,36 +151,36 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"adjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
-                {"alternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
-                {"am", n => { Am = n.GetStringValue(); } },
-                {"calendarType", n => { CalendarType = n.GetIntValue(); } },
-                {"collation", n => { Collation = n.GetIntValue(); } },
-                {"collationLCID", n => { CollationLCID = n.GetIntValue(); } },
-                {"dateFormat", n => { DateFormat = n.GetIntValue(); } },
-                {"dateSeparator", n => { DateSeparator = n.GetStringValue(); } },
-                {"decimalSeparator", n => { DecimalSeparator = n.GetStringValue(); } },
-                {"digitGrouping", n => { DigitGrouping = n.GetStringValue(); } },
-                {"firstDayOfWeek", n => { FirstDayOfWeek = n.GetIntValue(); } },
-                {"firstWeekOfYear", n => { FirstWeekOfYear = n.GetIntValue(); } },
-                {"isEastAsia", n => { IsEastAsia = n.GetBoolValue(); } },
-                {"isRightToLeft", n => { IsRightToLeft = n.GetBoolValue(); } },
-                {"isUIRightToLeft", n => { IsUIRightToLeft = n.GetBoolValue(); } },
-                {"listSeparator", n => { ListSeparator = n.GetStringValue(); } },
-                {"localeId", n => { LocaleId = n.GetIntValue(); } },
-                {"negNumberMode", n => { NegNumberMode = n.GetIntValue(); } },
-                {"negativeSign", n => { NegativeSign = n.GetStringValue(); } },
-                {"pm", n => { Pm = n.GetStringValue(); } },
-                {"positiveSign", n => { PositiveSign = n.GetStringValue(); } },
-                {"showWeeks", n => { ShowWeeks = n.GetBoolValue(); } },
-                {"thousandSeparator", n => { ThousandSeparator = n.GetStringValue(); } },
-                {"time24", n => { Time24 = n.GetBoolValue(); } },
-                {"timeMarkerPosition", n => { TimeMarkerPosition = n.GetIntValue(); } },
-                {"timeSeparator", n => { TimeSeparator = n.GetStringValue(); } },
-                {"timeZone", n => { TimeZone = n.GetObjectValue<TimeZoneObject>(TimeZoneObject.CreateFromDiscriminatorValue); } },
-                {"workDayEndHour", n => { WorkDayEndHour = n.GetIntValue(); } },
-                {"workDayStartHour", n => { WorkDayStartHour = n.GetIntValue(); } },
-                {"workDays", n => { WorkDays = n.GetIntValue(); } },
+                {" AM", n => { AM = n.GetStringValue(); } },
+                {"AdjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
+                {"AlternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
+                {"CalendarType ", n => { CalendarType = n.GetIntValue(); } },
+                {"Collation", n => { Collation = n.GetIntValue(); } },
+                {"CollationLCID", n => { CollationLCID = n.GetIntValue(); } },
+                {"DateFormat", n => { DateFormat = n.GetIntValue(); } },
+                {"DateSeparator", n => { DateSeparator = n.GetStringValue(); } },
+                {"DecimalSeparator", n => { DecimalSeparator = n.GetStringValue(); } },
+                {"DigitGrouping", n => { DigitGrouping = n.GetStringValue(); } },
+                {"FirstDayOfWeek", n => { FirstDayOfWeek = n.GetIntValue(); } },
+                {"FirstWeekOfYear", n => { FirstWeekOfYear = n.GetIntValue(); } },
+                {"IsEastAsia", n => { IsEastAsia = n.GetBoolValue(); } },
+                {"IsRightToLeft", n => { IsRightToLeft = n.GetBoolValue(); } },
+                {"IsUIRightToLeft", n => { IsUIRightToLeft = n.GetBoolValue(); } },
+                {"ListSeparator", n => { ListSeparator = n.GetStringValue(); } },
+                {"LocaleId", n => { LocaleId = n.GetIntValue(); } },
+                {"NegNumberMode", n => { NegNumberMode = n.GetIntValue(); } },
+                {"NegativeSign", n => { NegativeSign = n.GetStringValue(); } },
+                {"PM", n => { PM = n.GetStringValue(); } },
+                {"PositiveSign", n => { PositiveSign = n.GetStringValue(); } },
+                {"ShowWeeks", n => { ShowWeeks = n.GetBoolValue(); } },
+                {"ThousandSeparator", n => { ThousandSeparator = n.GetStringValue(); } },
+                {"Time24", n => { Time24 = n.GetBoolValue(); } },
+                {"TimeMarkerPosition", n => { TimeMarkerPosition = n.GetIntValue(); } },
+                {"TimeSeparator", n => { TimeSeparator = n.GetStringValue(); } },
+                {"TimeZone", n => { TimeZone = n.GetObjectValue<TimeZoneObject>(TimeZoneObject.CreateFromDiscriminatorValue); } },
+                {"WorkDayEndHour", n => { WorkDayEndHour = n.GetIntValue(); } },
+                {"WorkDayStartHour", n => { WorkDayStartHour = n.GetIntValue(); } },
+                {"WorkDays", n => { WorkDays = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -190,36 +190,36 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("adjustHijriDays", AdjustHijriDays);
-            writer.WriteIntValue("alternateCalendarType", AlternateCalendarType);
-            writer.WriteStringValue("am", Am);
-            writer.WriteIntValue("calendarType", CalendarType);
-            writer.WriteIntValue("collation", Collation);
-            writer.WriteIntValue("collationLCID", CollationLCID);
-            writer.WriteIntValue("dateFormat", DateFormat);
-            writer.WriteStringValue("dateSeparator", DateSeparator);
-            writer.WriteStringValue("decimalSeparator", DecimalSeparator);
-            writer.WriteStringValue("digitGrouping", DigitGrouping);
-            writer.WriteIntValue("firstDayOfWeek", FirstDayOfWeek);
-            writer.WriteIntValue("firstWeekOfYear", FirstWeekOfYear);
-            writer.WriteBoolValue("isEastAsia", IsEastAsia);
-            writer.WriteBoolValue("isRightToLeft", IsRightToLeft);
-            writer.WriteBoolValue("isUIRightToLeft", IsUIRightToLeft);
-            writer.WriteStringValue("listSeparator", ListSeparator);
-            writer.WriteIntValue("localeId", LocaleId);
-            writer.WriteStringValue("negativeSign", NegativeSign);
-            writer.WriteIntValue("negNumberMode", NegNumberMode);
-            writer.WriteStringValue("pm", Pm);
-            writer.WriteStringValue("positiveSign", PositiveSign);
-            writer.WriteBoolValue("showWeeks", ShowWeeks);
-            writer.WriteStringValue("thousandSeparator", ThousandSeparator);
-            writer.WriteBoolValue("time24", Time24);
-            writer.WriteIntValue("timeMarkerPosition", TimeMarkerPosition);
-            writer.WriteStringValue("timeSeparator", TimeSeparator);
-            writer.WriteObjectValue<TimeZoneObject>("timeZone", TimeZone);
-            writer.WriteIntValue("workDayEndHour", WorkDayEndHour);
-            writer.WriteIntValue("workDays", WorkDays);
-            writer.WriteIntValue("workDayStartHour", WorkDayStartHour);
+            writer.WriteIntValue("AdjustHijriDays", AdjustHijriDays);
+            writer.WriteIntValue("AlternateCalendarType", AlternateCalendarType);
+            writer.WriteStringValue(" AM", AM);
+            writer.WriteIntValue("CalendarType ", CalendarType);
+            writer.WriteIntValue("Collation", Collation);
+            writer.WriteIntValue("CollationLCID", CollationLCID);
+            writer.WriteIntValue("DateFormat", DateFormat);
+            writer.WriteStringValue("DateSeparator", DateSeparator);
+            writer.WriteStringValue("DecimalSeparator", DecimalSeparator);
+            writer.WriteStringValue("DigitGrouping", DigitGrouping);
+            writer.WriteIntValue("FirstDayOfWeek", FirstDayOfWeek);
+            writer.WriteIntValue("FirstWeekOfYear", FirstWeekOfYear);
+            writer.WriteBoolValue("IsEastAsia", IsEastAsia);
+            writer.WriteBoolValue("IsRightToLeft", IsRightToLeft);
+            writer.WriteBoolValue("IsUIRightToLeft", IsUIRightToLeft);
+            writer.WriteStringValue("ListSeparator", ListSeparator);
+            writer.WriteIntValue("LocaleId", LocaleId);
+            writer.WriteStringValue("NegativeSign", NegativeSign);
+            writer.WriteIntValue("NegNumberMode", NegNumberMode);
+            writer.WriteStringValue("PM", PM);
+            writer.WriteStringValue("PositiveSign", PositiveSign);
+            writer.WriteBoolValue("ShowWeeks", ShowWeeks);
+            writer.WriteStringValue("ThousandSeparator", ThousandSeparator);
+            writer.WriteBoolValue("Time24", Time24);
+            writer.WriteIntValue("TimeMarkerPosition", TimeMarkerPosition);
+            writer.WriteStringValue("TimeSeparator", TimeSeparator);
+            writer.WriteObjectValue<TimeZoneObject>("TimeZone", TimeZone);
+            writer.WriteIntValue("WorkDayEndHour", WorkDayEndHour);
+            writer.WriteIntValue("WorkDays", WorkDays);
+            writer.WriteIntValue("WorkDayStartHour", WorkDayStartHour);
         }
     }
 }

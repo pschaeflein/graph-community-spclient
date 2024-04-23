@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
   class NullHttpMessageLogger : IHttpMessageLogger
   {

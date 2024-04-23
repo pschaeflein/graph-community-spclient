@@ -1,13 +1,16 @@
-using Kiota.SharePoint.MockApi.Models;
+using Graph.Community.MockApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Kiota.SharePoint.MockApi.Controllers
+namespace Graph.Community.Controllers
 {
   [ApiController]
+  [Consumes("application/json")]
+  [Produces("application/json")]
   public class WebController : ControllerBase
   {
-    [HttpGet("_api/Web")]
-    public Web GetWeb()
+    [HttpGet("/{serverRelativeSiteUrl}/_api/Web")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Web))]
+    public Web GetWeb(string serverRelativeSiteUrl)
     {
       return new();
     }

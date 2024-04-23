@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class Principal : IParsable 
     {
         /// <summary>The id property</summary>

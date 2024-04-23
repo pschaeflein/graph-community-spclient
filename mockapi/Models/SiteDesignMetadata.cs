@@ -1,4 +1,4 @@
-﻿namespace Kiota.SharePoint.MockApi.Models
+﻿namespace Graph.Community.MockApi.Models
 {
   public class SiteDesignMetadata
   {

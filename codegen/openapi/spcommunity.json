@@ -1,78 +1,30 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Kiota.SharePoint Mock API description",
+    "title": "SPCommunity Mock API",
     "version": "v5.0-beta"
   },
   "paths": {
-    "/_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesignMetadata": {
-      "post": {
-        "tags": [
-          "SiteDesign"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/SiteDesignMetadata"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SiteDesignMetadata"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SiteDesignMetadata"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/_api/Web": {
+    "/{serverRelativeSiteUrl}/_api/Web": {
       "get": {
         "tags": [
           "Web"
         ],
+        "parameters": [
+          {
+            "name": "serverRelativeSiteUrl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Web"
-                }
-              },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Web"
-                }
-              },
-              "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Web"
                 }
@@ -88,7 +40,7 @@
       "ChangeToken": {
         "type": "object",
         "properties": {
-          "stringValue": {
+          "StringValue": {
             "type": "string",
             "nullable": true
           }
@@ -103,16 +55,6 @@
         ],
         "type": "integer",
         "format": "int32"
-      },
-      "GetSiteDesignMetadataRequest": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "additionalProperties": false
       },
       "Group": {
         "type": "object",
@@ -137,46 +79,46 @@
             "type": "string",
             "nullable": true
           },
-          "allowMembersEditMembership": {
+          "AllowMembersEditMembership": {
             "type": "boolean",
             "nullable": true
           },
-          "allowRequestToJoinLeave": {
+          "AllowRequestToJoinLeave": {
             "type": "boolean",
             "nullable": true
           },
-          "autoAcceptRequestToJoinLeave": {
+          "AutoAcceptRequestToJoinLeave": {
             "type": "boolean",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           },
-          "onlyAllowMembersViewMembership": {
+          "OnlyAllowMembersViewMembership": {
             "type": "boolean",
             "nullable": true
           },
-          "ownerNavigationLink": {
+          "OwnerNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "owner": {
+          "Owner": {
             "$ref": "#/components/schemas/Principal"
           },
-          "ownerTitle": {
+          "OwnerTitle": {
             "type": "string",
             "nullable": true
           },
-          "requestToJoinLeaveEmailSetting": {
+          "RequestToJoinLeaveEmailSetting": {
             "type": "string",
             "nullable": true
           },
-          "usersNavigationLink": {
+          "UsersNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "users": {
+          "Users": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/User"
@@ -345,97 +287,6 @@
         "type": "integer",
         "format": "int32"
       },
-      "SiteDesignMetadata": {
-        "type": "object",
-        "properties": {
-          "designPackageId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "designType": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isDefault": {
-            "type": "boolean"
-          },
-          "isOutOfBoxTemplate": {
-            "type": "boolean"
-          },
-          "isTenantAdminOnly": {
-            "type": "boolean"
-          },
-          "listColor": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "listIcon": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "previewImageAltText": {
-            "type": "string",
-            "nullable": true
-          },
-          "previewImageUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "requiresGroupConnected": {
-            "type": "boolean"
-          },
-          "requiresTeamsConnected": {
-            "type": "boolean"
-          },
-          "requiresYammerConnected": {
-            "type": "boolean"
-          },
-          "siteScriptIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "nullable": true
-          },
-          "supportedWebTemplates": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "templateFeatures": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "thumbnailUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "webTemplate": {
-            "type": "string",
-            "nullable": true
-          },
-          "order": {
-            "type": "string",
-            "nullable": true
-          },
-          "version": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "TimeZone": {
         "type": "object",
         "properties": {
@@ -494,27 +345,27 @@
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "Email": {
             "type": "string",
             "nullable": true
           },
-          "isSiteAdmin": {
+          "IsSiteAdmin": {
             "type": "boolean",
             "nullable": true
           },
-          "isEmailAuthenticationGuestUser": {
+          "IsEmailAuthenticationGuestUser": {
             "type": "boolean",
             "nullable": true
           },
-          "isShareByEmailGuestUser": {
+          "IsShareByEmailGuestUser": {
             "type": "boolean",
             "nullable": true
           },
-          "userPrincipalName": {
+          "UserPrincipalName": {
             "type": "string",
             "nullable": true
           },
-          "userId": {
+          "UserId": {
             "$ref": "#/components/schemas/UserId"
           }
         },
@@ -523,11 +374,11 @@
       "UserId": {
         "type": "object",
         "properties": {
-          "nameId": {
+          "NameId": {
             "type": "string",
             "nullable": true
           },
-          "nameIdIssuer": {
+          "NameIdIssuer": {
             "type": "string",
             "nullable": true
           }
@@ -537,29 +388,29 @@
       "Web": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "nullable": true
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "currentChangeToken": {
+          "CurrentChangeToken": {
             "$ref": "#/components/schemas/ChangeToken"
           },
-          "footerEnabled": {
+          "FooterEnabled": {
             "type": "boolean",
             "nullable": true
           },
-          "footerLayout": {
+          "FooterLayout": {
             "$ref": "#/components/schemas/FooterLayoutType"
           },
-          "usersNavigationLink": {
+          "UsersNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "users": {
+          "Users": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/User"
@@ -567,36 +418,36 @@
             "nullable": true,
             "readOnly": true
           },
-          "associatedMemberGroupNavigationLink": {
+          "AssociatedMemberGroupNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "associatedMemberGroup": {
+          "AssociatedMemberGroup": {
             "$ref": "#/components/schemas/Group"
           },
-          "associatedOwnerGroupNavigationLink": {
+          "AssociatedOwnerGroupNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "associatedOwnerGroup": {
+          "AssociatedOwnerGroup": {
             "$ref": "#/components/schemas/Group"
           },
-          "associatedVisitorGroupNavigationLink": {
+          "AssociatedVisitorGroupNavigationLink": {
             "type": "string",
             "nullable": true
           },
-          "associatedVisitorGroup": {
+          "AssociatedVisitorGroup": {
             "$ref": "#/components/schemas/Group"
           },
-          "welcomePage": {
+          "WelcomePage": {
             "type": "string",
             "nullable": true
           },
-          "regionalSettings": {
+          "RegionalSettings": {
             "$ref": "#/components/schemas/RegionalSettings"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": { }
       }
     }
   }

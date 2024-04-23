@@ -1,9 +1,9 @@
 ﻿using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 using System.Net.Http.Headers;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
-  public class KiotaSharePointClientOptions
+  public class SPClientOptions
   {
     /// <summary>
     /// Set to true to disable telemetry
@@ -20,8 +20,8 @@ namespace Kiota.SharePoint
     /// </summary>
     public IHttpMessageLogger? MessageLogger { get; set; }
 
-    public KiotaSharePointClientOptions() { }
-    public KiotaSharePointClientOptions(string companyName, string appName, string appVersion, bool isv)
+    public SPClientOptions() { }
+    public SPClientOptions(string companyName, string appName, string appVersion, bool isv)
     {
       this.UserAgentInfo = new SharePointThrottlingDecoration()
       {

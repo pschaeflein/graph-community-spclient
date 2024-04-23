@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class TimeZoneObject : IParsable 
     {
-        /// <summary>The description property</summary>
+        /// <summary>The Description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -15,15 +15,15 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The Id property</summary>
         public int? Id { get; set; }
-        /// <summary>The information property</summary>
+        /// <summary>The TimeZoneInformation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public TimeZoneInformation? Information { get; set; }
+        public Graph.Community.Models.TimeZoneInformation? TimeZoneInformation { get; set; }
 #nullable restore
 #else
-        public TimeZoneInformation Information { get; set; }
+        public Graph.Community.Models.TimeZoneInformation TimeZoneInformation { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -43,9 +43,9 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"information", n => { Information = n.GetObjectValue<TimeZoneInformation>(TimeZoneInformation.CreateFromDiscriminatorValue); } },
+                {"Description", n => { Description = n.GetStringValue(); } },
+                {"Id", n => { Id = n.GetIntValue(); } },
+                {"TimeZoneInformation", n => { TimeZoneInformation = n.GetObjectValue<Graph.Community.Models.TimeZoneInformation>(Graph.Community.Models.TimeZoneInformation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,9 +55,9 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("description", Description);
-            writer.WriteIntValue("id", Id);
-            writer.WriteObjectValue<TimeZoneInformation>("information", Information);
+            writer.WriteStringValue("Description", Description);
+            writer.WriteIntValue("Id", Id);
+            writer.WriteObjectValue<Graph.Community.Models.TimeZoneInformation>("TimeZoneInformation", TimeZoneInformation);
         }
     }
 }

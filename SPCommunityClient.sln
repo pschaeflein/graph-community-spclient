@@ -8,11 +8,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		build-commands.txt = build-commands.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kiota.SharePoint.MockApi", "mockapi\Kiota.SharePoint.MockApi.csproj", "{71221217-7F92-4957-94D5-E70104EABAFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Community.SPClient.MockApi", "mockapi\Graph.Community.SPClient.MockApi.csproj", "{71221217-7F92-4957-94D5-E70104EABAFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiota.SharePoint", "lib\Kiota.SharePoint.csproj", "{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Community.SPClient", "lib\Graph.Community.SPClient.csproj", "{3BE8CCCE-22BD-4559-9C1A-B7CA2826B14C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiota.SharePoint.Test", "test\Kiota.SharePoint.Test.csproj", "{4C7EFF36-319F-450E-9F25-7CB303D8143A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Community.SPClient.Tests", "test\Graph.Community.SPClient.Tests.csproj", "{4C7EFF36-319F-450E-9F25-7CB303D8143A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Community.SPClient.Sample", "sample\Graph.Community.SPClient.Sample.csproj", "{8011C1FA-7C9F-4842-8612-44C4C51B7A01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C7EFF36-319F-450E-9F25-7CB303D8143A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8011C1FA-7C9F-4842-8612-44C4C51B7A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8011C1FA-7C9F-4842-8612-44C4C51B7A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8011C1FA-7C9F-4842-8612-44C4C51B7A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8011C1FA-7C9F-4842-8612-44C4C51B7A01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

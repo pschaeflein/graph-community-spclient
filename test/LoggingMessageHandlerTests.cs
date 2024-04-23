@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using Xunit.Abstractions;
 
-namespace Kiota.SharePoint.Test
+namespace Graph.Community.Tests
 {
   public class LoggingMessageHandlerTests
   {

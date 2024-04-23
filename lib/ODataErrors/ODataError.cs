@@ -3,7 +3,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 
-namespace Kiota.SharePoint.ODataErrors
+namespace Graph.Community
 {
   public class ODataError : ApiException, IAdditionalDataHolder, IParsable
     {

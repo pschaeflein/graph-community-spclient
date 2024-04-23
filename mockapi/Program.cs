@@ -1,7 +1,7 @@
 
 using Microsoft.OpenApi.Models;
 
-namespace Kiota.SharePoint.MockApi
+namespace Graph.Community
 {
   public class Program
   {
@@ -12,15 +12,16 @@ namespace Kiota.SharePoint.MockApi
       // Add services to the container.
 
       builder.Services.AddControllers();
-      // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
       builder.Services.AddEndpointsApiExplorer();
       builder.Services.AddSwaggerGen(options =>
       {
-        options.SwaggerDoc("kiota.sharepoint", new OpenApiInfo
+        options.SwaggerDoc("Graph.Community.SPInfo", new OpenApiInfo
         {
           Version = "v5.0-beta",
-          Title = "Kiota.SharePoint Mock API description"
+          Title = "Graph.Community Mock SharePoint API"
         });
+          options.SchemaFilter<AdditionalPropertiesSchemaFilter>();
       });
 
       var app = builder.Build();
@@ -29,7 +30,7 @@ namespace Kiota.SharePoint.MockApi
       if (app.Environment.IsDevelopment())
       {
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(options => options.SwaggerEndpoint("Graph.Community.SPInfo/swagger.json", "Graph.Community Mock SharePoint API"));
       }
 
       app.UseHttpsRedirection();

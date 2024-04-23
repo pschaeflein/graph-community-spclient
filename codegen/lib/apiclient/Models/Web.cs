@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
-    public class Web : IParsable 
+namespace Graph.Community.Models {
+    public class Web : IAdditionalDataHolder, IParsable 
     {
-        /// <summary>The associatedMemberGroup property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The AssociatedMemberGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Group? AssociatedMemberGroup { get; set; }
@@ -15,7 +17,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public Group AssociatedMemberGroup { get; set; }
 #endif
-        /// <summary>The associatedMemberGroupNavigationLink property</summary>
+        /// <summary>The AssociatedMemberGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AssociatedMemberGroupNavigationLink { get; set; }
@@ -23,7 +25,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string AssociatedMemberGroupNavigationLink { get; set; }
 #endif
-        /// <summary>The associatedOwnerGroup property</summary>
+        /// <summary>The AssociatedOwnerGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Group? AssociatedOwnerGroup { get; set; }
@@ -31,7 +33,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public Group AssociatedOwnerGroup { get; set; }
 #endif
-        /// <summary>The associatedOwnerGroupNavigationLink property</summary>
+        /// <summary>The AssociatedOwnerGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AssociatedOwnerGroupNavigationLink { get; set; }
@@ -39,7 +41,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string AssociatedOwnerGroupNavigationLink { get; set; }
 #endif
-        /// <summary>The associatedVisitorGroup property</summary>
+        /// <summary>The AssociatedVisitorGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Group? AssociatedVisitorGroup { get; set; }
@@ -47,7 +49,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public Group AssociatedVisitorGroup { get; set; }
 #endif
-        /// <summary>The associatedVisitorGroupNavigationLink property</summary>
+        /// <summary>The AssociatedVisitorGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AssociatedVisitorGroupNavigationLink { get; set; }
@@ -55,7 +57,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string AssociatedVisitorGroupNavigationLink { get; set; }
 #endif
-        /// <summary>The currentChangeToken property</summary>
+        /// <summary>The CurrentChangeToken property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public ChangeToken? CurrentChangeToken { get; set; }
@@ -63,11 +65,11 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public ChangeToken CurrentChangeToken { get; set; }
 #endif
-        /// <summary>The footerEnabled property</summary>
+        /// <summary>The FooterEnabled property</summary>
         public bool? FooterEnabled { get; set; }
-        /// <summary>The footerLayout property</summary>
+        /// <summary>The FooterLayout property</summary>
         public int? FooterLayout { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>The Id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -75,15 +77,15 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The regionalSettings property</summary>
+        /// <summary>The RegionalSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Kiota.SharePoint.Client.Models.RegionalSettings? RegionalSettings { get; set; }
+        public Graph.Community.Models.RegionalSettings? RegionalSettings { get; set; }
 #nullable restore
 #else
-        public Kiota.SharePoint.Client.Models.RegionalSettings RegionalSettings { get; set; }
+        public Graph.Community.Models.RegionalSettings RegionalSettings { get; set; }
 #endif
-        /// <summary>The title property</summary>
+        /// <summary>The Title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -91,7 +93,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The users property</summary>
+        /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<User>? Users { get; private set; }
@@ -99,7 +101,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public List<User> Users { get; private set; }
 #endif
-        /// <summary>The usersNavigationLink property</summary>
+        /// <summary>The UsersNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UsersNavigationLink { get; set; }
@@ -107,7 +109,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string UsersNavigationLink { get; set; }
 #endif
-        /// <summary>The welcomePage property</summary>
+        /// <summary>The WelcomePage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WelcomePage { get; set; }
@@ -115,6 +117,13 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string WelcomePage { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="Web"/> and sets the default values.
+        /// </summary>
+        public Web()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -133,21 +142,21 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"associatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"associatedMemberGroupNavigationLink", n => { AssociatedMemberGroupNavigationLink = n.GetStringValue(); } },
-                {"associatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"associatedOwnerGroupNavigationLink", n => { AssociatedOwnerGroupNavigationLink = n.GetStringValue(); } },
-                {"associatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"associatedVisitorGroupNavigationLink", n => { AssociatedVisitorGroupNavigationLink = n.GetStringValue(); } },
-                {"currentChangeToken", n => { CurrentChangeToken = n.GetObjectValue<ChangeToken>(ChangeToken.CreateFromDiscriminatorValue); } },
-                {"footerEnabled", n => { FooterEnabled = n.GetBoolValue(); } },
-                {"footerLayout", n => { FooterLayout = n.GetIntValue(); } },
-                {"id", n => { Id = n.GetStringValue(); } },
-                {"regionalSettings", n => { RegionalSettings = n.GetObjectValue<Kiota.SharePoint.Client.Models.RegionalSettings>(Kiota.SharePoint.Client.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
-                {"title", n => { Title = n.GetStringValue(); } },
-                {"users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"usersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
-                {"welcomePage", n => { WelcomePage = n.GetStringValue(); } },
+                {"AssociatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
+                {"AssociatedMemberGroupNavigationLink", n => { AssociatedMemberGroupNavigationLink = n.GetStringValue(); } },
+                {"AssociatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
+                {"AssociatedOwnerGroupNavigationLink", n => { AssociatedOwnerGroupNavigationLink = n.GetStringValue(); } },
+                {"AssociatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
+                {"AssociatedVisitorGroupNavigationLink", n => { AssociatedVisitorGroupNavigationLink = n.GetStringValue(); } },
+                {"CurrentChangeToken", n => { CurrentChangeToken = n.GetObjectValue<ChangeToken>(ChangeToken.CreateFromDiscriminatorValue); } },
+                {"FooterEnabled", n => { FooterEnabled = n.GetBoolValue(); } },
+                {"FooterLayout", n => { FooterLayout = n.GetIntValue(); } },
+                {"Id", n => { Id = n.GetStringValue(); } },
+                {"RegionalSettings", n => { RegionalSettings = n.GetObjectValue<Graph.Community.Models.RegionalSettings>(Graph.Community.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
+                {"Title", n => { Title = n.GetStringValue(); } },
+                {"Users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
+                {"UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
+                {"WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -157,20 +166,21 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Group>("associatedMemberGroup", AssociatedMemberGroup);
-            writer.WriteStringValue("associatedMemberGroupNavigationLink", AssociatedMemberGroupNavigationLink);
-            writer.WriteObjectValue<Group>("associatedOwnerGroup", AssociatedOwnerGroup);
-            writer.WriteStringValue("associatedOwnerGroupNavigationLink", AssociatedOwnerGroupNavigationLink);
-            writer.WriteObjectValue<Group>("associatedVisitorGroup", AssociatedVisitorGroup);
-            writer.WriteStringValue("associatedVisitorGroupNavigationLink", AssociatedVisitorGroupNavigationLink);
-            writer.WriteObjectValue<ChangeToken>("currentChangeToken", CurrentChangeToken);
-            writer.WriteBoolValue("footerEnabled", FooterEnabled);
-            writer.WriteIntValue("footerLayout", FooterLayout);
-            writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<Kiota.SharePoint.Client.Models.RegionalSettings>("regionalSettings", RegionalSettings);
-            writer.WriteStringValue("title", Title);
-            writer.WriteStringValue("usersNavigationLink", UsersNavigationLink);
-            writer.WriteStringValue("welcomePage", WelcomePage);
+            writer.WriteObjectValue<Group>("AssociatedMemberGroup", AssociatedMemberGroup);
+            writer.WriteStringValue("AssociatedMemberGroupNavigationLink", AssociatedMemberGroupNavigationLink);
+            writer.WriteObjectValue<Group>("AssociatedOwnerGroup", AssociatedOwnerGroup);
+            writer.WriteStringValue("AssociatedOwnerGroupNavigationLink", AssociatedOwnerGroupNavigationLink);
+            writer.WriteObjectValue<Group>("AssociatedVisitorGroup", AssociatedVisitorGroup);
+            writer.WriteStringValue("AssociatedVisitorGroupNavigationLink", AssociatedVisitorGroupNavigationLink);
+            writer.WriteObjectValue<ChangeToken>("CurrentChangeToken", CurrentChangeToken);
+            writer.WriteBoolValue("FooterEnabled", FooterEnabled);
+            writer.WriteIntValue("FooterLayout", FooterLayout);
+            writer.WriteStringValue("Id", Id);
+            writer.WriteObjectValue<Graph.Community.Models.RegionalSettings>("RegionalSettings", RegionalSettings);
+            writer.WriteStringValue("Title", Title);
+            writer.WriteStringValue("UsersNavigationLink", UsersNavigationLink);
+            writer.WriteStringValue("WelcomePage", WelcomePage);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

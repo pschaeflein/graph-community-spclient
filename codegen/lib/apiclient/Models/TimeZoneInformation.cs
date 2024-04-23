@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class TimeZoneInformation : IParsable 
     {
-        /// <summary>The bias property</summary>
+        /// <summary>The Bias property</summary>
         public int? Bias { get; set; }
-        /// <summary>The daylightBias property</summary>
+        /// <summary>The DaylightBias property</summary>
         public int? DaylightBias { get; set; }
-        /// <summary>The standardBias property</summary>
+        /// <summary>The StandardBias property</summary>
         public int? StandardBias { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -31,9 +31,9 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"bias", n => { Bias = n.GetIntValue(); } },
-                {"daylightBias", n => { DaylightBias = n.GetIntValue(); } },
-                {"standardBias", n => { StandardBias = n.GetIntValue(); } },
+                {"Bias", n => { Bias = n.GetIntValue(); } },
+                {"DaylightBias", n => { DaylightBias = n.GetIntValue(); } },
+                {"StandardBias", n => { StandardBias = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -43,9 +43,9 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("bias", Bias);
-            writer.WriteIntValue("daylightBias", DaylightBias);
-            writer.WriteIntValue("standardBias", StandardBias);
+            writer.WriteIntValue("Bias", Bias);
+            writer.WriteIntValue("DaylightBias", DaylightBias);
+            writer.WriteIntValue("StandardBias", StandardBias);
         }
     }
 }

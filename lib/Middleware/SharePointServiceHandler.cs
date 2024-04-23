@@ -1,4 +1,3 @@
-using Kiota.SharePoint.ODataErrors;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Http.HttpClientLibrary.Extensions;
 using System;
@@ -8,9 +7,8 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
   public class SharePointServiceHandler : DelegatingHandler
   {
@@ -30,7 +28,7 @@ namespace Kiota.SharePoint
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-      var disableTelemetry = KiotaSharePointClientFactory.TelemetryDisabled;
+      var disableTelemetry = SPClientFactory.TelemetryDisabled;
       string resourceUri = null;
 
       SharePointServiceHandlerOption = request.GetRequestOption<SharePointServiceHandlerOption>() ?? new();

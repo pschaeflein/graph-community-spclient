@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Kiota.SharePoint.Client.Models {
+namespace Graph.Community.Models {
     public class UserId : IParsable 
     {
-        /// <summary>The nameId property</summary>
+        /// <summary>The NameId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameId { get; set; }
@@ -15,7 +15,7 @@ namespace Kiota.SharePoint.Client.Models {
 #else
         public string NameId { get; set; }
 #endif
-        /// <summary>The nameIdIssuer property</summary>
+        /// <summary>The NameIdIssuer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameIdIssuer { get; set; }
@@ -41,8 +41,8 @@ namespace Kiota.SharePoint.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"nameId", n => { NameId = n.GetStringValue(); } },
-                {"nameIdIssuer", n => { NameIdIssuer = n.GetStringValue(); } },
+                {"NameId", n => { NameId = n.GetStringValue(); } },
+                {"NameIdIssuer", n => { NameIdIssuer = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -52,8 +52,8 @@ namespace Kiota.SharePoint.Client.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("nameId", NameId);
-            writer.WriteStringValue("nameIdIssuer", NameIdIssuer);
+            writer.WriteStringValue("NameId", NameId);
+            writer.WriteStringValue("NameIdIssuer", NameIdIssuer);
         }
     }
 }

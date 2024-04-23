@@ -1,14 +1,14 @@
-﻿namespace Kiota.SharePoint
+﻿namespace Graph.Community
 {
-  public static class KiotaSharePointConstants
+  public static class SPCommunityConstants
   {
     public static class Library
     {
       /// The key for the SDK version header.
-      internal static readonly string VersionHeaderName = KiotaSharePointConstants.Headers.LibraryVersionHeaderName;
+      internal static readonly string VersionHeaderName = SPCommunityConstants.Headers.LibraryVersionHeaderName;
 
       /// The version for current assembly.
-      internal static string AssemblyVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(KiotaSharePointConstants).Assembly.Location).FileVersion;
+      internal static string AssemblyVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(SPCommunityConstants).Assembly.Location).FileVersion;
 
       /// The value for the SDK version header.
       internal static string VersionHeaderValue = $"dotnet-{AssemblyVersion}";

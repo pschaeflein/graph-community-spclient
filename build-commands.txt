@@ -1,10 +1,10 @@
 # Startup path: D:\Repos\pschaeflein\kiota-sharepoint
 
-dotnet swagger tofile --output codegen\openapi\kiota.sharepoint.json .\mockapi\bin\Debug\net8.0\Kiota.SharePoint.MockApi.dll kiota.sharepoint
+dotnet swagger tofile --output codegen\openapi\graph.community.spinfo.json .\mockapi\bin\Debug\net8.0\Graph.Community.SPClient.MockApi.dll Graph.Community.SPInfo
 
-kiota generate -l csharp -d codegen\openapi\kiota.sharepoint.json -c "KiotaSharePointClient" -n Kiota.SharePoint.Client -o ./codegen/apiclient --cc --co
+kiota generate -l csharp -d codegen\openapi\graph.community.spinfo.json -c "Graph.Community.SPClient" -n Graph.Community -o ./codegen/lib/apiclient --cc --co
 
-kiota info -d "codegen\openapi\kiota.sharepoint.json" -l CSharp
+kiota info -d "codegen\openapi\graph.community.spinfo.json" -l CSharp
 
 # The language CSharp is currently in Stable maturity level.
 # After generating code for this language, you need to install the following packages:

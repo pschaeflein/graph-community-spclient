@@ -1,6 +1,6 @@
 ﻿//using Microsoft.Kiota.Abstractions.Serialization;
 
-//namespace Kiota.SharePoint.MockApi.Models
+//namespace Graph.Community.MockApi.Models
 //{
 //  public class Entity : IAdditionalDataHolder, IParsable
 //  {

@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Kiota.SharePoint
+namespace Graph.Community
 {
   public class LoggingMessageHandler : DelegatingHandler
   {
