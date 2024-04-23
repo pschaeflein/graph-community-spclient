@@ -70,7 +70,8 @@ namespace Graph.Community.SPClient.Sample
         // use the default user agent
       };
 
-      var ksClient = SPClientFactory.Create(sharePointSettings.SpoTenantUrl, credential, clientOptions);
+      var spClient = SPClientFactory.Create(sharePointSettings.SpoTenantUrl, credential, clientOptions);
+
 
       ///////////////////////////////////////
       //
@@ -80,9 +81,10 @@ namespace Graph.Community.SPClient.Sample
 
       try
       {
-        var web = await ksClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync();
+        var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync();
 
         Console.WriteLine($"Title: {web.Title}");
+        Console.WriteLine();
       }
       catch (Exception ex)
       {

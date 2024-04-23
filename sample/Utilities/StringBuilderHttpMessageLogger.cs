@@ -1,3 +1,4 @@
+using Graph.Community.Middleware;
 using System.Text;
 
 namespace Graph.Community.SPClient.Sample

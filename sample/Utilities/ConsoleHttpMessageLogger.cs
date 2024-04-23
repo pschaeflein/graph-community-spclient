@@ -1,3 +1,5 @@
+using Graph.Community.Middleware;
+
 namespace Graph.Community.SPClient.Sample
 {
   class ConsoleHttpMessageLogger : IHttpMessageLogger

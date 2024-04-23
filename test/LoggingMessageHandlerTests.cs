@@ -1,4 +1,5 @@
-﻿using Microsoft.Kiota.Abstractions;
+using Graph.Community.Middleware;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using System.Text;
