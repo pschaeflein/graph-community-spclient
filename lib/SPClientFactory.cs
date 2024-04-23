@@ -20,7 +20,7 @@ namespace Graph.Community
     private static SharePointThrottlingDecoration defaultDecoration = new()
     {
       CompanyName = "GraphCommunity",
-      AppName = "SPoint",
+      AppName = "SPClient",
       AppVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(SPClientFactory).Assembly.Location).FileVersion
     };
 
