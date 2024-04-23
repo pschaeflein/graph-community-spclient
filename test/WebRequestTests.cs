@@ -1,111 +1,57 @@
-using Graph.Community.Models;
 using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Serialization;
 using NSubstitute;
-using System.ComponentModel.DataAnnotations;
 
 namespace Graph.Community.Tests
 {
   public class WebRequestTests
   {
-
+    /*
+     *  Ensure the mock api controllers generate the correct OpenAPI description/generated builders.
+     */
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 
     [Fact]
-    public async Task GetAsyncBuildsCorrectUrlTemplate()
-    {
-      // Arrange
-      var adapter = Substitute.For<IRequestAdapter>();
-      adapter.BaseUrl = mockSpoUrl;
-      var client = new Graph.Community.SPClient(adapter);
-
-      // Act
-      var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation();
-
-
-      // Assert
-      Assert.Equal("{+baseurl}/{serverRelativeSiteUrl}/_api/Web", webRequest.UrlTemplate);
-    }
-
-    [Fact]
-    public async void Get_ReturnsCorrectResponse()
+    public async Task Get_GeneratesCorrectUrlTemplate()
     {
       // ARRANGE
-      var responseStream = ResourceManager.GetEmbeddedResource("GetWebResponse.json");
+      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/Web";
 
-      //  need the client before calling the serialize
       var adapter = Substitute.For<IRequestAdapter>();
       adapter.BaseUrl = mockSpoUrl;
       var client = new Graph.Community.SPClient(adapter);
 
       // ACT
-      var actual = KiotaJsonSerializer.Deserialize<Web>(responseStream);
+      var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation();
+      webRequest.PathParameters.Add("baseurl", mockSpoUrl);
+      var actualUrl = webRequest.URI.ToString();
 
       // ASSERT
-      Assert.Equal("Mock Site", actual.Title);
-      Assert.Equal("SitePages/This-one-is-not-posted.aspx", actual.WelcomePage);
-      Assert.NotNull(actual.RegionalSettings);
-      Assert.Equal(13, actual.RegionalSettings.TimeZone.Id);
-
+      Assert.Equal(expectedUrl, actualUrl);
     }
 
-    //[Fact]
-    //public async Task Get_GeneratesCorrectRequest()
-    //{
-    //  // ARRANGE
-    //  var expectedUri = new Uri($"{mockWebUrl}/_api/web");
+    [Fact]
+    public void GetWithExpand_GeneratesCorrectUrlTemplate()
+    {
+      // ARRANGE
+      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/Web?%24expand=UserCustomActions&%24expand=SiteGroups";
 
-    //  using HttpResponseMessage response = new HttpResponseMessage();
-    //  using GraphServiceTestClient gsc = GraphServiceTestClient.Create(response);
+      var adapter = Substitute.For<IRequestAdapter>();
+      adapter.BaseUrl = mockSpoUrl;
+      var client = new Graph.Community.SPClient(adapter);
 
-    //  // ACT
-    //  await gsc.GraphServiceClient
-    //              .SharePointAPI(mockWebUrl)
-    //              .Web
-    //              .Request()
-    //              .GetAsync();
+      // ACT
+      var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation(c =>
+      {
+        c.QueryParameters.Expand = new string[] { "UserCustomActions", "SiteGroups" };
+      });
+      webRequest.PathParameters.Add("baseurl", mockSpoUrl);
 
-    //  // ASSERT
-    //  gsc.HttpProvider.Verify(
-    //    provider => provider.SendAsync(
-    //      It.Is<HttpRequestMessage>(req =>
-    //        req.Method == HttpMethod.Get &&
-    //        req.RequestUri == expectedUri &&
-    //        req.Headers.Authorization != null
-    //      ),
-    //      It.IsAny<HttpCompletionOption>(),
-    //      It.IsAny<CancellationToken>()
-    //      ),
-    //    Times.Exactly(1)
-    //  );
-    //}
+      var actualUrl = webRequest.URI.ToString();
 
-    //[Fact]
-    //public void Get_GeneratesCorrectRequest_WithExpand()
-    //{
-    //  // ARRANGE
-    //  var expectedUri = new Uri($"{mockWebUrl}/_api/web?$expand=RegionalSettings%2CRegionalSettings%2FTimeZone");
-
-    //  using HttpResponseMessage response = new HttpResponseMessage();
-    //  using GraphServiceTestClient testClient = GraphServiceTestClient.Create(response);
-
-    //  // ACT
-    //  var request = testClient.GraphServiceClient
-    //                      .SharePointAPI(mockWebUrl)
-    //                      .Web
-    //                      .Request()
-    //                      .Expand("RegionalSettings,RegionalSettings/TimeZone")
-    //                      .GetHttpRequestMessage();
-
-
-
-    //  // ASSERT
-    //  Assert.Equal(expectedUri, request.RequestUri);
-    //  Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, request.Headers.Accept.ToString());
-    //  Assert.True(request.Headers.Contains(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName), $"Header does not contain {SharePointAPIRequestConstants.Headers.ODataVersionHeaderName} header");
-    //  Assert.Equal(SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue, string.Join(',', request.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName)));
-    //}
+      // ASSERT
+      Assert.Equal(expectedUrl, actualUrl);
+    }
 
     //[Fact]
     //public async Task GetChanges_GeneratesCorrectRequest()

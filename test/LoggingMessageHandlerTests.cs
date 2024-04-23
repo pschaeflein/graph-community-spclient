@@ -1,43 +1,32 @@
-﻿using Moq;
-using Moq.Protected;
-using System.Net;
+﻿using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary;
 using System.Text;
-using Xunit.Abstractions;
+
+#nullable disable
 
 namespace Graph.Community.Tests
 {
   public class LoggingMessageHandlerTests
   {
-    private readonly ITestOutputHelper output;
-
-    public LoggingMessageHandlerTests(ITestOutputHelper output)
-    {
-      this.output = output;
-    }
-
     [Fact]
     public async Task WritesToLogger()
     {
       // ARRANGE
       var logger = new StringBuilderHttpMessageLogger();
+      var loggingHandler = new LoggingMessageHandler(logger, new FakeSuccessHandler());
+      var invoker = new HttpMessageInvoker(loggingHandler);
+      var requestAdapter = new HttpClientRequestAdapter(new AnonymousAuthenticationProvider());
 
-      var nullHandler = new Mock<HttpClientHandler>();
-      nullHandler.Protected()
-        .Setup<Task<HttpResponseMessage>>(
-          "SendAsync",
-          ItExpr.IsAny<HttpRequestMessage>(),
-          ItExpr.IsAny<CancellationToken>()
-        )
-        // prepare the expected response of the mocked http call
-        .ReturnsAsync(new HttpResponseMessage() { StatusCode = HttpStatusCode.OK })
-        .Verifiable();
-
-      var handler = new LoggingMessageHandler(logger, nullHandler.Object);
-
-      using var client = new HttpClient(handler, true);
+      var requestInfo = new RequestInformation
+      {
+        HttpMethod = Method.GET,
+        URI = new("http://localhost")
+      };
+      var requestMessage = await requestAdapter.ConvertToNativeRequestAsync<HttpRequestMessage>(requestInfo);
 
       // ACT
-      _ = await client.GetAsync("http://localhost");
+      _ = await invoker.SendAsync(requestMessage, new CancellationToken());
       var log = logger.GetLog(true);
 
       // ASSERT

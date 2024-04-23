@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Mocks\GetWebResponse.json" />
+    <None Remove="ExampleResponses\GetWebResponse.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Mocks\GetWebResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\GetWebResponse.json" />
   </ItemGroup>
 
   <ItemGroup>
