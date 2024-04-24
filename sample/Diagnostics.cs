@@ -50,24 +50,31 @@ namespace Graph.Community.SPClient.Sample
 
       var credential = new ChainedTokenCredential(
         new SharedTokenCacheCredential(new SharedTokenCacheCredentialOptions() { TenantId = azureAdSettings.TenantId, ClientId = azureAdSettings.ClientId }),
-        //new VisualStudioCredential(new VisualStudioCredentialOptions { TenantId = azureAdSettings.TenantId }),
         new InteractiveBrowserCredential(new InteractiveBrowserCredentialOptions { TenantId = azureAdSettings.TenantId, ClientId = azureAdSettings.ClientId })
       );
 
 
-      ////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////
       //
-      // Graph Client with Logger and SharePoint service handler
+      // SharePoint REST Client with Logger and SharePoint service handler
       //
-      ////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////
 
       // Configure our client
-      SPClientOptions clientOptions = new ()
+      SPClientOptions clientOptions = new()
       {
+        // use the default user agent
+
+        //UserAgentInfo = new SharePointThrottlingDecoration()
+        //{
+        //  CompanyName = "Company",
+        //  AppName = "Application",
+        //  AppVersion = "0.0.0",
+        //  ISV = false
+        //},
+
         // use our logger
         MessageLogger = logger
-
-        // use the default user agent
       };
 
       var spClient = SPClientFactory.Create(sharePointSettings.SpoTenantUrl, credential, clientOptions);
@@ -81,9 +88,13 @@ namespace Graph.Community.SPClient.Sample
 
       try
       {
-        var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync();
+        var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync(config =>
+        {
+          config.QueryParameters.Expand = ["UserCustomActions"];
+        });
 
-        Console.WriteLine($"Title: {web.Title}");
+        Console.WriteLine($"Title: {web?.Title}");
+        Console.WriteLine($"UserCustomAction count: {web?.UserCustomActions?.Count ?? 0}");
         Console.WriteLine();
       }
       catch (Exception ex)
