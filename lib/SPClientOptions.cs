@@ -1,5 +1,6 @@
 using Graph.Community.Middleware;
 using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
+using System.Diagnostics;
 using System.Net.Http.Headers;
 
 namespace Graph.Community
@@ -29,6 +30,7 @@ namespace Graph.Community
     }
   }
 
+  [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
   public struct SharePointThrottlingDecoration
   {
     public string CompanyName { get; set; }
@@ -61,6 +63,11 @@ namespace Graph.Community
       var isvDecoration = ISV ? "ISV" : "NONISV";
       var product = $"{isvDecoration}|{CompanyName}|{AppName}";
       return new ProductInfoHeaderValue(product, AppVersion);
+    }
+
+    private string GetDebuggerDisplay()
+    {
+      return ToUserAgent().ToString();
     }
   }
 }
