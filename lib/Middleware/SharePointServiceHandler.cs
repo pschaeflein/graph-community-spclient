@@ -13,53 +13,17 @@ namespace Graph.Community
   public class SharePointServiceHandler : DelegatingHandler
   {
     /// <summary>
-    /// SharePointServiceHandlerOption property
-    /// </summary>
-    internal SharePointServiceHandlerOption SharePointServiceHandlerOption { get; set; }
-
-    /// <summary>
     /// Constructs a new <see cref="SharePointServiceHandler"/> 
     /// </summary>
-    /// <param name="sharepointServiceHandlerOption">An OPTIONAL <see cref="Microsoft.Graph.SharePointServiceHandlerOption"/> to configure <see cref="SharePointServiceHandler"/></param>
-    public SharePointServiceHandler(SharePointServiceHandlerOption? sharepointServiceHandlerOption = null)
-    {
-      SharePointServiceHandlerOption = sharepointServiceHandlerOption ?? new SharePointServiceHandlerOption();
-    }
+    public SharePointServiceHandler() { }
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-      var disableTelemetry = SPClientFactory.TelemetryDisabled;
-      string resourceUri = null;
-
-      SharePointServiceHandlerOption = request.GetRequestOption<SharePointServiceHandlerOption>() ?? new();
-
-
-      if (SharePointServiceHandlerOption == null)
-      {
-        // This is not a request to SharePoint
-        var segments = request.RequestUri.Segments;
-
-        if (segments?.Length > 2)
-        {
-          resourceUri = $"{segments[1]}{segments[2]}";
-        }
-      }
-      else
-      {
-        disableTelemetry = SharePointServiceHandlerOption.DisableTelemetry;
-        resourceUri = SharePointServiceHandlerOption.ResourceUri ?? string.Empty;
-      }
-
-      request.Headers.Add(SharePointAPIRequestConstants.Headers.AcceptHeaderName, SharePointAPIRequestConstants.Headers.AcceptHeaderValue);
       request.Headers.Add(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName, SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue);
-
-
 
       var response = await base.SendAsync(request, cancellationToken);
 
-      //KiotaSharePointTelemetry.LogServiceRequest(resourceUri, context.ClientRequestId, request.Method, response.StatusCode, null);
-
-      if (SharePointServiceHandlerOption != null && !response.IsSuccessStatusCode)
+      if (!response.IsSuccessStatusCode)
       {
         using (response)
         {
@@ -68,10 +32,7 @@ namespace Graph.Community
           // first, see if the response is an ODataError...
           var odataError = KiotaJsonSerializer.Deserialize(responseContent, ODataError.CreateFromDiscriminatorValue);
 
-          if (odataError == null)
-          {
-            odataError = this.ConvertErrorResponseAsync(responseContent);
-          }
+          odataError ??= this.ConvertErrorResponseAsync(responseContent);
 
           if (odataError == null || odataError.Error == null)
           {

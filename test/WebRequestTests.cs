@@ -1,3 +1,5 @@
+using Azure;
+using Azure.Core;
 using Microsoft.Kiota.Abstractions;
 using NSubstitute;
 
@@ -6,13 +8,13 @@ namespace Graph.Community.Tests
   public class WebRequestTests
   {
     /*
-     *  Ensure the mock api controllers generate the correct OpenAPI description/generated builders.
+     *  Ensure the mock api controllers generate the correct OpenAPI description.
      */
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 
     [Fact]
-    public async Task Get_GeneratesCorrectUrlTemplate()
+    public async Task Get_GeneratesRequest()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/Web";
@@ -25,9 +27,13 @@ namespace Graph.Community.Tests
       var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation();
       webRequest.PathParameters.Add("baseurl", mockSpoUrl);
       var actualUrl = webRequest.URI.ToString();
+      var actualAcceptHeader = webRequest.Headers[SharePointAPIRequestConstants.Headers.AcceptHeaderName].FirstOrDefault();
 
       // ASSERT
       Assert.Equal(expectedUrl, actualUrl);
+
+      Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, webRequest.Headers[SharePointAPIRequestConstants.Headers.AcceptHeaderName].First().ToString(), StringComparer.OrdinalIgnoreCase);
+      Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, actualAcceptHeader);
     }
 
     [Fact]

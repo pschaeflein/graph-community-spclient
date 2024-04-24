@@ -1,4 +1,4 @@
-﻿using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using System.Net;
@@ -38,9 +38,6 @@ namespace Graph.Community.Tests
       var response = await _invoker.SendAsync(requestMessage, new CancellationToken());
 
       // Assert
-      Assert.Single(response.RequestMessage.Headers.Accept);
-      Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, response.RequestMessage.Headers.Accept.First().ToString(), StringComparer.OrdinalIgnoreCase);
-
       Assert.Single(response.RequestMessage.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName));
       Assert.Equal(SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue, response.RequestMessage.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName).First().ToString(), StringComparer.OrdinalIgnoreCase);
 

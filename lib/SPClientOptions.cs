@@ -7,11 +7,6 @@ namespace Graph.Community
   public class SPClientOptions
   {
     /// <summary>
-    /// Set to true to disable telemetry
-    /// </summary>
-    public bool DisableTelemetry { get; set; }
-
-    /// <summary>
     /// The UserAgentInfo for decorating SharePoint traffic.
     /// </summary>
     public SharePointThrottlingDecoration? UserAgentInfo { get; set; }
