@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Graph.Community.MockApi.Models
 {
@@ -24,7 +24,7 @@ namespace Graph.Community.MockApi.Models
     public string? UsersNavigationLink { get; set; }
 
     [JsonPropertyName("Users")]
-    public List<User>? Users { get; private set; }
+    public List<User>? Users { get; private set; } = [];
 
     [JsonPropertyName("AssociatedMemberGroupNavigationLink")]
     public string? AssociatedMemberGroupNavigationLink { get; set; }
@@ -50,10 +50,9 @@ namespace Graph.Community.MockApi.Models
     [JsonPropertyName("RegionalSettings")]
     public RegionalSettings? RegionalSettings { get; set; }
 
-    public Web()
-    {
-      Users = [];
-    }
+    [JsonPropertyName("UserCustomActions")]
+    public List<UserCustomAction> UserCustomActions { get; set; } = [];
+
   }
 }
 

@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Graph.Community.Controllers
 {
   [ApiController]
-  [Consumes("application/json")]
-  [Produces("application/json")]
+  [Consumes("application/json; odata.metadata=minimal")]
+  [Produces("application/json; odata.metadata=minimal")]
   public class WebController : ControllerBase
   {
     [HttpGet("/{serverRelativeSiteUrl}/_api/Web")]
