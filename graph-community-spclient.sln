@@ -5,6 +5,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{DE8A8B98-38E7-4918-AAA7-09C6D2D2E6FB}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		build-commands.txt = build-commands.txt
 		.github\workflows\build.yml = .github\workflows\build.yml
 		CONTRIBUTING.md = CONTRIBUTING.md
