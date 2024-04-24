@@ -44,7 +44,7 @@
           "200": {
             "description": "Success",
             "content": {
-              "application/json": {
+              "application/json; odata.metadata=minimal": {
                 "schema": {
                   "$ref": "#/components/schemas/Web"
                 }
@@ -391,6 +391,107 @@
         },
         "additionalProperties": false
       },
+      "UserCustomAction": {
+        "type": "object",
+        "properties": {
+          "ClientSideComponentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ClientSideComponentProperties": {
+            "type": "string",
+            "nullable": true
+          },
+          "CommandUIExtension": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "Group": {
+            "type": "string",
+            "nullable": true
+          },
+          "HostProperties": {
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "Location": {
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "RegistrationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "RegistrationType": {
+            "$ref": "#/components/schemas/UserCustomActionRegistrationType"
+          },
+          "Scope": {
+            "$ref": "#/components/schemas/UserCustomActionScope"
+          },
+          "ScriptBlock": {
+            "type": "string",
+            "nullable": true
+          },
+          "ScriptSrc": {
+            "type": "string",
+            "nullable": true
+          },
+          "Sequence": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "Url": {
+            "type": "string",
+            "nullable": true
+          },
+          "VersionOfUserCustomAction": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "UserCustomActionRegistrationType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UserCustomActionScope": {
+        "enum": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "UserId": {
         "type": "object",
         "properties": {
@@ -465,6 +566,13 @@
           },
           "RegionalSettings": {
             "$ref": "#/components/schemas/RegionalSettings"
+          },
+          "UserCustomActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserCustomAction"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": { }

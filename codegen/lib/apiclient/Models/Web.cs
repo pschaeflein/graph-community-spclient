@@ -93,6 +93,14 @@ namespace Graph.Community.Models {
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>The UserCustomActions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<UserCustomAction>? UserCustomActions { get; set; }
+#nullable restore
+#else
+        public List<UserCustomAction> UserCustomActions { get; set; }
+#endif
         /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -154,6 +162,7 @@ namespace Graph.Community.Models {
                 {"Id", n => { Id = n.GetStringValue(); } },
                 {"RegionalSettings", n => { RegionalSettings = n.GetObjectValue<Graph.Community.Models.RegionalSettings>(Graph.Community.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
                 {"Title", n => { Title = n.GetStringValue(); } },
+                {"UserCustomActions", n => { UserCustomActions = n.GetCollectionOfObjectValues<UserCustomAction>(UserCustomAction.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"Users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
                 {"WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
@@ -178,6 +187,7 @@ namespace Graph.Community.Models {
             writer.WriteStringValue("Id", Id);
             writer.WriteObjectValue<Graph.Community.Models.RegionalSettings>("RegionalSettings", RegionalSettings);
             writer.WriteStringValue("Title", Title);
+            writer.WriteCollectionOfObjectValues<UserCustomAction>("UserCustomActions", UserCustomActions);
             writer.WriteStringValue("UsersNavigationLink", UsersNavigationLink);
             writer.WriteStringValue("WelcomePage", WelcomePage);
             writer.WriteAdditionalData(AdditionalData);
