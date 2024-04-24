@@ -32,12 +32,13 @@ namespace Graph.Community
           // first, see if the response is an ODataError...
           var odataError = KiotaJsonSerializer.Deserialize(responseContent, ODataError.CreateFromDiscriminatorValue);
 
-          odataError ??= this.ConvertErrorResponseAsync(responseContent);
-
-          if (odataError == null || odataError.Error == null)
+          if (odataError!.Error == null)
           {
-            odataError = new();
+            odataError = this.ConvertErrorResponseAsync(responseContent);
+          }
 
+          if (odataError!.Error == null)
+          {
             // we couldn't parse the error, so return generic message
             if (response != null && response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -96,6 +97,7 @@ namespace Graph.Community
             Message = message
           }
         };
+        error.AdditionalData.Add("responseContent", responseContent);
 
         return error;
 
