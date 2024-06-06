@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graph.Community.Item._api.Web {
+namespace Graph.Community.Item._api.Web
+{
     /// <summary>
     /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\Web
     /// </summary>
-    public class WebRequestBuilder : BaseRequestBuilder 
+    public class WebRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="WebRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Item._api.Web.WebRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Graph.Community.Item._api.Web {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WebRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Item._api.Web.WebRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,11 +36,11 @@ namespace Graph.Community.Item._api.Web {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Graph.Community.Models.Web?> GetAsync(Action<RequestConfiguration<WebRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graph.Community.Models.Web?> GetAsync(Action<RequestConfiguration<Graph.Community.Item._api.Web.WebRequestBuilder.WebRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Graph.Community.Models.Web> GetAsync(Action<RequestConfiguration<WebRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graph.Community.Models.Web> GetAsync(Action<RequestConfiguration<Graph.Community.Item._api.Web.WebRequestBuilder.WebRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -49,11 +50,11 @@ namespace Graph.Community.Item._api.Web {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WebRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graph.Community.Item._api.Web.WebRequestBuilder.WebRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WebRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graph.Community.Item._api.Web.WebRequestBuilder.WebRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -64,13 +65,15 @@ namespace Graph.Community.Item._api.Web {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WebRequestBuilder"/></returns>
+        /// <returns>A <see cref="Graph.Community.Item._api.Web.WebRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WebRequestBuilder WithUrl(string rawUrl)
+        public Graph.Community.Item._api.Web.WebRequestBuilder WithUrl(string rawUrl)
         {
-            return new WebRequestBuilder(rawUrl, RequestAdapter);
+            return new Graph.Community.Item._api.Web.WebRequestBuilder(rawUrl, RequestAdapter);
         }
+        #pragma warning disable CS1591
         public class WebRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +98,7 @@ namespace Graph.Community.Item._api.Web {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class WebRequestBuilderGetRequestConfiguration : RequestConfiguration<WebRequestBuilderGetQueryParameters> 
+        public class WebRequestBuilderGetRequestConfiguration : RequestConfiguration<Graph.Community.Item._api.Web.WebRequestBuilder.WebRequestBuilderGetQueryParameters>
         {
         }
     }

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class TimeZoneInformation : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class TimeZoneInformation : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The Bias property</summary>
         public int? Bias { get; set; }
@@ -16,12 +19,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="TimeZoneInformation"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.TimeZoneInformation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static TimeZoneInformation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.TimeZoneInformation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new TimeZoneInformation();
+            return new Graph.Community.Models.TimeZoneInformation();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -31,9 +34,9 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"Bias", n => { Bias = n.GetIntValue(); } },
-                {"DaylightBias", n => { DaylightBias = n.GetIntValue(); } },
-                {"StandardBias", n => { StandardBias = n.GetIntValue(); } },
+                { "Bias", n => { Bias = n.GetIntValue(); } },
+                { "DaylightBias", n => { DaylightBias = n.GetIntValue(); } },
+                { "StandardBias", n => { StandardBias = n.GetIntValue(); } },
             };
         }
         /// <summary>

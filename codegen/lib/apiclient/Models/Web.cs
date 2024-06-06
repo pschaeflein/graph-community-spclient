@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class Web : IAdditionalDataHolder, IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class Web : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The AssociatedMemberGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Group? AssociatedMemberGroup { get; set; }
+        public Graph.Community.Models.Group? AssociatedMemberGroup { get; set; }
 #nullable restore
 #else
-        public Group AssociatedMemberGroup { get; set; }
+        public Graph.Community.Models.Group AssociatedMemberGroup { get; set; }
 #endif
         /// <summary>The AssociatedMemberGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -28,10 +31,10 @@ namespace Graph.Community.Models {
         /// <summary>The AssociatedOwnerGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Group? AssociatedOwnerGroup { get; set; }
+        public Graph.Community.Models.Group? AssociatedOwnerGroup { get; set; }
 #nullable restore
 #else
-        public Group AssociatedOwnerGroup { get; set; }
+        public Graph.Community.Models.Group AssociatedOwnerGroup { get; set; }
 #endif
         /// <summary>The AssociatedOwnerGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +47,10 @@ namespace Graph.Community.Models {
         /// <summary>The AssociatedVisitorGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Group? AssociatedVisitorGroup { get; set; }
+        public Graph.Community.Models.Group? AssociatedVisitorGroup { get; set; }
 #nullable restore
 #else
-        public Group AssociatedVisitorGroup { get; set; }
+        public Graph.Community.Models.Group AssociatedVisitorGroup { get; set; }
 #endif
         /// <summary>The AssociatedVisitorGroupNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,10 +63,10 @@ namespace Graph.Community.Models {
         /// <summary>The CurrentChangeToken property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ChangeToken? CurrentChangeToken { get; set; }
+        public Graph.Community.Models.ChangeToken? CurrentChangeToken { get; set; }
 #nullable restore
 #else
-        public ChangeToken CurrentChangeToken { get; set; }
+        public Graph.Community.Models.ChangeToken CurrentChangeToken { get; set; }
 #endif
         /// <summary>The FooterEnabled property</summary>
         public bool? FooterEnabled { get; set; }
@@ -96,18 +99,18 @@ namespace Graph.Community.Models {
         /// <summary>The UserCustomActions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UserCustomAction>? UserCustomActions { get; set; }
+        public List<Graph.Community.Models.UserCustomAction>? UserCustomActions { get; set; }
 #nullable restore
 #else
-        public List<UserCustomAction> UserCustomActions { get; set; }
+        public List<Graph.Community.Models.UserCustomAction> UserCustomActions { get; set; }
 #endif
         /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<User>? Users { get; private set; }
+        public List<Graph.Community.Models.User>? Users { get; private set; }
 #nullable restore
 #else
-        public List<User> Users { get; private set; }
+        public List<Graph.Community.Models.User> Users { get; private set; }
 #endif
         /// <summary>The UsersNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -126,7 +129,7 @@ namespace Graph.Community.Models {
         public string WelcomePage { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Web"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Models.Web"/> and sets the default values.
         /// </summary>
         public Web()
         {
@@ -135,12 +138,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Web"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.Web"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Web CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.Web CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Web();
+            return new Graph.Community.Models.Web();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -150,22 +153,22 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"AssociatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"AssociatedMemberGroupNavigationLink", n => { AssociatedMemberGroupNavigationLink = n.GetStringValue(); } },
-                {"AssociatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"AssociatedOwnerGroupNavigationLink", n => { AssociatedOwnerGroupNavigationLink = n.GetStringValue(); } },
-                {"AssociatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<Group>(Group.CreateFromDiscriminatorValue); } },
-                {"AssociatedVisitorGroupNavigationLink", n => { AssociatedVisitorGroupNavigationLink = n.GetStringValue(); } },
-                {"CurrentChangeToken", n => { CurrentChangeToken = n.GetObjectValue<ChangeToken>(ChangeToken.CreateFromDiscriminatorValue); } },
-                {"FooterEnabled", n => { FooterEnabled = n.GetBoolValue(); } },
-                {"FooterLayout", n => { FooterLayout = n.GetIntValue(); } },
-                {"Id", n => { Id = n.GetStringValue(); } },
-                {"RegionalSettings", n => { RegionalSettings = n.GetObjectValue<Graph.Community.Models.RegionalSettings>(Graph.Community.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
-                {"Title", n => { Title = n.GetStringValue(); } },
-                {"UserCustomActions", n => { UserCustomActions = n.GetCollectionOfObjectValues<UserCustomAction>(UserCustomAction.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"Users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
-                {"WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
+                { "AssociatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<Graph.Community.Models.Group>(Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
+                { "AssociatedMemberGroupNavigationLink", n => { AssociatedMemberGroupNavigationLink = n.GetStringValue(); } },
+                { "AssociatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<Graph.Community.Models.Group>(Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
+                { "AssociatedOwnerGroupNavigationLink", n => { AssociatedOwnerGroupNavigationLink = n.GetStringValue(); } },
+                { "AssociatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<Graph.Community.Models.Group>(Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
+                { "AssociatedVisitorGroupNavigationLink", n => { AssociatedVisitorGroupNavigationLink = n.GetStringValue(); } },
+                { "CurrentChangeToken", n => { CurrentChangeToken = n.GetObjectValue<Graph.Community.Models.ChangeToken>(Graph.Community.Models.ChangeToken.CreateFromDiscriminatorValue); } },
+                { "FooterEnabled", n => { FooterEnabled = n.GetBoolValue(); } },
+                { "FooterLayout", n => { FooterLayout = n.GetIntValue(); } },
+                { "Id", n => { Id = n.GetStringValue(); } },
+                { "RegionalSettings", n => { RegionalSettings = n.GetObjectValue<Graph.Community.Models.RegionalSettings>(Graph.Community.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
+                { "Title", n => { Title = n.GetStringValue(); } },
+                { "UserCustomActions", n => { UserCustomActions = n.GetCollectionOfObjectValues<Graph.Community.Models.UserCustomAction>(Graph.Community.Models.UserCustomAction.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "Users", n => { Users = n.GetCollectionOfObjectValues<Graph.Community.Models.User>(Graph.Community.Models.User.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
+                { "WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -175,19 +178,19 @@ namespace Graph.Community.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Group>("AssociatedMemberGroup", AssociatedMemberGroup);
+            writer.WriteObjectValue<Graph.Community.Models.Group>("AssociatedMemberGroup", AssociatedMemberGroup);
             writer.WriteStringValue("AssociatedMemberGroupNavigationLink", AssociatedMemberGroupNavigationLink);
-            writer.WriteObjectValue<Group>("AssociatedOwnerGroup", AssociatedOwnerGroup);
+            writer.WriteObjectValue<Graph.Community.Models.Group>("AssociatedOwnerGroup", AssociatedOwnerGroup);
             writer.WriteStringValue("AssociatedOwnerGroupNavigationLink", AssociatedOwnerGroupNavigationLink);
-            writer.WriteObjectValue<Group>("AssociatedVisitorGroup", AssociatedVisitorGroup);
+            writer.WriteObjectValue<Graph.Community.Models.Group>("AssociatedVisitorGroup", AssociatedVisitorGroup);
             writer.WriteStringValue("AssociatedVisitorGroupNavigationLink", AssociatedVisitorGroupNavigationLink);
-            writer.WriteObjectValue<ChangeToken>("CurrentChangeToken", CurrentChangeToken);
+            writer.WriteObjectValue<Graph.Community.Models.ChangeToken>("CurrentChangeToken", CurrentChangeToken);
             writer.WriteBoolValue("FooterEnabled", FooterEnabled);
             writer.WriteIntValue("FooterLayout", FooterLayout);
             writer.WriteStringValue("Id", Id);
             writer.WriteObjectValue<Graph.Community.Models.RegionalSettings>("RegionalSettings", RegionalSettings);
             writer.WriteStringValue("Title", Title);
-            writer.WriteCollectionOfObjectValues<UserCustomAction>("UserCustomActions", UserCustomActions);
+            writer.WriteCollectionOfObjectValues<Graph.Community.Models.UserCustomAction>("UserCustomActions", UserCustomActions);
             writer.WriteStringValue("UsersNavigationLink", UsersNavigationLink);
             writer.WriteStringValue("WelcomePage", WelcomePage);
             writer.WriteAdditionalData(AdditionalData);

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class Principal : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class Principal : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The id property</summary>
         public int? Id { get; set; }
@@ -32,12 +35,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Principal"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.Principal"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Principal CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.Principal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Principal();
+            return new Graph.Community.Models.Principal();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,11 +50,11 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                {"loginName", n => { LoginName = n.GetStringValue(); } },
-                {"principalType", n => { PrincipalType = n.GetIntValue(); } },
-                {"title", n => { Title = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
+                { "loginName", n => { LoginName = n.GetStringValue(); } },
+                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>

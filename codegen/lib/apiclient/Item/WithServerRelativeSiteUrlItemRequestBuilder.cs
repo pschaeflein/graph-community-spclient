@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Graph.Community.Item {
+namespace Graph.Community.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \{serverRelativeSiteUrl}
     /// </summary>
-    public class WithServerRelativeSiteUrlItemRequestBuilder : BaseRequestBuilder 
+    public class WithServerRelativeSiteUrlItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The _api property</summary>
-        public _apiRequestBuilder _api
+        public Graph.Community.Item._api._apiRequestBuilder _api
         {
-            get => new _apiRequestBuilder(PathParameters, RequestAdapter);
+            get => new Graph.Community.Item._api._apiRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithServerRelativeSiteUrlItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Item.WithServerRelativeSiteUrlItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Graph.Community.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithServerRelativeSiteUrlItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Item.WithServerRelativeSiteUrlItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

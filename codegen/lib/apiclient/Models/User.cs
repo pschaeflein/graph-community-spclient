@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class User : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class User : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The Email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,12 +65,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="User"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.User"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static User CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.User CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new User();
+            return new Graph.Community.Models.User();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,17 +80,17 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"Email", n => { Email = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"IsEmailAuthenticationGuestUser", n => { IsEmailAuthenticationGuestUser = n.GetBoolValue(); } },
-                {"isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                {"IsShareByEmailGuestUser", n => { IsShareByEmailGuestUser = n.GetBoolValue(); } },
-                {"IsSiteAdmin", n => { IsSiteAdmin = n.GetBoolValue(); } },
-                {"loginName", n => { LoginName = n.GetStringValue(); } },
-                {"principalType", n => { PrincipalType = n.GetIntValue(); } },
-                {"title", n => { Title = n.GetStringValue(); } },
-                {"UserId", n => { UserId = n.GetObjectValue<Graph.Community.Models.UserId>(Graph.Community.Models.UserId.CreateFromDiscriminatorValue); } },
-                {"UserPrincipalName", n => { UserPrincipalName = n.GetStringValue(); } },
+                { "Email", n => { Email = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "IsEmailAuthenticationGuestUser", n => { IsEmailAuthenticationGuestUser = n.GetBoolValue(); } },
+                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
+                { "IsShareByEmailGuestUser", n => { IsShareByEmailGuestUser = n.GetBoolValue(); } },
+                { "IsSiteAdmin", n => { IsSiteAdmin = n.GetBoolValue(); } },
+                { "loginName", n => { LoginName = n.GetStringValue(); } },
+                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
+                { "UserId", n => { UserId = n.GetObjectValue<Graph.Community.Models.UserId>(Graph.Community.Models.UserId.CreateFromDiscriminatorValue); } },
+                { "UserPrincipalName", n => { UserPrincipalName = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "938E8B50FC8C7815BE43CFF780BCB0266B84307061AB25E47BB3CBE6FC56AF516EE0767E80792F6AB35843A8E6ACD7CB3F85FD75829B1A8FC6754FA2A5075C0C",
+  "descriptionHash": "2A7EB57F2305660F2D29EE818FEF8CADBF53436A34446094D620D17DCA08E13CA0B99B7F77972D5E640C2B00C3358B9C04C38D083C050B00CACC28A23DCD046B",
   "descriptionLocation": "..\\..\\openapi\\graph.community.spinfo.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
-  "clientClassName": "SPClient",
+  "kiotaVersion": "1.15.0",
+  "clientClassName": "Graph.Community.SPClient",
   "clientNamespaceName": "Graph.Community",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

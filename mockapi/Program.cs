@@ -18,7 +18,7 @@ namespace Graph.Community
       {
         options.SwaggerDoc("Graph.Community.SPInfo", new OpenApiInfo
         {
-          Version = "v5.0-beta",
+          Version = "v5.1",
           Title = "Graph.Community Mock SharePoint API"
         });
           options.SchemaFilter<AdditionalPropertiesSchemaFilter>();

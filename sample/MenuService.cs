@@ -36,8 +36,8 @@ namespace Graph.Community.SPClient.Sample
         Console.WriteLine("Select a sample:");
         Console.WriteLine("");
         Console.WriteLine("1. Diagnostics");
-        //Console.WriteLine("2. Root site (Graph)");
-        //Console.WriteLine("3. Expiring client secrets");
+        Console.WriteLine("2. SPWeb");
+        Console.WriteLine("3. Hub Sites");
         //Console.WriteLine("4. Change log");
         //Console.WriteLine("5. Site Pages");
         //Console.WriteLine("6. SharePoint Search");
@@ -63,17 +63,17 @@ namespace Graph.Community.SPClient.Sample
               await diagnosticSample.Run();
               break;
 
-            //case ConsoleKey.D2:
-            //case ConsoleKey.NumPad2:
-            //  var rootSiteSample = serviceProvider.GetRequiredService<RootSite>();
-            //  await rootSiteSample.Run();
-            //  break;
+            case ConsoleKey.D2:
+            case ConsoleKey.NumPad2:
+              var rootSiteSample = serviceProvider.GetRequiredService<Web>();
+              await rootSiteSample.Run();
+              break;
 
-            //case ConsoleKey.D3:
-            //case ConsoleKey.NumPad3:
-            //  var expiringSecretsSample = serviceProvider.GetRequiredService<ExpiringClientSecrets>();
-            //  await expiringSecretsSample.Run();
-            //  break;
+            case ConsoleKey.D3:
+            case ConsoleKey.NumPad3:
+              var expiringSecretsSample = serviceProvider.GetRequiredService<HubSiteList>();
+              await expiringSecretsSample.Run();
+              break;
 
             //case ConsoleKey.D4:
             //case ConsoleKey.NumPad4:

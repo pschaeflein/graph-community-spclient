@@ -1,4 +1,4 @@
-# Startup path: D:\Repos\pschaeflein\kiota-sharepoint
+# Startup path: D:\Repos\pschaeflein\graph-community-spclient
 
 dotnet swagger tofile --output codegen\openapi\graph.community.spinfo.json .\mockapi\bin\Debug\net8.0\Graph.Community.SPClient.MockApi.dll Graph.Community.SPInfo
 

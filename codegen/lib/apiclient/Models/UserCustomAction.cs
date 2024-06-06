@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class UserCustomAction : IAdditionalDataHolder, IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class UserCustomAction : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -132,7 +135,7 @@ namespace Graph.Community.Models {
         public string VersionOfUserCustomAction { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="UserCustomAction"/> and sets the default values.
+        /// Instantiates a new <see cref="Graph.Community.Models.UserCustomAction"/> and sets the default values.
         /// </summary>
         public UserCustomAction()
         {
@@ -141,12 +144,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="UserCustomAction"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.UserCustomAction"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static UserCustomAction CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.UserCustomAction CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new UserCustomAction();
+            return new Graph.Community.Models.UserCustomAction();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -156,25 +159,25 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"ClientSideComponentId", n => { ClientSideComponentId = n.GetGuidValue(); } },
-                {"ClientSideComponentProperties", n => { ClientSideComponentProperties = n.GetStringValue(); } },
-                {"CommandUIExtension", n => { CommandUIExtension = n.GetStringValue(); } },
-                {"Description", n => { Description = n.GetStringValue(); } },
-                {"Group", n => { Group = n.GetStringValue(); } },
-                {"HostProperties", n => { HostProperties = n.GetStringValue(); } },
-                {"Id", n => { Id = n.GetGuidValue(); } },
-                {"ImageUrl", n => { ImageUrl = n.GetStringValue(); } },
-                {"Location", n => { Location = n.GetStringValue(); } },
-                {"Name", n => { Name = n.GetStringValue(); } },
-                {"RegistrationId", n => { RegistrationId = n.GetStringValue(); } },
-                {"RegistrationType", n => { RegistrationType = n.GetIntValue(); } },
-                {"Scope", n => { Scope = n.GetIntValue(); } },
-                {"ScriptBlock", n => { ScriptBlock = n.GetStringValue(); } },
-                {"ScriptSrc", n => { ScriptSrc = n.GetStringValue(); } },
-                {"Sequence", n => { Sequence = n.GetIntValue(); } },
-                {"Title", n => { Title = n.GetStringValue(); } },
-                {"Url", n => { Url = n.GetStringValue(); } },
-                {"VersionOfUserCustomAction", n => { VersionOfUserCustomAction = n.GetStringValue(); } },
+                { "ClientSideComponentId", n => { ClientSideComponentId = n.GetGuidValue(); } },
+                { "ClientSideComponentProperties", n => { ClientSideComponentProperties = n.GetStringValue(); } },
+                { "CommandUIExtension", n => { CommandUIExtension = n.GetStringValue(); } },
+                { "Description", n => { Description = n.GetStringValue(); } },
+                { "Group", n => { Group = n.GetStringValue(); } },
+                { "HostProperties", n => { HostProperties = n.GetStringValue(); } },
+                { "Id", n => { Id = n.GetGuidValue(); } },
+                { "ImageUrl", n => { ImageUrl = n.GetStringValue(); } },
+                { "Location", n => { Location = n.GetStringValue(); } },
+                { "Name", n => { Name = n.GetStringValue(); } },
+                { "RegistrationId", n => { RegistrationId = n.GetStringValue(); } },
+                { "RegistrationType", n => { RegistrationType = n.GetIntValue(); } },
+                { "Scope", n => { Scope = n.GetIntValue(); } },
+                { "ScriptBlock", n => { ScriptBlock = n.GetStringValue(); } },
+                { "ScriptSrc", n => { ScriptSrc = n.GetStringValue(); } },
+                { "Sequence", n => { Sequence = n.GetIntValue(); } },
+                { "Title", n => { Title = n.GetStringValue(); } },
+                { "Url", n => { Url = n.GetStringValue(); } },
+                { "VersionOfUserCustomAction", n => { VersionOfUserCustomAction = n.GetStringValue(); } },
             };
         }
         /// <summary>

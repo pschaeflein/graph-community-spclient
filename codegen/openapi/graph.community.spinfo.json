@@ -2,9 +2,38 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Graph.Community Mock SharePoint API",
-    "version": "v5.0-beta"
+    "version": "v5.1"
   },
   "paths": {
+    "/{serverRelativeSiteUrl}/_api/HubSites": {
+      "get": {
+        "tags": [
+          "HubSites"
+        ],
+        "parameters": [
+          {
+            "name": "serverRelativeSiteUrl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; odata.metadata=minimal": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubSiteCollectionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/{serverRelativeSiteUrl}/_api/Web": {
       "get": {
         "tags": [
@@ -145,6 +174,57 @@
             },
             "nullable": true,
             "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HubSite": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "SiteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "TenantInstanceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "SiteUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "LogoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "Targets": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HubSiteCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HubSite"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class Group : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class Group : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The AllowMembersEditMembership property</summary>
         public bool? AllowMembersEditMembership { get; set; }
@@ -38,10 +41,10 @@ namespace Graph.Community.Models {
         /// <summary>The Owner property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Principal? Owner { get; set; }
+        public Graph.Community.Models.Principal? Owner { get; set; }
 #nullable restore
 #else
-        public Principal Owner { get; set; }
+        public Graph.Community.Models.Principal Owner { get; set; }
 #endif
         /// <summary>The OwnerNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,10 +83,10 @@ namespace Graph.Community.Models {
         /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<User>? Users { get; private set; }
+        public List<Graph.Community.Models.User>? Users { get; private set; }
 #nullable restore
 #else
-        public List<User> Users { get; private set; }
+        public List<Graph.Community.Models.User> Users { get; private set; }
 #endif
         /// <summary>The UsersNavigationLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,12 +99,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Group"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.Group"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Group CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.Group CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Group();
+            return new Graph.Community.Models.Group();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,22 +114,22 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"AllowMembersEditMembership", n => { AllowMembersEditMembership = n.GetBoolValue(); } },
-                {"AllowRequestToJoinLeave", n => { AllowRequestToJoinLeave = n.GetBoolValue(); } },
-                {"AutoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
-                {"Description", n => { Description = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                {"loginName", n => { LoginName = n.GetStringValue(); } },
-                {"OnlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
-                {"Owner", n => { Owner = n.GetObjectValue<Principal>(Principal.CreateFromDiscriminatorValue); } },
-                {"OwnerNavigationLink", n => { OwnerNavigationLink = n.GetStringValue(); } },
-                {"OwnerTitle", n => { OwnerTitle = n.GetStringValue(); } },
-                {"principalType", n => { PrincipalType = n.GetIntValue(); } },
-                {"RequestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
-                {"title", n => { Title = n.GetStringValue(); } },
-                {"Users", n => { Users = n.GetCollectionOfObjectValues<User>(User.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
+                { "AllowMembersEditMembership", n => { AllowMembersEditMembership = n.GetBoolValue(); } },
+                { "AllowRequestToJoinLeave", n => { AllowRequestToJoinLeave = n.GetBoolValue(); } },
+                { "AutoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
+                { "Description", n => { Description = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
+                { "loginName", n => { LoginName = n.GetStringValue(); } },
+                { "OnlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
+                { "Owner", n => { Owner = n.GetObjectValue<Graph.Community.Models.Principal>(Graph.Community.Models.Principal.CreateFromDiscriminatorValue); } },
+                { "OwnerNavigationLink", n => { OwnerNavigationLink = n.GetStringValue(); } },
+                { "OwnerTitle", n => { OwnerTitle = n.GetStringValue(); } },
+                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
+                { "RequestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
+                { "Users", n => { Users = n.GetCollectionOfObjectValues<Graph.Community.Models.User>(Graph.Community.Models.User.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -144,7 +147,7 @@ namespace Graph.Community.Models {
             writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
             writer.WriteStringValue("loginName", LoginName);
             writer.WriteBoolValue("OnlyAllowMembersViewMembership", OnlyAllowMembersViewMembership);
-            writer.WriteObjectValue<Principal>("Owner", Owner);
+            writer.WriteObjectValue<Graph.Community.Models.Principal>("Owner", Owner);
             writer.WriteStringValue("OwnerNavigationLink", OwnerNavigationLink);
             writer.WriteStringValue("OwnerTitle", OwnerTitle);
             writer.WriteIntValue("principalType", PrincipalType);

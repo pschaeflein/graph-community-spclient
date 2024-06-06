@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
@@ -49,8 +49,8 @@ namespace Graph.Community.SPClient.Sample
 
                 // Add our sample classes
                 services.AddTransient<Diagnostics>();
-                //services.AddTransient<RootSite>();
-                //services.AddTransient<ExpiringClientSecrets>();
+                services.AddTransient<Web>();
+                services.AddTransient<HubSiteList>();
                 //services.AddTransient<ChangeLog>();
                 //services.AddTransient<SiteGroups>();
                 //services.AddTransient<SitePages>();

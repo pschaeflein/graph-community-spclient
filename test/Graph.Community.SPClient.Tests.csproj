@@ -11,11 +11,13 @@
 
   <ItemGroup>
     <None Remove="ExampleResponses\GetWebResponse.json" />
+    <None Remove="ExampleResponses\HubSitesResponse.json" />
     <None Remove="ExampleResponses\UserCustomActions.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="ExampleResponses\GetWebResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\HubSitesResponse.json" />
     <EmbeddedResource Include="ExampleResponses\UserCustomActions.json" />
   </ItemGroup>
 

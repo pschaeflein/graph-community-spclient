@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class ChangeToken : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class ChangeToken : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The StringValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -18,12 +21,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ChangeToken"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.ChangeToken"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ChangeToken CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.ChangeToken CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ChangeToken();
+            return new Graph.Community.Models.ChangeToken();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -33,7 +36,7 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"StringValue", n => { StringValue = n.GetStringValue(); } },
+                { "StringValue", n => { StringValue = n.GetStringValue(); } },
             };
         }
         /// <summary>

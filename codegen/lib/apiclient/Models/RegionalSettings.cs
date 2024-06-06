@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graph.Community.Models {
-    public class RegionalSettings : IParsable 
+namespace Graph.Community.Models
+{
+    #pragma warning disable CS1591
+    public class RegionalSettings : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The AdjustHijriDays property</summary>
         public int? AdjustHijriDays { get; set; }
@@ -122,10 +125,10 @@ namespace Graph.Community.Models {
         /// <summary>The TimeZone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public TimeZoneObject? TimeZone { get; set; }
+        public Graph.Community.Models.TimeZoneObject? TimeZone { get; set; }
 #nullable restore
 #else
-        public TimeZoneObject TimeZone { get; set; }
+        public Graph.Community.Models.TimeZoneObject TimeZone { get; set; }
 #endif
         /// <summary>The WorkDayEndHour property</summary>
         public int? WorkDayEndHour { get; set; }
@@ -136,12 +139,12 @@ namespace Graph.Community.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RegionalSettings"/></returns>
+        /// <returns>A <see cref="Graph.Community.Models.RegionalSettings"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RegionalSettings CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graph.Community.Models.RegionalSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RegionalSettings();
+            return new Graph.Community.Models.RegionalSettings();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -151,36 +154,36 @@ namespace Graph.Community.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"AM", n => { AM = n.GetStringValue(); } },
-                {"AdjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
-                {"AlternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
-                {"CalendarType ", n => { CalendarType = n.GetIntValue(); } },
-                {"Collation", n => { Collation = n.GetIntValue(); } },
-                {"CollationLCID", n => { CollationLCID = n.GetIntValue(); } },
-                {"DateFormat", n => { DateFormat = n.GetIntValue(); } },
-                {"DateSeparator", n => { DateSeparator = n.GetStringValue(); } },
-                {"DecimalSeparator", n => { DecimalSeparator = n.GetStringValue(); } },
-                {"DigitGrouping", n => { DigitGrouping = n.GetStringValue(); } },
-                {"FirstDayOfWeek", n => { FirstDayOfWeek = n.GetIntValue(); } },
-                {"FirstWeekOfYear", n => { FirstWeekOfYear = n.GetIntValue(); } },
-                {"IsEastAsia", n => { IsEastAsia = n.GetBoolValue(); } },
-                {"IsRightToLeft", n => { IsRightToLeft = n.GetBoolValue(); } },
-                {"IsUIRightToLeft", n => { IsUIRightToLeft = n.GetBoolValue(); } },
-                {"ListSeparator", n => { ListSeparator = n.GetStringValue(); } },
-                {"LocaleId", n => { LocaleId = n.GetIntValue(); } },
-                {"NegNumberMode", n => { NegNumberMode = n.GetIntValue(); } },
-                {"NegativeSign", n => { NegativeSign = n.GetStringValue(); } },
-                {"PM", n => { PM = n.GetStringValue(); } },
-                {"PositiveSign", n => { PositiveSign = n.GetStringValue(); } },
-                {"ShowWeeks", n => { ShowWeeks = n.GetBoolValue(); } },
-                {"ThousandSeparator", n => { ThousandSeparator = n.GetStringValue(); } },
-                {"Time24", n => { Time24 = n.GetBoolValue(); } },
-                {"TimeMarkerPosition", n => { TimeMarkerPosition = n.GetIntValue(); } },
-                {"TimeSeparator", n => { TimeSeparator = n.GetStringValue(); } },
-                {"TimeZone", n => { TimeZone = n.GetObjectValue<TimeZoneObject>(TimeZoneObject.CreateFromDiscriminatorValue); } },
-                {"WorkDayEndHour", n => { WorkDayEndHour = n.GetIntValue(); } },
-                {"WorkDayStartHour", n => { WorkDayStartHour = n.GetIntValue(); } },
-                {"WorkDays", n => { WorkDays = n.GetIntValue(); } },
+                { "AM", n => { AM = n.GetStringValue(); } },
+                { "AdjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
+                { "AlternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
+                { "CalendarType ", n => { CalendarType = n.GetIntValue(); } },
+                { "Collation", n => { Collation = n.GetIntValue(); } },
+                { "CollationLCID", n => { CollationLCID = n.GetIntValue(); } },
+                { "DateFormat", n => { DateFormat = n.GetIntValue(); } },
+                { "DateSeparator", n => { DateSeparator = n.GetStringValue(); } },
+                { "DecimalSeparator", n => { DecimalSeparator = n.GetStringValue(); } },
+                { "DigitGrouping", n => { DigitGrouping = n.GetStringValue(); } },
+                { "FirstDayOfWeek", n => { FirstDayOfWeek = n.GetIntValue(); } },
+                { "FirstWeekOfYear", n => { FirstWeekOfYear = n.GetIntValue(); } },
+                { "IsEastAsia", n => { IsEastAsia = n.GetBoolValue(); } },
+                { "IsRightToLeft", n => { IsRightToLeft = n.GetBoolValue(); } },
+                { "IsUIRightToLeft", n => { IsUIRightToLeft = n.GetBoolValue(); } },
+                { "ListSeparator", n => { ListSeparator = n.GetStringValue(); } },
+                { "LocaleId", n => { LocaleId = n.GetIntValue(); } },
+                { "NegNumberMode", n => { NegNumberMode = n.GetIntValue(); } },
+                { "NegativeSign", n => { NegativeSign = n.GetStringValue(); } },
+                { "PM", n => { PM = n.GetStringValue(); } },
+                { "PositiveSign", n => { PositiveSign = n.GetStringValue(); } },
+                { "ShowWeeks", n => { ShowWeeks = n.GetBoolValue(); } },
+                { "ThousandSeparator", n => { ThousandSeparator = n.GetStringValue(); } },
+                { "Time24", n => { Time24 = n.GetBoolValue(); } },
+                { "TimeMarkerPosition", n => { TimeMarkerPosition = n.GetIntValue(); } },
+                { "TimeSeparator", n => { TimeSeparator = n.GetStringValue(); } },
+                { "TimeZone", n => { TimeZone = n.GetObjectValue<Graph.Community.Models.TimeZoneObject>(Graph.Community.Models.TimeZoneObject.CreateFromDiscriminatorValue); } },
+                { "WorkDayEndHour", n => { WorkDayEndHour = n.GetIntValue(); } },
+                { "WorkDayStartHour", n => { WorkDayStartHour = n.GetIntValue(); } },
+                { "WorkDays", n => { WorkDays = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -216,7 +219,7 @@ namespace Graph.Community.Models {
             writer.WriteBoolValue("Time24", Time24);
             writer.WriteIntValue("TimeMarkerPosition", TimeMarkerPosition);
             writer.WriteStringValue("TimeSeparator", TimeSeparator);
-            writer.WriteObjectValue<TimeZoneObject>("TimeZone", TimeZone);
+            writer.WriteObjectValue<Graph.Community.Models.TimeZoneObject>("TimeZone", TimeZone);
             writer.WriteIntValue("WorkDayEndHour", WorkDayEndHour);
             writer.WriteIntValue("WorkDays", WorkDays);
             writer.WriteIntValue("WorkDayStartHour", WorkDayStartHour);

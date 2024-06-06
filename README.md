@@ -2,8 +2,8 @@
 
 The Graph extension library is a community effort to unblock developers building on .Net Standard who need to call endpoints that are not part of the Microsoft Graph.
 
-[![Build](https://github.com/microsoftgraph/msgraph-sdk-dotnet-contrib/actions/workflows/build.yml/badge.svg?branch=graph-v4&event=push)](https://github.com/microsoftgraph/msgraph-sdk-dotnet-contrib/actions/workflows/build.yml)
-![NuGet package](https://buildstats.info/nuget/Graph.Community)
+[![Build](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/microsoftgraph/msgraph-sdk-dotnet-contrib/actions/workflows/build.yml)
+![NuGet package](https://buildstats.info/nuget/Graph.Community.SPClient)
 
 ## Documentation
 
