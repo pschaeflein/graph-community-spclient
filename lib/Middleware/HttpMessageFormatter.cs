@@ -60,7 +60,7 @@ namespace Graph.Community
     };
 
     private bool _contentConsumed;
-    private Lazy<Task<Stream>> _streamTask;
+    private Lazy<Task<Stream>>? _streamTask;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HttpMessageContent"/> class encapsulating an
@@ -90,20 +90,20 @@ namespace Graph.Community
       InitializeStreamTask();
     }
 
-    private HttpContent Content
+    private HttpContent? Content
     {
-      get { return HttpRequestMessage != null ? HttpRequestMessage.Content : HttpResponseMessage.Content; }
+      get { return HttpRequestMessage != null ? HttpRequestMessage.Content : HttpResponseMessage?.Content ?? null; }
     }
 
     /// <summary>
     /// Gets the HTTP request message.
     /// </summary>
-    public HttpRequestMessage HttpRequestMessage { get; private set; }
+    public HttpRequestMessage? HttpRequestMessage { get; private set; }
 
     /// <summary>
     /// Gets the HTTP response message.
     /// </summary>
-    public HttpResponseMessage HttpResponseMessage { get; private set; }
+    public HttpResponseMessage? HttpResponseMessage { get; private set; }
 
     private void InitializeStreamTask()
     {
@@ -204,7 +204,7 @@ namespace Graph.Community
       byte[] header = SerializeHeader();
       await stream.WriteAsync(header, 0, header.Length);
 
-      if (Content != null)
+      if (Content != null && _streamTask != null)
       {
         Stream readStream = await _streamTask.Value;
         ValidateStreamForReading(readStream);
@@ -229,7 +229,7 @@ namespace Graph.Community
       // For #3, we return true & the size of our headers + the content length
       // For #4, we return true & the size of our headers
 
-      bool hasContent = _streamTask.Value != null;
+      bool hasContent = _streamTask != null && _streamTask.Value != null;
       length = 0;
 
       // Cases #1, #2, #3
@@ -310,9 +310,9 @@ namespace Graph.Community
 
     private byte[] SerializeHeader()
     {
-      StringBuilder message = new StringBuilder(DefaultHeaderAllocation);
-      HttpHeaders headers;
-      HttpContent content;
+      StringBuilder message = new(DefaultHeaderAllocation);
+      HttpHeaders? headers = default;
+      HttpContent? content = default;
       if (HttpRequestMessage != null)
       {
         SerializeRequestLine(message, HttpRequestMessage);
@@ -321,16 +321,16 @@ namespace Graph.Community
       }
       else
       {
-        SerializeStatusLine(message, HttpResponseMessage);
-        headers = HttpResponseMessage.Headers;
-        content = HttpResponseMessage.Content;
+        if (HttpResponseMessage != null)
+        {
+          SerializeStatusLine(message, HttpResponseMessage);
+          headers = HttpResponseMessage.Headers;
+          content = HttpResponseMessage.Content;
+        }
       }
 
-      SerializeHeaderFields(message, headers);
-      if (content != null)
-      {
-        SerializeHeaderFields(message, content.Headers);
-      }
+      if (headers != null) { SerializeHeaderFields(message, headers); };
+      if (content != null) { SerializeHeaderFields(message, content.Headers); }
 
       message.Append(CRLF);
       return Encoding.UTF8.GetBytes(message.ToString());

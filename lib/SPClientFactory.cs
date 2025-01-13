@@ -33,13 +33,23 @@ namespace Graph.Community
 
     public static SPClient Create(string spoTenantUrl, TokenCredential tokenCredential, SPClientOptions? options = null, IEnumerable<string>? scopes = null)
     {
-      var authProvider = new BaseBearerTokenAuthenticationProvider(new AzureIdentityAccessTokenProvider(tokenCredential, null, null, scopes?.ToArray() ?? Array.Empty<string>()));
+      var authProvider = new BaseBearerTokenAuthenticationProvider(
+        new AzureIdentityAccessTokenProvider(
+          credential: tokenCredential, null, null,
+          isCaeEnabled: true,
+          scopes: scopes?.ToArray() ?? Array.Empty<string>())
+      );
       return Create(spoTenantUrl, authProvider, options);
     }
 
     public static SPClient Create(string spoTenantUrl, TokenCredential tokenCredential, List<DelegatingHandler> handlers, SPClientOptions? options = null, IEnumerable<string>? scopes = null)
     {
-      var authProvider = new BaseBearerTokenAuthenticationProvider(new AzureIdentityAccessTokenProvider(tokenCredential, null, null, scopes?.ToArray() ?? Array.Empty<string>()));
+      var authProvider = new BaseBearerTokenAuthenticationProvider(
+        new AzureIdentityAccessTokenProvider(
+          credential: tokenCredential, null, null,
+          isCaeEnabled: true,
+          scopes: scopes?.ToArray() ?? Array.Empty<string>())
+      );
       return Create(spoTenantUrl, authProvider, handlers, options);
     }
 

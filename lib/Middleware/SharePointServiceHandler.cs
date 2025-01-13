@@ -30,7 +30,7 @@ namespace Graph.Community
           var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
           // first, see if the response is an ODataError...
-          var odataError = KiotaJsonSerializer.Deserialize(responseContent, ODataError.CreateFromDiscriminatorValue);
+          var odataError = await KiotaJsonSerializer.DeserializeAsync(responseContent, ODataError.CreateFromDiscriminatorValue);
 
           if (odataError!.Error == null)
           {
