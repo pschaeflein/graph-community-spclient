@@ -34,6 +34,154 @@
         }
       }
     },
+    "/{serverRelativeSiteUrl}/_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesignMetadata": {
+      "post": {
+        "tags": [
+          "SiteDesign"
+        ],
+        "parameters": [
+          {
+            "name": "serverRelativeSiteUrl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetSiteDesignMetadataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadataCollectionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadataCollectionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteDesignMetadataCollectionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{serverRelativeSiteUrl}/_api/sitepages/pages": {
+      "get": {
+        "tags": [
+          "SitePages"
+        ],
+        "parameters": [
+          {
+            "name": "serverRelativeSiteUrl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; odata.metadata=minimal": {
+                "schema": {
+                  "$ref": "#/components/schemas/SitePageCollectionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{serverRelativeSiteUrl}/_api/sitepages/pages({listItemId})": {
+      "get": {
+        "tags": [
+          "SitePages"
+        ],
+        "parameters": [
+          {
+            "name": "serverRelativeSiteUrl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "listItemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; odata.metadata=minimal": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SitePage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/{serverRelativeSiteUrl}/_api/Web": {
       "get": {
         "tags": [
@@ -104,6 +252,16 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "GetSiteDesignMetadataRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
       },
       "Group": {
         "type": "object",
@@ -383,6 +541,194 @@
           4,
           8,
           15
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SiteDesignMetadata": {
+        "type": "object",
+        "properties": {
+          "designPackageId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "designType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "isOutOfBoxTemplate": {
+            "type": "boolean"
+          },
+          "isTenantAdminOnly": {
+            "type": "boolean"
+          },
+          "listColor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "listIcon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "previewImageAltText": {
+            "type": "string",
+            "nullable": true
+          },
+          "previewImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "requiresGroupConnected": {
+            "type": "boolean"
+          },
+          "requiresTeamsConnected": {
+            "type": "boolean"
+          },
+          "requiresYammerConnected": {
+            "type": "boolean"
+          },
+          "siteScriptIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          },
+          "supportedWebTemplates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "templateFeatures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "webTemplate": {
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SiteDesignMetadataCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SiteDesignMetadata"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SitePage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "PromotedState": {
+            "$ref": "#/components/schemas/SitePagePromotedState"
+          },
+          "FirstPublished": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Modified": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "FileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "AbsoluteUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "BannerImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "BannerThumbnailUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "Url": {
+            "type": "string",
+            "nullable": true
+          },
+          "UniqueId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ContentTypeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsWebWelcomePage": {
+            "type": "boolean"
+          },
+          "PageLayoutType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "SitePageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SitePage"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SitePagePromotedState": {
+        "enum": [
+          0,
+          1,
+          2
         ],
         "type": "integer",
         "format": "int32"

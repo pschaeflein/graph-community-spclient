@@ -9,44 +9,44 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graph.Community.Item._api.HubSites
+namespace Graph.Community.Item._api.Sitepages.Pages
 {
     /// <summary>
-    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\HubSites
+    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\sitepages\pages
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class HubSitesRequestBuilder : BaseRequestBuilder
+    public partial class PagesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.HubSites.HubSitesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.Sitepages.Pages.PagesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HubSitesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/HubSites", pathParameters)
+        public PagesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/sitepages/pages", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.HubSites.HubSitesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.Sitepages.Pages.PagesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HubSitesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/HubSites", rawUrl)
+        public PagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/sitepages/pages", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Graph.Community.Models.HubSiteCollectionResponse"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SitePageCollectionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.HubSiteCollectionResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SitePageCollectionResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.HubSiteCollectionResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SitePageCollectionResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Graph.Community.Models.HubSiteCollectionResponse>(requestInfo, global::Graph.Community.Models.HubSiteCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graph.Community.Models.SitePageCollectionResponse>(requestInfo, global::Graph.Community.Models.SitePageCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -67,18 +67,18 @@ namespace Graph.Community.Item._api.HubSites
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Item._api.HubSites.HubSitesRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Item._api.Sitepages.Pages.PagesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Graph.Community.Item._api.HubSites.HubSitesRequestBuilder WithUrl(string rawUrl)
+        public global::Graph.Community.Item._api.Sitepages.Pages.PagesRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Graph.Community.Item._api.HubSites.HubSitesRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Graph.Community.Item._api.Sitepages.Pages.PagesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class HubSitesRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
+        public partial class PagesRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }
