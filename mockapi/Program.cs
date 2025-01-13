@@ -1,7 +1,6 @@
-
 using Microsoft.OpenApi.Models;
 
-namespace Graph.Community
+namespace Graph.Community.SPClient.MockApi
 {
   public class Program
   {
@@ -21,7 +20,7 @@ namespace Graph.Community
           Version = "v5.1",
           Title = "Graph.Community Mock SharePoint API"
         });
-          options.SchemaFilter<AdditionalPropertiesSchemaFilter>();
+        options.SchemaFilter<AdditionalPropertiesSchemaFilter>();
       });
 
       var app = builder.Build();

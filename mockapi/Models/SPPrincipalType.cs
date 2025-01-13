@@ -1,4 +1,4 @@
-﻿namespace Graph.Community.MockApi.Models
+namespace Graph.Community.SPClient.MockApi.Models
 {
   [Flags]
   public enum SPPrincipalType

@@ -1,12 +1,12 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
-namespace Graph.Community.MockApi.Models
+namespace Graph.Community.SPClient.MockApi.Models
 {
   public class User : Principal
   {
 #nullable enable
 
-    [JsonPropertyName("Email")]  
+    [JsonPropertyName("Email")]
     public string? Email { get; set; }
 
     /// <summary>Gets or sets a Boolean value that specifies whether the user is a site collection administrator.</summary>

@@ -1,7 +1,7 @@
-using Graph.Community.MockApi.Models;
+using Graph.Community.SPClient.MockApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Graph.Community.Controllers
+namespace Graph.Community.SPClient.MockApi.Controllers
 {
   [ApiController]
   [Consumes("application/json; odata.metadata=minimal")]

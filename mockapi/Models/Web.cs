@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
-namespace Graph.Community.MockApi.Models
+namespace Graph.Community.SPClient.MockApi.Models
 {
   [AllowAdditionalProperties()]
   public class Web
   {
     [JsonPropertyName("Id")]
-    public string? Id { get; set; }     
+    public string? Id { get; set; }
 
     [JsonPropertyName("Title")]
     public string? Title { get; set; }

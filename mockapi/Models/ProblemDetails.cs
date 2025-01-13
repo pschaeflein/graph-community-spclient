@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Graph.Community.MockApi.Models
+namespace Graph.Community.SPClient.MockApi.Models
 {
   public class ProblemDetails
   {

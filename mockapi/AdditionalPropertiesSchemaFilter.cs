@@ -1,8 +1,8 @@
-﻿using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
-namespace Graph.Community
+namespace Graph.Community.SPClient.MockApi
 {
   public class AdditionalPropertiesSchemaFilter : ISchemaFilter
   {
