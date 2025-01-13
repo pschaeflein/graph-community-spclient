@@ -11,6 +11,9 @@ namespace Graph.Community.SPClient.MockApi.Models
     [JsonPropertyName("Title")]
     public string? Title { get; set; }
 
+    [JsonPropertyName("Description")]
+    public string? Description { get; set; }
+
     [JsonPropertyName("PromotedState")]
     public SitePagePromotedState PromotedState { get; set; }
 

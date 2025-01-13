@@ -67,7 +67,7 @@
       "CallToAction": "",
       "Categories": null,
       "ContentTypeId": "0x0101009D1CB255DA76424F860D91F20E6C411800BEBE5F401E7B73429539C19AC7813217",
-      "Description": null,
+      "Description": "Example description",
       "DoesUserHaveEditPermission": true,
       "FileName": "SPFX-Adaptive-Test.aspx",
       "FirstPublished": "0001-01-01T08:00:00Z",
