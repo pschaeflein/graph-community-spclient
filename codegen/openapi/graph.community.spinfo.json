@@ -660,6 +660,10 @@
             "type": "string",
             "nullable": true
           },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
           "PromotedState": {
             "$ref": "#/components/schemas/SitePagePromotedState"
           },

@@ -46,6 +46,14 @@ namespace Graph.Community.Models
 #else
         public string ContentTypeId { get; set; }
 #endif
+        /// <summary>The Description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
         /// <summary>The FileName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,6 +127,7 @@ namespace Graph.Community.Models
                 { "BannerImageUrl", n => { BannerImageUrl = n.GetStringValue(); } },
                 { "BannerThumbnailUrl", n => { BannerThumbnailUrl = n.GetStringValue(); } },
                 { "ContentTypeId", n => { ContentTypeId = n.GetStringValue(); } },
+                { "Description", n => { Description = n.GetStringValue(); } },
                 { "FileName", n => { FileName = n.GetStringValue(); } },
                 { "FirstPublished", n => { FirstPublished = n.GetDateTimeOffsetValue(); } },
                 { "Id", n => { Id = n.GetIntValue(); } },
@@ -142,6 +151,7 @@ namespace Graph.Community.Models
             writer.WriteStringValue("BannerImageUrl", BannerImageUrl);
             writer.WriteStringValue("BannerThumbnailUrl", BannerThumbnailUrl);
             writer.WriteStringValue("ContentTypeId", ContentTypeId);
+            writer.WriteStringValue("Description", Description);
             writer.WriteStringValue("FileName", FileName);
             writer.WriteDateTimeOffsetValue("FirstPublished", FirstPublished);
             writer.WriteIntValue("Id", Id);
