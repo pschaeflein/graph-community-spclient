@@ -1,20 +1,26 @@
 using Azure.Identity;
 using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Graph.Community.SPClient.Sample
 {
-  internal class Web
+  internal class SitePages
   {
     private readonly AzureAdSettings azureAdSettings;
     private readonly SharePointSettings sharePointSettings;
 
-    public Web(
+    public SitePages(
       IOptions<AzureAdSettings> azureAdOptions,
       IOptions<SharePointSettings> sharePointOptions)
     {
       this.azureAdSettings = azureAdOptions.Value;
       this.sharePointSettings = sharePointOptions.Value;
     }
+
 
     public async Task Run()
     {
@@ -69,17 +75,16 @@ namespace Graph.Community.SPClient.Sample
       //
       //////////////////////////////////////
 
+      var scopes = new string[] { $"{sharePointSettings.SpoTenantUrl}/AllSites.FullControl" };
+      var WebUrl = $"{sharePointSettings.SpoTenantUrl}{sharePointSettings.ServerRelativeSiteUrl}";
+
       try
       {
-        var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync(config =>
-        {
-          config.QueryParameters.Expand = ["UserCustomActions"];
-        });
+        var sitePages = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Sitepages.Pages.GetAsync();
 
-        Console.WriteLine($"Title: {web?.Title}");
-        Console.WriteLine($"Home page: {web?.WelcomePage}");
-        Console.WriteLine($"UserCustomAction count: {web?.UserCustomActions?.Count ?? 0}");
-        Console.WriteLine();
+        Console.WriteLine($"Site Pages for {WebUrl}");
+        Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>" }");
+
       }
       catch (Exception ex)
       {
@@ -88,12 +93,14 @@ namespace Graph.Community.SPClient.Sample
         await logger.WriteLine(ex.ToString());
       }
 
+
       Console.WriteLine("Press enter to show log");
       Console.ReadLine();
       Console.WriteLine();
       var log = logger.GetLog();
       Console.WriteLine(log);
-    }
 
+
+    }
   }
 }

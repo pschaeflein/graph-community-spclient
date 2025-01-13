@@ -13,14 +13,14 @@ namespace Graph.Community.Tests
   public class MockApiModelTests
   {
     [Fact]
-    public void ModelWeb()
+    public async Task ModelWeb()
     {
       // ARRANGE
       var responseStream = ResourceManager.GetEmbeddedResource("GetWebResponse.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = KiotaJsonSerializer.Deserialize<Web>(responseStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Web>(responseStream);
 
       // ASSERT
       Assert.Equal("Mock Site", actual.Title);
@@ -31,14 +31,28 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void ModelUserCustomActions()
+    public async Task ModelSitePages()
+    {
+      // ARRANGE
+      var responseStream = ResourceManager.GetEmbeddedResource("GetSitePagesResponse.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
+
+      // ACT
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SitePageCollectionResponse>(responseStream);
+
+      // ASSERT
+      Assert.Equal(3, actual.Value.Count());
+    }
+
+    [Fact]
+    public async Task ModelUserCustomActions()
     {
       // ARRANGE
       var responseStream = ResourceManager.GetEmbeddedResource("UserCustomActions.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = KiotaJsonSerializer.Deserialize<UserCustomAction>(responseStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<UserCustomAction>(responseStream);
 
       // ASSERT
       Assert.Equal("ApplicationCustomizer1", actual.Title);

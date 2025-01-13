@@ -36,12 +36,12 @@ namespace Graph.Community.SPClient.Sample
         Console.WriteLine("Select a sample:");
         Console.WriteLine("");
         Console.WriteLine("1. Diagnostics");
-        Console.WriteLine("2. SPWeb");
-        Console.WriteLine("3. Hub Sites");
-        //Console.WriteLine("4. Change log");
-        //Console.WriteLine("5. Site Pages");
+        Console.WriteLine("2. Hub Sites");
+        Console.WriteLine("3. SPWeb");
+        Console.WriteLine("4. Site Pages");
+        //Console.WriteLine("5. Change log");
         //Console.WriteLine("6. SharePoint Search");
-        //Console.WriteLine("7. Site Design");
+        Console.WriteLine("7. Site Design");
         //Console.WriteLine("8. Group extensions (Graph)");
         //Console.WriteLine("9. ");
         Console.WriteLine("");
@@ -65,26 +65,26 @@ namespace Graph.Community.SPClient.Sample
 
             case ConsoleKey.D2:
             case ConsoleKey.NumPad2:
-              var rootSiteSample = serviceProvider.GetRequiredService<Web>();
-              await rootSiteSample.Run();
+              var hubSiteListSample = serviceProvider.GetRequiredService<HubSiteList>();
+              await hubSiteListSample.Run();
               break;
 
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
-              var expiringSecretsSample = serviceProvider.GetRequiredService<HubSiteList>();
-              await expiringSecretsSample.Run();
+              var webSample = serviceProvider.GetRequiredService<Web>();
+              await webSample.Run();
               break;
 
-            //case ConsoleKey.D4:
-            //case ConsoleKey.NumPad4:
-            //  var changeLogSample = serviceProvider.GetRequiredService<ChangeLog>();
-            //  await changeLogSample.Run();
-            //  break;
+            case ConsoleKey.D4:
+            case ConsoleKey.NumPad4:
+              var sitePagesSample = serviceProvider.GetRequiredService<SitePages>();
+              await sitePagesSample.Run();
+              break;
 
             //case ConsoleKey.D5:
             //case ConsoleKey.NumPad5:
-            //  var sitePagesSample = serviceProvider.GetRequiredService<SitePages>();
-            //  await sitePagesSample.Run();
+            //  var changeLogSample = serviceProvider.GetRequiredService<ChangeLog>();
+            //  await changeLogSample.Run();
             //  break;
 
             //case ConsoleKey.D6:
@@ -93,11 +93,11 @@ namespace Graph.Community.SPClient.Sample
             //  await searchSample.Run();
             //  break;
 
-            //case ConsoleKey.D7:
-            //case ConsoleKey.NumPad7:
-            //  var siteDesignSample = serviceProvider.GetRequiredService<SiteDesign>();
-            //  await siteDesignSample.Run();
-            //  break;
+            case ConsoleKey.D7:
+            case ConsoleKey.NumPad7:
+              var siteDesignSample = serviceProvider.GetRequiredService<SiteDesign>();
+              await siteDesignSample.Run();
+              break;
 
             //case ConsoleKey.D8:
             //case ConsoleKey.NumPad8:

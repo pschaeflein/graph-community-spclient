@@ -49,11 +49,11 @@ namespace Graph.Community.SPClient.Sample
 
                 // Add our sample classes
                 services.AddTransient<Diagnostics>();
-                services.AddTransient<Web>();
                 services.AddTransient<HubSiteList>();
+                services.AddTransient<Web>();
+                services.AddTransient<SitePages>();
                 //services.AddTransient<ChangeLog>();
                 //services.AddTransient<SiteGroups>();
-                //services.AddTransient<SitePages>();
                 //services.AddTransient<SharePointSearch>();
                 //services.AddTransient<SiteDesign>();
                 //services.AddTransient<GraphGroupExtensions>();

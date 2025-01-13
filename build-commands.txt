@@ -4,25 +4,5 @@ dotnet swagger tofile --output codegen\openapi\graph.community.spinfo.json .\moc
 
 kiota generate -l csharp -d codegen\openapi\graph.community.spinfo.json -c "Graph.Community.SPClient" -n Graph.Community -o ./codegen/lib/apiclient --cc --co
 
-kiota info -d "codegen\openapi\graph.community.spinfo.json" -l CSharp
-
-# The language CSharp is currently in Stable maturity level.
-# After generating code for this language, you need to install the following packages:
-# Package Name                             Version
-# Microsoft.Kiota.Abstractions             1.8.1
-# Microsoft.Kiota.Authentication.Azure     1.1.4
-# Microsoft.Kiota.Http.HttpClientLibrary   1.3.8
-# Microsoft.Kiota.Serialization.Form       1.1.5
-# Microsoft.Kiota.Serialization.Json       1.2.0
-# Microsoft.Kiota.Serialization.Multipart  1.1.3
-# Microsoft.Kiota.Serialization.Text       1.1.4
-# 
-# Hint: use the install command to install the dependencies.
-# Example:
-#    dotnet add package Microsoft.Kiota.Abstractions --version 1.8.1
-#    dotnet add package Microsoft.Kiota.Authentication.Azure --version 1.1.4
-#    dotnet add package Microsoft.Kiota.Http.HttpClientLibrary --version 1.3.8
-#    dotnet add package Microsoft.Kiota.Serialization.Form --version 1.1.5
-#    dotnet add package Microsoft.Kiota.Serialization.Json --version 1.2.0
-#    dotnet add package Microsoft.Kiota.Serialization.Multipart --version 1.1.3
-#    dotnet add package Microsoft.Kiota.Serialization.Text --version 1.1.4
+NOTE:
+  need to manually update the folder/file names for SiteDesigns
