@@ -9,6 +9,15 @@ updates:
       kiota-dependencies:
         patterns:
           - "*kiota*"
+      xunit-dependencies:
+        patterns:
+          - "*xunit*"
+      swashbuckle-dependencies:
+        patterns:
+          - "*Swashbuckle*"
+      microsoft-extensions-dependencies:
+        patterns:
+          - "*Microsoft.Extensions*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
