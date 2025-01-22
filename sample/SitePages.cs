@@ -80,10 +80,10 @@ namespace Graph.Community.SPClient.Sample
 
       try
       {
-        var sitePages = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Sitepages.Pages.GetAsync();
+        //var sitePages = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Sitepages.Pages.GetAsync();
 
-        Console.WriteLine($"Site Pages for {WebUrl}");
-        Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>" }");
+        //Console.WriteLine($"Site Pages for {WebUrl}");
+        //Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>" }");
 
       }
       catch (Exception ex)

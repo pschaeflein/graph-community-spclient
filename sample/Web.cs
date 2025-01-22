@@ -73,7 +73,7 @@ namespace Graph.Community.SPClient.Sample
       {
         var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync(config =>
         {
-          config.QueryParameters.Expand = ["UserCustomActions"];
+          //config.QueryParameters.Expand = ["UserCustomActions"];
         });
 
         Console.WriteLine($"Title: {web?.Title}");

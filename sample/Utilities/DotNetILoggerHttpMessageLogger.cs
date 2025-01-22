@@ -17,9 +17,10 @@ namespace Graph.Community.SPClient.Sample
 			this.logLevel = dotNetILoggerOptions?.Value?.LogLevel ?? LogLevel.Trace;
 		}
 
-		public async Task WriteLine(string message)
+		public Task WriteLine(string message)
 		{
 			logger.Log(logLevel, message);
+			return Task.CompletedTask;
 		}
 
 	}

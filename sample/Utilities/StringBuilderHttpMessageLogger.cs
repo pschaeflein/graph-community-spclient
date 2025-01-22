@@ -14,9 +14,10 @@ namespace Graph.Community.SPClient.Sample
       return log;
     }
 
-    public async Task WriteLine(string value)
+    public Task WriteLine(string value)
     {
       sb.AppendLine(value);
+      return Task.CompletedTask;
     }
   }
 }
