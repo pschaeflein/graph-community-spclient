@@ -107,7 +107,11 @@ namespace Graph.Community
 
     private void InitializeStreamTask()
     {
+#nullable disable
+
       _streamTask = new Lazy<Task<Stream>>(() => Content?.ReadAsStreamAsync());
+
+#nullable enable
     }
 
     /// <summary>

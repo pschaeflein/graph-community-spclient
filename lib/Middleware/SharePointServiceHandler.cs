@@ -1,5 +1,4 @@
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Http.HttpClientLibrary.Extensions;
 using System;
 using System.Linq;
 using System.Net;
@@ -20,6 +19,7 @@ namespace Graph.Community
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
       request.Headers.Add(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName, SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue);
+      request.Headers.Add(SharePointAPIRequestConstants.Headers.AcceptHeaderName, SharePointAPIRequestConstants.Headers.AcceptHeaderValue);
 
       var response = await base.SendAsync(request, cancellationToken);
 
