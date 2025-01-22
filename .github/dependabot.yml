@@ -12,9 +12,6 @@ updates:
       xunit-dependencies:
         patterns:
           - "*xunit*"
-      swashbuckle-dependencies:
-        patterns:
-          - "*Swashbuckle*"
       microsoft-extensions-dependencies:
         patterns:
           - "*Microsoft.Extensions*"
