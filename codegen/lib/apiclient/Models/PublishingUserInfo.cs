@@ -9,45 +9,59 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class TimeZoneObject : IAdditionalDataHolder, IParsable
+    public partial class PublishingUserInfo : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The AccountName property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountName { get; set; }
+#nullable restore
+#else
+        public string AccountName { get; set; }
+#endif
+        /// <summary>The Acronym property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Acronym { get; set; }
+#nullable restore
+#else
+        public string Acronym { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The Description property</summary>
+        /// <summary>The Color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Color { get; set; }
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Color { get; set; }
 #endif
-        /// <summary>The Id property</summary>
-        public int? Id { get; set; }
-        /// <summary>The Information property</summary>
+        /// <summary>The Name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.TimeZoneInformation? Information { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.TimeZoneInformation Information { get; set; }
+        public string Name { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.TimeZoneObject"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.PublishingUserInfo"/> and sets the default values.
         /// </summary>
-        public TimeZoneObject()
+        public PublishingUserInfo()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.TimeZoneObject"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.PublishingUserInfo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.TimeZoneObject CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.PublishingUserInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.TimeZoneObject();
+            return new global::Graph.Community.Models.PublishingUserInfo();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +71,10 @@ namespace Graph.Community.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "Description", n => { Description = n.GetStringValue(); } },
-                { "Id", n => { Id = n.GetIntValue(); } },
-                { "Information", n => { Information = n.GetObjectValue<global::Graph.Community.Models.TimeZoneInformation>(global::Graph.Community.Models.TimeZoneInformation.CreateFromDiscriminatorValue); } },
+                { "AccountName", n => { AccountName = n.GetStringValue(); } },
+                { "Acronym", n => { Acronym = n.GetStringValue(); } },
+                { "Color", n => { Color = n.GetStringValue(); } },
+                { "Name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -69,9 +84,10 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("Description", Description);
-            writer.WriteIntValue("Id", Id);
-            writer.WriteObjectValue<global::Graph.Community.Models.TimeZoneInformation>("Information", Information);
+            writer.WriteStringValue("AccountName", AccountName);
+            writer.WriteStringValue("Acronym", Acronym);
+            writer.WriteStringValue("Color", Color);
+            writer.WriteStringValue("Name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

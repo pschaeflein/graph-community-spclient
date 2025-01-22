@@ -1,0 +1,29 @@
+{
+  "@odata.context": "https://testaddin365.sharepoint.com/sites/solutionshub/_api/$metadata#Groups/$entity",
+  "@odata.type": "#SP.Group",
+  "@odata.id": "https://testaddin365.sharepoint.com/sites/solutionshub/_api/Web/SiteGroups/GetById(4)",
+  "@odata.editLink": "Web/SiteGroups/GetById(4)",
+  "Id": 4,
+  "Title": "Solutions Hub Visitors",
+  "Owner@odata.navigationLink": "Web/SiteGroups/GetById(4)/Owner",
+  "Owner": {
+    "@odata.type": "#SP.User",
+    "@odata.id": "https://testaddin365.sharepoint.com/sites/solutionshub/_api/Web/SiteGroups/GetById(4)/Owner",
+    "@odata.editLink": "Web/SiteGroups/GetById(4)/Owner",
+    "Id": 10,
+    "IsHiddenInUI": false,
+    "LoginName": "i:0#.f|membership|paul@mock.sharepoint.com",
+    "Title": "Paul",
+    "PrincipalType": 1,
+    "Email": "paul@mock.sharepoint.com",
+    "Expiration": "",
+    "IsEmailAuthenticationGuestUser": false,
+    "IsShareByEmailGuestUser": false,
+    "IsSiteAdmin": true,
+    "UserId": {
+      "NameId": "1003200040040c84",
+      "NameIdIssuer": "urn:federation:microsoftonline"
+    },
+    "UserPrincipalName": "paul@mock.sharepoint.com"
+  }
+}

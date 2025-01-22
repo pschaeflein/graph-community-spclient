@@ -10,17 +10,44 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ExampleResponses\GetSitePagesResponse.json" />
-    <None Remove="ExampleResponses\GetWebResponse.json" />
-    <None Remove="ExampleResponses\HubSitesResponse.json" />
-    <None Remove="ExampleResponses\UserCustomActions.json" />
+    <None Remove="ExampleResponses\GetHubSitesResponse.json" />
+    <None Remove="ExampleResponses\ListsGetResponse.json" />
+    <None Remove="ExampleResponses\SitePagesCollectionResponse.json" />
+    <None Remove="ExampleResponses\SP.Form.json" />
+    <None Remove="ExampleResponses\SP.Group.json" />
+    <None Remove="ExampleResponses\SP.GroupOwnedByGroup.json" />
+    <None Remove="ExampleResponses\SP.GroupOwnedByUser.json" />
+    <None Remove="ExampleResponses\SP.List.json" />
+    <None Remove="ExampleResponses\SP.Publishing.SitePage.json" />
+    <None Remove="ExampleResponses\SP.RegionalSettings.json" />
+    <None Remove="ExampleResponses\SP.TimeZone.json" />
+    <None Remove="ExampleResponses\SP.UserCustomAction.json" />
+    <None Remove="ExampleResponses\SP.Web.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="ExampleResponses\GetSitePagesResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\GetWebResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\HubSitesResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\UserCustomActions.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.Form.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.GroupOwnedByGroup.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.GroupOwnedByUser.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\SP.Group.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.List.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.Publishing.SitePage.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.RegionalSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\ListsGetResponse.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\SitePagesCollectionResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.TimeZone.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.Web.json" />
+    <EmbeddedResource Include="ExampleResponses\GetHubSitesResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.UserCustomAction.json" />
   </ItemGroup>
 
   <ItemGroup>

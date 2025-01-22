@@ -9,10 +9,12 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class HubSite : IParsable
+    public partial class HubSite : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The Description property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>A description of the hub site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -20,9 +22,9 @@ namespace Graph.Community.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The ID property</summary>
+        /// <summary>Identifies the hub site.</summary>
         public Guid? ID { get; set; }
-        /// <summary>The LogoUrl property</summary>
+        /// <summary>The URL of a logo to use in the hub site navigation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LogoUrl { get; set; }
@@ -30,9 +32,9 @@ namespace Graph.Community.Models
 #else
         public string LogoUrl { get; set; }
 #endif
-        /// <summary>The SiteId property</summary>
+        /// <summary>ID of the hub parent site.</summary>
         public Guid? SiteId { get; set; }
-        /// <summary>The SiteUrl property</summary>
+        /// <summary>URL of the hub parent site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SiteUrl { get; set; }
@@ -40,7 +42,7 @@ namespace Graph.Community.Models
 #else
         public string SiteUrl { get; set; }
 #endif
-        /// <summary>The Targets property</summary>
+        /// <summary>List of security groups with access to join the hub site. Null if everyone has permission.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Targets { get; set; }
@@ -48,9 +50,9 @@ namespace Graph.Community.Models
 #else
         public string Targets { get; set; }
 #endif
-        /// <summary>The TenantInstanceId property</summary>
+        /// <summary>The tenant instance ID in which the hub site is located. Use empty GUID for the default tenant instance.</summary>
         public Guid? TenantInstanceId { get; set; }
-        /// <summary>The Title property</summary>
+        /// <summary>The display name of the hub site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -58,6 +60,13 @@ namespace Graph.Community.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Graph.Community.Models.HubSite"/> and sets the default values.
+        /// </summary>
+        public HubSite()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -101,6 +110,7 @@ namespace Graph.Community.Models
             writer.WriteStringValue("Targets", Targets);
             writer.WriteGuidValue("TenantInstanceId", TenantInstanceId);
             writer.WriteStringValue("Title", Title);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

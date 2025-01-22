@@ -1,3 +1,5 @@
+#nullable disable
+
 namespace Graph.Community.Tests
 {
   internal class ResourceManager

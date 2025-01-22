@@ -9,10 +9,10 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class User : IParsable
+    public partial class User : global::Graph.Community.Models.Principal, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The Email property</summary>
+        /// <summary>The e-mail address of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -20,35 +20,13 @@ namespace Graph.Community.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The id property</summary>
-        public int? Id { get; set; }
-        /// <summary>The IsEmailAuthenticationGuestUser property</summary>
+        /// <summary>IsEmailAuthenticationGuestUser</summary>
         public bool? IsEmailAuthenticationGuestUser { get; set; }
-        /// <summary>The isHiddenInUI property</summary>
-        public bool? IsHiddenInUI { get; set; }
-        /// <summary>The IsShareByEmailGuestUser property</summary>
+        /// <summary>IsShareByEmailGuestUser</summary>
         public bool? IsShareByEmailGuestUser { get; set; }
-        /// <summary>The IsSiteAdmin property</summary>
+        /// <summary>Whether the user is a site collection administrator.</summary>
         public bool? IsSiteAdmin { get; set; }
-        /// <summary>The loginName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LoginName { get; set; }
-#nullable restore
-#else
-        public string LoginName { get; set; }
-#endif
-        /// <summary>The principalType property</summary>
-        public int? PrincipalType { get; set; }
-        /// <summary>The title property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Title { get; set; }
-#nullable restore
-#else
-        public string Title { get; set; }
-#endif
-        /// <summary>The UserId property</summary>
+        /// <summary>The user&apos;s name identifier and the issuer of the user&apos;s name identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Graph.Community.Models.UserId? UserId { get; set; }
@@ -56,7 +34,7 @@ namespace Graph.Community.Models
 #else
         public global::Graph.Community.Models.UserId UserId { get; set; }
 #endif
-        /// <summary>The UserPrincipalName property</summary>
+        /// <summary>UserPrincipalName</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserPrincipalName { get; set; }
@@ -69,7 +47,7 @@ namespace Graph.Community.Models
         /// </summary>
         /// <returns>A <see cref="global::Graph.Community.Models.User"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.User CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Graph.Community.Models.User CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new global::Graph.Community.Models.User();
@@ -78,19 +56,14 @@ namespace Graph.Community.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "Email", n => { Email = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetIntValue(); } },
                 { "IsEmailAuthenticationGuestUser", n => { IsEmailAuthenticationGuestUser = n.GetBoolValue(); } },
-                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
                 { "IsShareByEmailGuestUser", n => { IsShareByEmailGuestUser = n.GetBoolValue(); } },
                 { "IsSiteAdmin", n => { IsSiteAdmin = n.GetBoolValue(); } },
-                { "loginName", n => { LoginName = n.GetStringValue(); } },
-                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
                 { "UserId", n => { UserId = n.GetObjectValue<global::Graph.Community.Models.UserId>(global::Graph.Community.Models.UserId.CreateFromDiscriminatorValue); } },
                 { "UserPrincipalName", n => { UserPrincipalName = n.GetStringValue(); } },
             };
@@ -99,18 +72,14 @@ namespace Graph.Community.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            base.Serialize(writer);
             writer.WriteStringValue("Email", Email);
-            writer.WriteIntValue("id", Id);
             writer.WriteBoolValue("IsEmailAuthenticationGuestUser", IsEmailAuthenticationGuestUser);
-            writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
             writer.WriteBoolValue("IsShareByEmailGuestUser", IsShareByEmailGuestUser);
             writer.WriteBoolValue("IsSiteAdmin", IsSiteAdmin);
-            writer.WriteStringValue("loginName", LoginName);
-            writer.WriteIntValue("principalType", PrincipalType);
-            writer.WriteStringValue("title", Title);
             writer.WriteObjectValue<global::Graph.Community.Models.UserId>("UserId", UserId);
             writer.WriteStringValue("UserPrincipalName", UserPrincipalName);
         }

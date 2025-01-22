@@ -9,10 +9,12 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UserId : IParsable
+    public partial class UserId : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The NameId property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The user&apos;s name identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameId { get; set; }
@@ -20,7 +22,7 @@ namespace Graph.Community.Models
 #else
         public string NameId { get; set; }
 #endif
-        /// <summary>The NameIdIssuer property</summary>
+        /// <summary>The issuer of the user&apos;s name identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameIdIssuer { get; set; }
@@ -28,6 +30,13 @@ namespace Graph.Community.Models
 #else
         public string NameIdIssuer { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Graph.Community.Models.UserId"/> and sets the default values.
+        /// </summary>
+        public UserId()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,6 +68,7 @@ namespace Graph.Community.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("NameId", NameId);
             writer.WriteStringValue("NameIdIssuer", NameIdIssuer);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

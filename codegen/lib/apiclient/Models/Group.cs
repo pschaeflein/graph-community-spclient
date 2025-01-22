@@ -9,16 +9,16 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Group : IParsable
+    public partial class Group : global::Graph.Community.Models.Principal, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The AllowMembersEditMembership property</summary>
+        /// <summary>Whether group members can modify membership in the group.</summary>
         public bool? AllowMembersEditMembership { get; set; }
-        /// <summary>The AllowRequestToJoinLeave property</summary>
+        /// <summary>Whether to allow users to request membership in the group and to allow users to request to leave the group.</summary>
         public bool? AllowRequestToJoinLeave { get; set; }
-        /// <summary>The AutoAcceptRequestToJoinLeave property</summary>
+        /// <summary>Whether users are automatically added or removed when they make a request.</summary>
         public bool? AutoAcceptRequestToJoinLeave { get; set; }
-        /// <summary>The Description property</summary>
+        /// <summary>Description for the group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -26,21 +26,9 @@ namespace Graph.Community.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The id property</summary>
-        public int? Id { get; set; }
-        /// <summary>The isHiddenInUI property</summary>
-        public bool? IsHiddenInUI { get; set; }
-        /// <summary>The loginName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LoginName { get; set; }
-#nullable restore
-#else
-        public string LoginName { get; set; }
-#endif
-        /// <summary>The OnlyAllowMembersViewMembership property</summary>
+        /// <summary>Whether only group members are allowed to view the list of members in the group.</summary>
         public bool? OnlyAllowMembersViewMembership { get; set; }
-        /// <summary>The Owner property</summary>
+        /// <summary>The owner for the group, which can be a user or another group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Graph.Community.Models.Principal? Owner { get; set; }
@@ -48,15 +36,7 @@ namespace Graph.Community.Models
 #else
         public global::Graph.Community.Models.Principal Owner { get; set; }
 #endif
-        /// <summary>The OwnerNavigationLink property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? OwnerNavigationLink { get; set; }
-#nullable restore
-#else
-        public string OwnerNavigationLink { get; set; }
-#endif
-        /// <summary>The OwnerTitle property</summary>
+        /// <summary>The name for the owner of this group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OwnerTitle { get; set; }
@@ -64,9 +44,7 @@ namespace Graph.Community.Models
 #else
         public string OwnerTitle { get; set; }
 #endif
-        /// <summary>The principalType property</summary>
-        public int? PrincipalType { get; set; }
-        /// <summary>The RequestToJoinLeaveEmailSetting property</summary>
+        /// <summary>The e-mail address to which membership requests are sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RequestToJoinLeaveEmailSetting { get; set; }
@@ -74,36 +52,20 @@ namespace Graph.Community.Models
 #else
         public string RequestToJoinLeaveEmailSetting { get; set; }
 #endif
-        /// <summary>The title property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Title { get; set; }
-#nullable restore
-#else
-        public string Title { get; set; }
-#endif
         /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.User>? Users { get; private set; }
+        public List<global::Graph.Community.Models.User>? Users { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.User> Users { get; private set; }
-#endif
-        /// <summary>The UsersNavigationLink property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? UsersNavigationLink { get; set; }
-#nullable restore
-#else
-        public string UsersNavigationLink { get; set; }
+        public List<global::Graph.Community.Models.User> Users { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Graph.Community.Models.Group"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.Group CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Graph.Community.Models.Group CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new global::Graph.Community.Models.Group();
@@ -112,50 +74,38 @@ namespace Graph.Community.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "AllowMembersEditMembership", n => { AllowMembersEditMembership = n.GetBoolValue(); } },
                 { "AllowRequestToJoinLeave", n => { AllowRequestToJoinLeave = n.GetBoolValue(); } },
                 { "AutoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
                 { "Description", n => { Description = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetIntValue(); } },
-                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                { "loginName", n => { LoginName = n.GetStringValue(); } },
                 { "OnlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
                 { "Owner", n => { Owner = n.GetObjectValue<global::Graph.Community.Models.Principal>(global::Graph.Community.Models.Principal.CreateFromDiscriminatorValue); } },
-                { "OwnerNavigationLink", n => { OwnerNavigationLink = n.GetStringValue(); } },
                 { "OwnerTitle", n => { OwnerTitle = n.GetStringValue(); } },
-                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
                 { "RequestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
                 { "Users", n => { Users = n.GetCollectionOfObjectValues<global::Graph.Community.Models.User>(global::Graph.Community.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "UsersNavigationLink", n => { UsersNavigationLink = n.GetStringValue(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            base.Serialize(writer);
             writer.WriteBoolValue("AllowMembersEditMembership", AllowMembersEditMembership);
             writer.WriteBoolValue("AllowRequestToJoinLeave", AllowRequestToJoinLeave);
             writer.WriteBoolValue("AutoAcceptRequestToJoinLeave", AutoAcceptRequestToJoinLeave);
             writer.WriteStringValue("Description", Description);
-            writer.WriteIntValue("id", Id);
-            writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
-            writer.WriteStringValue("loginName", LoginName);
             writer.WriteBoolValue("OnlyAllowMembersViewMembership", OnlyAllowMembersViewMembership);
             writer.WriteObjectValue<global::Graph.Community.Models.Principal>("Owner", Owner);
-            writer.WriteStringValue("OwnerNavigationLink", OwnerNavigationLink);
             writer.WriteStringValue("OwnerTitle", OwnerTitle);
-            writer.WriteIntValue("principalType", PrincipalType);
             writer.WriteStringValue("RequestToJoinLeaveEmailSetting", RequestToJoinLeaveEmailSetting);
-            writer.WriteStringValue("title", Title);
-            writer.WriteStringValue("UsersNavigationLink", UsersNavigationLink);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.User>("Users", Users);
         }
     }
 }

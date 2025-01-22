@@ -20,7 +20,7 @@ namespace Graph.Community
     public partial class SPClient : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Graph.Community.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The server-relative URL of the site.</param>
         /// <returns>A <see cref="global::Graph.Community.Item.WithServerRelativeSiteUrlItemRequestBuilder"/></returns>
         public global::Graph.Community.Item.WithServerRelativeSiteUrlItemRequestBuilder this[string position]
         {

@@ -9,14 +9,16 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Principal : IParsable
+    public partial class Principal : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The id property</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The member identifier for the user or group.</summary>
         public int? Id { get; set; }
-        /// <summary>The isHiddenInUI property</summary>
+        /// <summary>Whether this member should be hidden in the UI.</summary>
         public bool? IsHiddenInUI { get; set; }
-        /// <summary>The loginName property</summary>
+        /// <summary>The login name of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LoginName { get; set; }
@@ -24,9 +26,17 @@ namespace Graph.Community.Models
 #else
         public string LoginName { get; set; }
 #endif
-        /// <summary>The principalType property</summary>
+        /// <summary>Discriminator property for Principal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OdataType { get; set; }
+#nullable restore
+#else
+        public string OdataType { get; set; }
+#endif
+        /// <summary>A bitwise value containing the type of the principal (SP.PrincipalType):None = 0User = 1DistributionList = 2SecurityGroup = 4SharePointGroup = 8All = 15</summary>
         public int? PrincipalType { get; set; }
-        /// <summary>The title property</summary>
+        /// <summary>The name of the principal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -35,6 +45,13 @@ namespace Graph.Community.Models
         public string Title { get; set; }
 #endif
         /// <summary>
+        /// Instantiates a new <see cref="global::Graph.Community.Models.Principal"/> and sets the default values.
+        /// </summary>
+        public Principal()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Graph.Community.Models.Principal"/></returns>
@@ -42,7 +59,13 @@ namespace Graph.Community.Models
         public static global::Graph.Community.Models.Principal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.Principal();
+            var mappingValue = parseNode.GetChildNode("@odata.type")?.GetStringValue();
+            return mappingValue switch
+            {
+                "#SP.Group" => new global::Graph.Community.Models.Group(),
+                "#SP.User" => new global::Graph.Community.Models.User(),
+                _ => new global::Graph.Community.Models.Principal(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,11 +75,12 @@ namespace Graph.Community.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetIntValue(); } },
-                { "isHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
-                { "loginName", n => { LoginName = n.GetStringValue(); } },
-                { "principalType", n => { PrincipalType = n.GetIntValue(); } },
-                { "title", n => { Title = n.GetStringValue(); } },
+                { "Id", n => { Id = n.GetIntValue(); } },
+                { "IsHiddenInUI", n => { IsHiddenInUI = n.GetBoolValue(); } },
+                { "LoginName", n => { LoginName = n.GetStringValue(); } },
+                { "@odata.type", n => { OdataType = n.GetStringValue(); } },
+                { "PrincipalType", n => { PrincipalType = n.GetIntValue(); } },
+                { "Title", n => { Title = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,11 +90,13 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("id", Id);
-            writer.WriteBoolValue("isHiddenInUI", IsHiddenInUI);
-            writer.WriteStringValue("loginName", LoginName);
-            writer.WriteIntValue("principalType", PrincipalType);
-            writer.WriteStringValue("title", Title);
+            writer.WriteIntValue("Id", Id);
+            writer.WriteBoolValue("IsHiddenInUI", IsHiddenInUI);
+            writer.WriteStringValue("LoginName", LoginName);
+            writer.WriteStringValue("@odata.type", OdataType);
+            writer.WriteIntValue("PrincipalType", PrincipalType);
+            writer.WriteStringValue("Title", Title);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

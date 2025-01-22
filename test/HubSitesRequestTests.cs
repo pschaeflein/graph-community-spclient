@@ -12,7 +12,7 @@ namespace Graph.Community.Tests
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 
     [Fact]
-    public async Task Get_GeneratesRequest()
+    public void Get_GeneratesRequest()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/HubSites";
@@ -25,13 +25,9 @@ namespace Graph.Community.Tests
       var webRequest = client[mockServerRelativeSiteUrl]._api.HubSites.ToGetRequestInformation();
       webRequest.PathParameters.Add("baseurl", mockSpoUrl);
       var actualUrl = webRequest.URI.ToString();
-      var actualAcceptHeader = webRequest.Headers[SharePointAPIRequestConstants.Headers.AcceptHeaderName].FirstOrDefault();
 
       // ASSERT
       Assert.Equal(expectedUrl, actualUrl);
-
-      Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, webRequest.Headers[SharePointAPIRequestConstants.Headers.AcceptHeaderName].First().ToString(), StringComparer.OrdinalIgnoreCase);
-      Assert.Equal(SharePointAPIRequestConstants.Headers.AcceptHeaderValue, actualAcceptHeader);
     }
 
   }

@@ -1,14 +1,14 @@
 {
-  "descriptionHash": "28554DCFE868D2EC91D56898B8B63A6CCF7AA816F7C36876B29F8E6D83A843317AF04581B6A5E9684BB7EEC4C0164FFD2A775F565FEE598ACAB1843A385095F5",
-  "descriptionLocation": "../../openapi/graph.community.spinfo.json",
+  "descriptionHash": "C8D7491819108063C0B4BFBF0E7BAEFFF84E6E1F40676C734DE6C928640E706F63DED6A656E39F23365AF62DD728827240BE93C0C794B777131284CF129FA87B",
+  "descriptionLocation": "../../../typespec/dist/@typespec/openapi3/openapi.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.21.0",
+  "kiotaVersion": "1.22.3",
   "clientClassName": "SPClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Graph.Community",
   "language": "CSharp",
   "usesBackingStore": false,
-  "excludeBackwardCompatible": false,
+  "excludeBackwardCompatible": true,
   "includeAdditionalData": true,
   "disableSSLValidation": false,
   "serializers": [

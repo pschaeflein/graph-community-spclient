@@ -1,0 +1,28 @@
+{
+  "@odata.type": "#SP.UserCustomAction",
+  "@odata.id": "https://testaddin365.sharepoint.com/sites/endeavour-analytics-spo-charts/_api/Web/UserCustomActions(guid'a425d3a7-7523-4722-a12e-e8e2a12f5aa8')",
+  "@odata.editLink": "Web/UserCustomActions(guid'a425d3a7-7523-4722-a12e-e8e2a12f5aa8')",
+  "ClientSideComponentId": "e792b1a3-dff4-49ea-921d-139196e7faad",
+  "ClientSideComponentProperties": "{\"configFlags\":{}}",
+  "CommandUIExtension": null,
+  "Description": null,
+  "Group": null,
+  "HostProperties": "{}",
+  "Id": "a425d3a7-7523-4722-a12e-e8e2a12f5aa8",
+  "ImageUrl": null,
+  "Location": "ClientSideExtension.ApplicationCustomizer",
+  "Name": "{a425d3a7-7523-4722-a12e-e8e2a12f5aa8}",
+  "RegistrationId": null,
+  "RegistrationType": 0,
+  "Rights": {
+    "High": 0,
+    "Low": 0
+  },
+  "Scope": 3,
+  "ScriptBlock": null,
+  "ScriptSrc": null,
+  "Sequence": 65536,
+  "Title": "MockAction",
+  "Url": null,
+  "VersionOfUserCustomAction": "9.9.12.1"
+}

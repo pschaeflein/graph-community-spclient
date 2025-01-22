@@ -9,14 +9,16 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RegionalSettings : IParsable
+    public partial class RegionalSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The AdjustHijriDays property</summary>
         public int? AdjustHijriDays { get; set; }
         /// <summary>The AlternateCalendarType property</summary>
         public int? AlternateCalendarType { get; set; }
-        /// <summary>The AM property</summary>
+        /// <summary>The string that is used to represent A.M. on the server.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AM { get; set; }
@@ -56,7 +58,7 @@ namespace Graph.Community.Models
 #else
         public string DigitGrouping { get; set; }
 #endif
-        /// <summary>The FirstDayOfWeek property</summary>
+        /// <summary>The first day of the week. 0 = Sunday</summary>
         public int? FirstDayOfWeek { get; set; }
         /// <summary>The FirstWeekOfYear property</summary>
         public int? FirstWeekOfYear { get; set; }
@@ -86,7 +88,7 @@ namespace Graph.Community.Models
 #endif
         /// <summary>The NegNumberMode property</summary>
         public int? NegNumberMode { get; set; }
-        /// <summary>The PM property</summary>
+        /// <summary>The string that is used to represent P.M. on the server.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PM { get; set; }
@@ -139,6 +141,13 @@ namespace Graph.Community.Models
         /// <summary>The WorkDayStartHour property</summary>
         public int? WorkDayStartHour { get; set; }
         /// <summary>
+        /// Instantiates a new <see cref="global::Graph.Community.Models.RegionalSettings"/> and sets the default values.
+        /// </summary>
+        public RegionalSettings()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Graph.Community.Models.RegionalSettings"/></returns>
@@ -159,7 +168,7 @@ namespace Graph.Community.Models
                 { "AM", n => { AM = n.GetStringValue(); } },
                 { "AdjustHijriDays", n => { AdjustHijriDays = n.GetIntValue(); } },
                 { "AlternateCalendarType", n => { AlternateCalendarType = n.GetIntValue(); } },
-                { "CalendarType ", n => { CalendarType = n.GetIntValue(); } },
+                { "CalendarType", n => { CalendarType = n.GetIntValue(); } },
                 { "Collation", n => { Collation = n.GetIntValue(); } },
                 { "CollationLCID", n => { CollationLCID = n.GetIntValue(); } },
                 { "DateFormat", n => { DateFormat = n.GetIntValue(); } },
@@ -198,7 +207,7 @@ namespace Graph.Community.Models
             writer.WriteIntValue("AdjustHijriDays", AdjustHijriDays);
             writer.WriteIntValue("AlternateCalendarType", AlternateCalendarType);
             writer.WriteStringValue("AM", AM);
-            writer.WriteIntValue("CalendarType ", CalendarType);
+            writer.WriteIntValue("CalendarType", CalendarType);
             writer.WriteIntValue("Collation", Collation);
             writer.WriteIntValue("CollationLCID", CollationLCID);
             writer.WriteIntValue("DateFormat", DateFormat);
@@ -225,6 +234,7 @@ namespace Graph.Community.Models
             writer.WriteIntValue("WorkDayEndHour", WorkDayEndHour);
             writer.WriteIntValue("WorkDays", WorkDays);
             writer.WriteIntValue("WorkDayStartHour", WorkDayStartHour);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

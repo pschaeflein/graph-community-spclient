@@ -24,7 +24,7 @@ namespace Graph.Community.Models
 #else
         public string ClientSideComponentProperties { get; set; }
 #endif
-        /// <summary>The CommandUIExtension property</summary>
+        /// <summary>A value that specifies an implementation specific XML fragment that determines user interface properties of the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CommandUIExtension { get; set; }
@@ -32,7 +32,7 @@ namespace Graph.Community.Models
 #else
         public string CommandUIExtension { get; set; }
 #endif
-        /// <summary>The Description property</summary>
+        /// <summary>The description of the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -40,7 +40,7 @@ namespace Graph.Community.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The Group property</summary>
+        /// <summary>A value that specifies an implementation-specific value that determines the position of the custom action in the page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Group { get; set; }
@@ -56,9 +56,9 @@ namespace Graph.Community.Models
 #else
         public string HostProperties { get; set; }
 #endif
-        /// <summary>The Id property</summary>
+        /// <summary>The identifier of the custom action.</summary>
         public Guid? Id { get; set; }
-        /// <summary>The ImageUrl property</summary>
+        /// <summary>The URL of the image associated with the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ImageUrl { get; set; }
@@ -66,7 +66,7 @@ namespace Graph.Community.Models
 #else
         public string ImageUrl { get; set; }
 #endif
-        /// <summary>The Location property</summary>
+        /// <summary>The location of the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Location { get; set; }
@@ -74,7 +74,7 @@ namespace Graph.Community.Models
 #else
         public string Location { get; set; }
 #endif
-        /// <summary>The Name property</summary>
+        /// <summary>The name of the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -82,7 +82,7 @@ namespace Graph.Community.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The RegistrationId property</summary>
+        /// <summary>The value that specifies the identifier of the object associated with the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RegistrationId { get; set; }
@@ -90,11 +90,11 @@ namespace Graph.Community.Models
 #else
         public string RegistrationId { get; set; }
 #endif
-        /// <summary>The RegistrationType property</summary>
+        /// <summary>The value that specifies the type of object associated with the custom action.None:0,List:1,ContentType:2,ProgId:3,FileType:4,</summary>
         public int? RegistrationType { get; set; }
-        /// <summary>The Scope property</summary>
+        /// <summary>A value that specifies the scope of the custom action.- Unknown = 0,- Site = 2,- Web = 3,- List = 4,</summary>
         public int? Scope { get; set; }
-        /// <summary>The ScriptBlock property</summary>
+        /// <summary>The value that specifies the ECMAScript to be executed when the custom action is performed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScriptBlock { get; set; }
@@ -102,7 +102,7 @@ namespace Graph.Community.Models
 #else
         public string ScriptBlock { get; set; }
 #endif
-        /// <summary>The ScriptSrc property</summary>
+        /// <summary>A value that specifies the URI of a file which contains the ECMAScript to execute on the page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScriptSrc { get; set; }
@@ -110,9 +110,9 @@ namespace Graph.Community.Models
 #else
         public string ScriptSrc { get; set; }
 #endif
-        /// <summary>The Sequence property</summary>
+        /// <summary>The value that specifies an implementation-specific value that determines the order of the custom action that appears on the page.</summary>
         public int? Sequence { get; set; }
-        /// <summary>The Title property</summary>
+        /// <summary>The display title of the custom action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -120,7 +120,7 @@ namespace Graph.Community.Models
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The Url property</summary>
+        /// <summary>The URL, URI, or ECMAScript (JScript, JavaScript) function associated with the action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -128,7 +128,7 @@ namespace Graph.Community.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>The VersionOfUserCustomAction property</summary>
+        /// <summary>A value that specifies an implementation specific version identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VersionOfUserCustomAction { get; set; }

@@ -18,10 +18,10 @@
       "RequiresJoinApproval": false,
       "SiteDesignId": "00000000-0000-0000-0000-000000000000",
       "SiteId": "ea29323d-5286-4512-ba8d-fe747e441df8",
-      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite",
+      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite0",
       "Targets": "<acl><ace identityName=\"i:0#.f|membership|user@mock.sharepoint.com\" displayName=\" \" sid=\"\" binaryIdType=\"1\" binaryId=\"aTowaC5mfG1lbWJlcnNoaXB8MTAwMzIwMDIwNTBkMmQwM0BsaXZlLmNvbQ==\" allowRights=\"1\" denyRights=\"0\" /></acl>",
       "TenantInstanceId": "dde1ac92-d00a-4e20-b30d-000000000000",
-      "Title": "MockSite"
+      "Title": "MockSite0"
     },
     {
       "@odata.type": "#SP.HubSite",
@@ -40,10 +40,10 @@
       "RequiresJoinApproval": false,
       "SiteDesignId": "00000000-0000-0000-0000-000000000000",
       "SiteId": "f769107f-b378-40ae-af3c-15a0b03e0581",
-      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite",
+      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite1",
       "Targets": null,
       "TenantInstanceId": "dde1ac92-d00a-4e20-b30d-000000000000",
-      "Title": "MockSite"
+      "Title": "MockSite1"
     },
     {
       "@odata.type": "#SP.HubSite",
@@ -62,10 +62,10 @@
       "RequiresJoinApproval": false,
       "SiteDesignId": "00000000-0000-0000-0000-000000000000",
       "SiteId": "6c621c00-1e1b-4d0a-a2af-aa2c2b3cbce6",
-      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite",
+      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite2",
       "Targets": null,
       "TenantInstanceId": "dde1ac92-d00a-4e20-b30d-000000000000",
-      "Title": "MockSite"
+      "Title": "MockSite2"
     },
     {
       "@odata.type": "#SP.HubSite",
@@ -84,10 +84,10 @@
       "RequiresJoinApproval": false,
       "SiteDesignId": "00000000-0000-0000-0000-000000000000",
       "SiteId": "df8a2243-a76f-46d6-b77e-8d1ebf460636",
-      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite",
+      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite3",
       "Targets": null,
       "TenantInstanceId": "dde1ac92-d00a-4e20-b30d-000000000000",
-      "Title": "MockSite"
+      "Title": "MockSite3"
     },
     {
       "@odata.type": "#SP.HubSite",
@@ -106,10 +106,10 @@
       "RequiresJoinApproval": false,
       "SiteDesignId": "00000000-0000-0000-0000-000000000000",
       "SiteId": "8ae72508-7a0c-4e2d-83c3-7e34867f55bb",
-      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite",
+      "SiteUrl": "https://mock.sharepoint.com/sites/mockSite4",
       "Targets": "<acl><ace identityName=\"i:0#.f|membership|user@mock.sharepoint.com\" displayName=\" \" sid=\"\" binaryIdType=\"1\" binaryId=\"aTowaC5mfG1lbWJlcnNoaXB8MTAwMzIwMDIwNTBkMmQwM0BsaXZlLmNvbQ==\" allowRights=\"1\" denyRights=\"0\" /></acl>",
       "TenantInstanceId": "dde1ac92-d00a-4e20-b30d-000000000000",
-      "Title": "MockSite"
+      "Title": "MockSite4"
     }
   ]
 }

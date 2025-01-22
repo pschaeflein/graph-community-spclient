@@ -1,0 +1,11 @@
+{
+  "@odata.type": "#SP.Form",
+  "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Web/Lists(guid'c24d70f2-7184-4226-879d-7e3172b1f8a4')/Forms(guid'dfe567d7-1a60-47d9-96f5-a0c69486a1c9')",
+  "@odata.editLink": "Web/Lists(guid'c24d70f2-7184-4226-879d-7e3172b1f8a4')/Forms(guid'dfe567d7-1a60-47d9-96f5-a0c69486a1c9')",
+  "Id": "dfe567d7-1a60-47d9-96f5-a0c69486a1c9",
+  "ResourcePath": {
+    "DecodedUrl": "Lists/Events/NewForm.aspx"
+  },
+  "ServerRelativeUrl": "/sites/mockSite/Lists/Events/NewForm.aspx",
+  "FormType": 8
+}

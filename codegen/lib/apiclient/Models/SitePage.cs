@@ -46,6 +46,14 @@ namespace Graph.Community.Models
 #else
         public string ContentTypeId { get; set; }
 #endif
+        /// <summary>Created by user information.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Graph.Community.Models.PublishingUserInfo? CreatedBy { get; set; }
+#nullable restore
+#else
+        public global::Graph.Community.Models.PublishingUserInfo CreatedBy { get; set; }
+#endif
         /// <summary>The Description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,14 @@ namespace Graph.Community.Models
         public int? Id { get; set; }
         /// <summary>The IsWebWelcomePage property</summary>
         public bool? IsWebWelcomePage { get; set; }
+        /// <summary>Last modified by user information.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Graph.Community.Models.PublishingUserInfo? LastModifiedBy { get; set; }
+#nullable restore
+#else
+        public global::Graph.Community.Models.PublishingUserInfo LastModifiedBy { get; set; }
+#endif
         /// <summary>The Modified property</summary>
         public DateTimeOffset? Modified { get; set; }
         /// <summary>The PageLayoutType property</summary>
@@ -78,7 +94,7 @@ namespace Graph.Community.Models
 #else
         public string PageLayoutType { get; set; }
 #endif
-        /// <summary>The PromotedState property</summary>
+        /// <summary>Promoted state:NotPromoted = 0,PromoteOnPublish = 1,Promoted = 2</summary>
         public int? PromotedState { get; set; }
         /// <summary>The Title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,7 +106,7 @@ namespace Graph.Community.Models
 #endif
         /// <summary>The UniqueId property</summary>
         public Guid? UniqueId { get; set; }
-        /// <summary>The Url property</summary>
+        /// <summary>Site-relative Url</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -127,11 +143,13 @@ namespace Graph.Community.Models
                 { "BannerImageUrl", n => { BannerImageUrl = n.GetStringValue(); } },
                 { "BannerThumbnailUrl", n => { BannerThumbnailUrl = n.GetStringValue(); } },
                 { "ContentTypeId", n => { ContentTypeId = n.GetStringValue(); } },
+                { "CreatedBy", n => { CreatedBy = n.GetObjectValue<global::Graph.Community.Models.PublishingUserInfo>(global::Graph.Community.Models.PublishingUserInfo.CreateFromDiscriminatorValue); } },
                 { "Description", n => { Description = n.GetStringValue(); } },
                 { "FileName", n => { FileName = n.GetStringValue(); } },
                 { "FirstPublished", n => { FirstPublished = n.GetDateTimeOffsetValue(); } },
                 { "Id", n => { Id = n.GetIntValue(); } },
                 { "IsWebWelcomePage", n => { IsWebWelcomePage = n.GetBoolValue(); } },
+                { "LastModifiedBy", n => { LastModifiedBy = n.GetObjectValue<global::Graph.Community.Models.PublishingUserInfo>(global::Graph.Community.Models.PublishingUserInfo.CreateFromDiscriminatorValue); } },
                 { "Modified", n => { Modified = n.GetDateTimeOffsetValue(); } },
                 { "PageLayoutType", n => { PageLayoutType = n.GetStringValue(); } },
                 { "PromotedState", n => { PromotedState = n.GetIntValue(); } },
@@ -151,11 +169,13 @@ namespace Graph.Community.Models
             writer.WriteStringValue("BannerImageUrl", BannerImageUrl);
             writer.WriteStringValue("BannerThumbnailUrl", BannerThumbnailUrl);
             writer.WriteStringValue("ContentTypeId", ContentTypeId);
+            writer.WriteObjectValue<global::Graph.Community.Models.PublishingUserInfo>("CreatedBy", CreatedBy);
             writer.WriteStringValue("Description", Description);
             writer.WriteStringValue("FileName", FileName);
             writer.WriteDateTimeOffsetValue("FirstPublished", FirstPublished);
             writer.WriteIntValue("Id", Id);
             writer.WriteBoolValue("IsWebWelcomePage", IsWebWelcomePage);
+            writer.WriteObjectValue<global::Graph.Community.Models.PublishingUserInfo>("LastModifiedBy", LastModifiedBy);
             writer.WriteDateTimeOffsetValue("Modified", Modified);
             writer.WriteStringValue("PageLayoutType", PageLayoutType);
             writer.WriteIntValue("PromotedState", PromotedState);
