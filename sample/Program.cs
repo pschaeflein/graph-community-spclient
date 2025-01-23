@@ -52,7 +52,7 @@ namespace Graph.Community.SPClient.Sample
                 services.AddTransient<HubSiteList>();
                 services.AddTransient<Web>();
                 services.AddTransient<SitePages>();
-                //services.AddTransient<ChangeLog>();
+                services.AddTransient<WebGetFile>();
                 //services.AddTransient<SiteGroups>();
                 //services.AddTransient<SharePointSearch>();
                 //services.AddTransient<SiteDesign>();

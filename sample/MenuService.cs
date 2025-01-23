@@ -39,7 +39,7 @@ namespace Graph.Community.SPClient.Sample
         Console.WriteLine("2. Hub Sites");
         Console.WriteLine("3. SPWeb");
         Console.WriteLine("4. Site Pages");
-        //Console.WriteLine("5. Change log");
+        Console.WriteLine("5. Web/GetFileBy...");
         //Console.WriteLine("6. SharePoint Search");
         Console.WriteLine("7. Site Design");
         //Console.WriteLine("8. Group extensions (Graph)");
@@ -81,11 +81,11 @@ namespace Graph.Community.SPClient.Sample
               await sitePagesSample.Run();
               break;
 
-            //case ConsoleKey.D5:
-            //case ConsoleKey.NumPad5:
-            //  var changeLogSample = serviceProvider.GetRequiredService<ChangeLog>();
-            //  await changeLogSample.Run();
-            //  break;
+            case ConsoleKey.D5:
+            case ConsoleKey.NumPad5:
+              var webFileSample = serviceProvider.GetRequiredService<WebGetFile>();
+              await webFileSample.Run();
+              break;
 
             //case ConsoleKey.D6:
             //case ConsoleKey.NumPad6:
