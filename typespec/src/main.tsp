@@ -3,6 +3,7 @@ import "@typespec/rest";
 import "@typespec/openapi";
 import "@typespec/openapi3";
 
+import "./controllers/files.tsp";
 import "./controllers/hubSites.tsp";
 import "./controllers/lists.tsp";
 import "./controllers/sitePages.tsp";
@@ -24,6 +25,15 @@ using TypeSpec.OpenAPI;
     },
   }
 )
+// @tagMetadata(
+//   "Files",
+//   #{
+//     description: "Methods for working with files and folders.",
+//     externalDocs: #{
+//       url: "https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/working-with-folders-and-files-with-rest",
+//     },
+//   }
+// )
 @tagMetadata(
   "Lists",
   #{
@@ -43,7 +53,7 @@ using TypeSpec.OpenAPI;
   }
 )
 @tagMetadata(
-  "SPWeb",
+  "Web",
   #{
     description: "Methods for working with the Web resource.",
     externalDocs: #{

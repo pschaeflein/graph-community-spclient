@@ -9,54 +9,56 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graph.Community.Item._api.SitePages.Item
+namespace Graph.Community.Item._api.Web.GetFileByIdWithId
 {
     /// <summary>
-    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\SitePages\{id}
+    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\web\GetFileById(&apos;{id}&apos;)
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SitePagesItemRequestBuilder : BaseRequestBuilder
+    public partial class GetFileByIdWithIdRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder"/> and sets the default values.
         /// </summary>
+        /// <param name="id">The Id of the file.</param>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SitePagesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/SitePages/Pages({id}){?%24expand,%24select}", pathParameters)
+        public GetFileByIdWithIdRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter, Guid? id = default) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/web/GetFileById('{id}'){?%24expand,%24select}", pathParameters)
         {
+            if (id != null) PathParameters.Add("id", id);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SitePagesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/SitePages/Pages({id}){?%24expand,%24select}", rawUrl)
+        public GetFileByIdWithIdRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/web/GetFileById('{id}'){?%24expand,%24select}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Graph.Community.Models.SitePage"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.FileObject"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.SitePage?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder.SitePagesItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.FileObject?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder.GetFileByIdWithIdRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.SitePage> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder.SitePagesItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.FileObject> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder.GetFileByIdWithIdRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Graph.Community.Models.SitePage>(requestInfo, global::Graph.Community.Models.SitePage.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graph.Community.Models.FileObject>(requestInfo, global::Graph.Community.Models.FileObject.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder.SitePagesItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder.GetFileByIdWithIdRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder.SitePagesItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder.GetFileByIdWithIdRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -67,15 +69,15 @@ namespace Graph.Community.Item._api.SitePages.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder WithUrl(string rawUrl)
+        public global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Graph.Community.Item._api.SitePages.Item.SitePagesItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Graph.Community.Item._api.Web.GetFileByIdWithId.GetFileByIdWithIdRequestBuilder(rawUrl, RequestAdapter);
         }
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         #pragma warning disable CS1591
-        public partial class SitePagesItemRequestBuilderGetQueryParameters 
+        public partial class GetFileByIdWithIdRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
             /// <summary>OData system query option $expand.</summary>

@@ -8,7 +8,7 @@ using TypeSpec.Http;
 
 namespace Graph.Community;
 
-@tag("SPWeb")
+@tag("Web")
 @route("/{serverRelativeSiteUrl}/_api/web")
 op GetWeb(
   ...CommonParameters,

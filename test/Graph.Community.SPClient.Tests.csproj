@@ -13,6 +13,7 @@
     <None Remove="ExampleResponses\GetHubSitesResponse.json" />
     <None Remove="ExampleResponses\ListsGetResponse.json" />
     <None Remove="ExampleResponses\SitePagesCollectionResponse.json" />
+    <None Remove="ExampleResponses\SP.File.json" />
     <None Remove="ExampleResponses\SP.Form.json" />
     <None Remove="ExampleResponses\SP.Group.json" />
     <None Remove="ExampleResponses\SP.GroupOwnedByGroup.json" />
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\SP.File.json" />
     <EmbeddedResource Include="ExampleResponses\SP.Form.json" />
     <EmbeddedResource Include="ExampleResponses\SP.GroupOwnedByGroup.json" />
     <EmbeddedResource Include="ExampleResponses\SP.GroupOwnedByUser.json" />

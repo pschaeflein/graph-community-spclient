@@ -4,7 +4,6 @@
   "type": "module",
   "scripts": {
     "compile": "tsp compile src/main.tsp --emit @typespec/openapi3 --watch",
-    "build": "tsp compile src/main.tsp --emit @typespec/openapi3",
     "generate": "tsp compile src/main.tsp --emit @typespec/openapi3 && kiota generate -l csharp -d ./dist/@typespec/openapi3/openapi.yaml -c SPClient -n Graph.Community -o ../codegen/lib/apiclient --cc --co --ebc -s Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --ds Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory"
   },
   "peerDependencies": {

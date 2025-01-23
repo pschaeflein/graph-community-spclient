@@ -5,9 +5,6 @@ namespace Graph.Community.Tests
 {
   public class WebRequestTests
   {
-    /*
-     *  Ensure the mock api controllers generate the correct OpenAPI description.
-     */
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 

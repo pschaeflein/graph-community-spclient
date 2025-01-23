@@ -26,15 +26,15 @@ model CommonParameters {
 model ODataSelectParameter {
   /**
    * OData system query option $select.
-  */
+   */
   @query(#{ explode: false })
   $select?: string[];
 }
 
-/**
- * OData system query option $expand.
- */
 model ODataExpandParameter {
+  /**
+   * OData system query option $expand.
+   */
   @query(#{ explode: false })
   $expand?: string[];
 }

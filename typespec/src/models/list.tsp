@@ -60,3 +60,4 @@ model SPListCollectionResponse {
   ...OkResponse;
   ...Body<CollectionResponse<List>>;
 }
+

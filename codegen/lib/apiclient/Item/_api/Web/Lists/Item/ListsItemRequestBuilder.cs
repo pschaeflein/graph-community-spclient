@@ -78,6 +78,7 @@ namespace Graph.Community.Item._api.Web.Lists.Item
         public partial class ListsItemRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>OData system query option $expand.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("%24expand")]
