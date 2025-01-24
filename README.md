@@ -2,12 +2,12 @@
 
 The Graph extension library is a community effort to unblock developers building on .Net Standard who need to call endpoints that are not part of the Microsoft Graph.
 
-[![Build](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/microsoftgraph/msgraph-sdk-dotnet-contrib/actions/workflows/build.yml)
-![NuGet package](https://buildstats.info/nuget/Graph.Community.SPClient)
+[![Build](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml)
+[![NuGet package](https://img.shields.io/nuget/v/Graph.Community.SPClient)](https://www.nuget.org/packages/Graph.Community.SPClient/)
 
 ## Documentation
 
-This community library contains requests and models that extend the Microsoft Graph SDK. Please review the [Roadmap](./docs/ROADMAP.md) for an index of requests that are included and on the roadmap. 
+This community library contains requests and models that extend the Microsoft Graph SDK. Please review the [Roadmap](./docs/ROADMAP.md) for an index of requests that are included and on the roadmap.
 
 If there is an endpoint node for which you would like a request, please submit an issue to initiate a conversation. This will help reduce wasted effort.
 
@@ -75,7 +75,7 @@ The `SPUser` class returned from the `Web.SiteUsers` request has been renamed to
 
 ## Versioning
 
-The version number intentionaly aligned with the version of the Microsoft.Graph package. 
+The version number intentionaly aligned with the version of the Microsoft.Graph package.
 
 
 |Version Component|Notes|
@@ -86,6 +86,6 @@ The version number intentionaly aligned with the version of the Microsoft.Graph 
 |Suffix|Release/build type|
 
 Version suffixes (`#` indicates a sequence number that is reset for each major/minor):
-- `-CI-#` Continuous Integration release built from **dev** branch 
+- `-CI-#` Continuous Integration release built from **dev** branch
 - `-preview#` Preview release, built from **prerelease** branch
 - No suffix is release build
