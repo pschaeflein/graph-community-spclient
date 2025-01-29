@@ -30,7 +30,7 @@ namespace Graph.Community.SPClient.Sample
 
     private async ValueTask MenuAsync()
     {
-      while (serviceProvider!=null && !cancellationToken.IsCancellationRequested)
+      while (serviceProvider != null && !cancellationToken.IsCancellationRequested)
       {
         Console.WriteLine("");
         Console.WriteLine("Select a sample:");
@@ -38,9 +38,9 @@ namespace Graph.Community.SPClient.Sample
         Console.WriteLine("1. Diagnostics");
         Console.WriteLine("2. Hub Sites");
         Console.WriteLine("3. SPWeb");
-        Console.WriteLine("4. Site Pages");
-        Console.WriteLine("5. Web/GetFileBy...");
-        //Console.WriteLine("6. SharePoint Search");
+        Console.WriteLine("4. Web/GetFileBy...");
+        Console.WriteLine("5. Web/EnsureUser");
+        Console.WriteLine("6. Site Pages");
         Console.WriteLine("7. Site Design");
         //Console.WriteLine("8. Group extensions (Graph)");
         //Console.WriteLine("9. ");
@@ -72,26 +72,26 @@ namespace Graph.Community.SPClient.Sample
             case ConsoleKey.D3:
             case ConsoleKey.NumPad3:
               var webSample = serviceProvider.GetRequiredService<Web>();
-              await webSample.Run();
+              await webSample.Run("web");
               break;
 
             case ConsoleKey.D4:
             case ConsoleKey.NumPad4:
-              var sitePagesSample = serviceProvider.GetRequiredService<SitePages>();
-              await sitePagesSample.Run();
+              webSample = serviceProvider.GetRequiredService<Web>();
+              await webSample.Run("getFile");
               break;
 
             case ConsoleKey.D5:
             case ConsoleKey.NumPad5:
-              var webFileSample = serviceProvider.GetRequiredService<WebGetFile>();
-              await webFileSample.Run();
+              webSample = serviceProvider.GetRequiredService<Web>();
+              await webSample.Run("user");
               break;
 
-            //case ConsoleKey.D6:
-            //case ConsoleKey.NumPad6:
-            //  var searchSample = serviceProvider.GetRequiredService<SharePointSearch>();
-            //  await searchSample.Run();
-            //  break;
+            case ConsoleKey.D6:
+            case ConsoleKey.NumPad6:
+              var sitePagesSample = serviceProvider.GetRequiredService<SitePages>();
+              await sitePagesSample.Run();
+              break;
 
             case ConsoleKey.D7:
             case ConsoleKey.NumPad7:

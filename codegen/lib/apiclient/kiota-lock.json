@@ -1,6 +1,6 @@
 {
-  "descriptionHash": "2CF5E3607BEBA0BFAED4440161983480577CDC5739458E76C3E8EC3AF263CDF298720121019BE82910C22C26146B22275C43CA3DD51BA4B1578FA989B0FD160E",
-  "descriptionLocation": "../../../typespec/dist/@typespec/openapi3/openapi.json",
+  "descriptionHash": "96E1AF514A426D96B21C43B8A524106F2B576D8009A879CA52485131F83E900913503739AC07AB3054E0F0843BBC85A5495F7BE678219807EE6E700241AED465",
+  "descriptionLocation": "../../../../graph-community-metadata/docs/openapi.json",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.22.3",
   "clientClassName": "SPClient",

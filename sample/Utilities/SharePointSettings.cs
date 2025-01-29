@@ -6,5 +6,6 @@ namespace Graph.Community.SPClient.Sample
 
     public required string SpoTenantUrl { get; set; }
     public required string ServerRelativeSiteUrl { get; set; }
+    public string? EnsureUserUPN { get; set; }
   }
 }

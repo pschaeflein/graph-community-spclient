@@ -85,6 +85,11 @@ namespace Graph.Community.SPClient.Sample
         //Console.WriteLine($"Site Pages for {WebUrl}");
         //Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>" }");
 
+        var sitePage = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.SitePages[4].GetAsync();
+
+        Console.WriteLine($"Site Page[4]");
+        Console.WriteLine($"  Title: {sitePage?.Title ?? "<null>"}");
+
       }
       catch (Exception ex)
       {

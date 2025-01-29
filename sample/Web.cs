@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Graph.Community.Models;
 using Microsoft.Extensions.Options;
 
 namespace Graph.Community.SPClient.Sample
@@ -16,7 +17,7 @@ namespace Graph.Community.SPClient.Sample
       this.sharePointSettings = sharePointOptions.Value;
     }
 
-    public async Task Run()
+    public async Task Run(string example)
     {
       ////////////////////////////////////////
       //
@@ -71,15 +72,55 @@ namespace Graph.Community.SPClient.Sample
 
       try
       {
-        var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync(config =>
+        if (example == "web")
         {
-          //config.QueryParameters.Expand = ["UserCustomActions"];
-        });
+          var web = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetAsync(config =>
+          {
+            config.QueryParameters.Expand = ["UserCustomActions"];
+          });
 
-        Console.WriteLine($"Title: {web?.Title}");
-        Console.WriteLine($"Home page: {web?.WelcomePage}");
-        Console.WriteLine($"UserCustomAction count: {web?.UserCustomActions?.Count ?? 0}");
-        Console.WriteLine();
+          Console.WriteLine($"Title: {web?.Title}");
+          Console.WriteLine($"Home page: {web?.WelcomePage}");
+          Console.WriteLine($"UserCustomAction count: {web?.UserCustomActions?.Count ?? 0}");
+          Console.WriteLine();
+        }
+
+        if (example == "getFile")
+        {
+          //var serverRelativePathToFile = $"{sharePointSettings.ServerRelativeSiteUrl}/Shared Documents/Document.docx";
+
+          //var file = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetFileByServerRelativePath.GetAsync(r =>
+          //{
+          //  // need to wrap the file path in single quotes
+          //  r.QueryParameters.Path = $"'{serverRelativePathToFile}'";
+          //});
+
+          Guid fileId = new("fccbc75c-0ae4-4700-b9d3-1e4372a7a173");
+
+          var file = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.GetFileById(fileId).GetAsync();
+
+          Console.WriteLine($"Filename: {file?.Name}");
+          Console.WriteLine($"Id: {file?.UniqueId}");
+          Console.WriteLine($"Modified: {file?.TimeLastModified}");
+          Console.WriteLine();
+        }
+
+        if (example == "user")
+        {
+          if (string.IsNullOrEmpty(this.sharePointSettings?.EnsureUserUPN))
+          {
+            Console.WriteLine("UPN not set in appsettings.json");
+          }
+          else
+          {
+            var requestBody = new EnsureUserRequest() { LogonName = this.sharePointSettings.EnsureUserUPN };
+            var user = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Web.Ensureuser.PostAsync(requestBody);
+
+            Console.WriteLine($"Title: {user?.Title}");
+            Console.WriteLine($"UPN:   {user?.UserPrincipalName}");
+          }
+
+        }
       }
       catch (Exception ex)
       {

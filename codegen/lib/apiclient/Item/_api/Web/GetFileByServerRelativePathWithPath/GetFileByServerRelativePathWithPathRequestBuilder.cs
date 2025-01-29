@@ -88,7 +88,7 @@ namespace Graph.Community.Item._api.Web.GetFileByServerRelativePathWithPath
             [QueryParameter("%24expand")]
             public string[] Expand { get; set; }
 #endif
-            /// <summary>Decoded server relative path of the file.</summary>
+            /// <summary>Server-relative path to the file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("%40path")]

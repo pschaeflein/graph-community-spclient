@@ -7,17 +7,17 @@ using Microsoft.Kiota.Serialization.Json;
 
 namespace Graph.Community.Tests
 {
-  public class WebModelTests(WebModelFixture fixture) : IClassFixture<WebModelFixture>
+  public class WebModelTests
   {
-    readonly WebModelFixture fixture = fixture;
-
     [Fact]
-    public void DeserializeWeb()
+    public async Task DeserializeWeb()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.Web.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.Web;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Web>(resourceStream);
 
       // ASSERT
       Assert.Equal("b3bb5585-bb7b-4fba-8619-a2bcfa2ff24e", actual.Id);
@@ -30,12 +30,14 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void DeserializeRegionalSettings()
+    public async Task DeserializeRegionalSettings()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.RegionalSettings.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.RegionalSettings;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<RegionalSettings>(resourceStream);
 
       // ASSERT
       Assert.Equal(0, actual.AdjustHijriDays);
@@ -70,12 +72,14 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void DeserializeTimeZone()
+    public async Task DeserializeTimeZone()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.TimeZone.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.TimeZone;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<TimeZoneObject>(resourceStream);
 
       // ASSERT
       Assert.Equal("(UTC-6) Central Time (US and Canada)", actual.Description);
@@ -86,12 +90,14 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void DeserializeAssociatedGroup()
+    public async Task DeserializeAssociatedGroup()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.Group.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.SiteGroup;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
 
       // ASSERT
       Assert.True(actual.AllowMembersEditMembership);
@@ -104,12 +110,14 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void DeserializeGroupOwnerAsUser()
+    public async Task DeserializeGroupOwnerAsUser()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.GroupOwnedByUser.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.SiteGroupOwnedByUser;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
       var actualOwnerUser = actual.Owner as User;
 
       // ASSERT
@@ -130,12 +138,14 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void DeserializeGroupOwnerAsGroup()
+    public async Task DeserializeGroupOwnerAsGroup()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.GroupOwnedByGroup.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.SiteGroupOwnedByGroup;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
       var actualOwnerGroup = actual.Owner as Group;
 
       // ASSERT
@@ -144,7 +154,7 @@ namespace Graph.Community.Tests
       Assert.Equal(8, actual.Owner.PrincipalType);
       Assert.Equal("Mock site Owners", actual.Owner.LoginName);
       Assert.Equal("Mock site Owners", actual.Owner.Title);
-      
+
       Assert.False(actualOwnerGroup.AllowMembersEditMembership);
       Assert.False(actualOwnerGroup.AllowRequestToJoinLeave);
       Assert.False(actualOwnerGroup.AutoAcceptRequestToJoinLeave);
@@ -154,13 +164,15 @@ namespace Graph.Community.Tests
       Assert.Equal("Mock site Owners", actualOwnerGroup.OwnerTitle);
     }
 
-    [Fact]  
-    public void DeserializeUserCustomAction()
+    [Fact]
+    public async Task DeserializeUserCustomAction()
     {
       // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.UserCustomAction.json");
+      ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = fixture.UserCustomActions;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<UserCustomAction>(resourceStream);
 
       // ASSERT
       Assert.Equal(new("e792b1a3-dff4-49ea-921d-139196e7faad"), actual.ClientSideComponentId);
@@ -176,60 +188,39 @@ namespace Graph.Community.Tests
       Assert.Null(actual.RegistrationId);
       Assert.Equal(0, actual.RegistrationType);
       Assert.Equal(3, actual.Scope);
-      Assert.Null(actual.ScriptBlock );
-      Assert.Null(actual.ScriptSrc );
+      Assert.Null(actual.ScriptBlock);
+      Assert.Null(actual.ScriptSrc);
       Assert.Equal(65536, actual.Sequence);
-      Assert.Equal("MockAction", actual.Title );
-      Assert.Null(actual.Url );
-      Assert.Equal("9.9.12.1", actual.VersionOfUserCustomAction );
+      Assert.Equal("MockAction", actual.Title);
+      Assert.Null(actual.Url);
+      Assert.Equal("9.9.12.1", actual.VersionOfUserCustomAction);
 
     }
 
-  }
-
-  public class WebModelFixture : IDisposable
-  {
-    public Web Web { get; private set; }
-    public RegionalSettings RegionalSettings { get; private set; }
-    public TimeZoneObject TimeZone { get; private set; }
-    public Group SiteGroup { get; private set; }
-    public Group SiteGroupOwnedByUser { get; private set; }
-    public Group SiteGroupOwnedByGroup { get; private set; }
-    public UserCustomAction UserCustomActions { get; private set; }
-
-    public WebModelFixture()
+    [Fact]
+    public async Task DeserializeUser()
     {
-      // initialize the fixture
-      Stream resourceStream;
+      // ARRANGE
+      var resourceStream = ResourceManager.GetEmbeddedResource("SP.User.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.Web.json");
-      Web = KiotaJsonSerializer.DeserializeAsync<Web>(resourceStream).GetAwaiter().GetResult();
+      // ACT
+      var actual = await KiotaJsonSerializer.DeserializeAsync<User>(resourceStream);
 
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.RegionalSettings.json");
-      RegionalSettings = KiotaJsonSerializer.DeserializeAsync<RegionalSettings>(resourceStream).GetAwaiter().GetResult();
-
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.TimeZone.json");
-      TimeZone = KiotaJsonSerializer.DeserializeAsync<TimeZoneObject>(resourceStream).GetAwaiter().GetResult();
-
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.Group.json");
-      SiteGroup = KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream).GetAwaiter().GetResult();
-
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.GroupOwnedByUser.json");
-      SiteGroupOwnedByUser = KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream).GetAwaiter().GetResult();
-
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.GroupOwnedByGroup.json");
-      SiteGroupOwnedByGroup = KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream).GetAwaiter().GetResult();
-
-      resourceStream = ResourceManager.GetEmbeddedResource("SP.UserCustomAction.json");
-      UserCustomActions = KiotaJsonSerializer.DeserializeAsync<UserCustomAction>(resourceStream).GetAwaiter().GetResult();
-    }
-
-    public void Dispose()
-    {
-      // clean up the fixture
-
-      GC.SuppressFinalize(this);
+      // ASSERT
+      Assert.IsType<User>(actual);
+      //Id
+      Assert.False(actual.IsHiddenInUI);
+      Assert.Equal("i:0#.f|membership|paul@mock.sharepoint.com", actual.LoginName);
+      Assert.Equal("Paul", actual.Title);
+      Assert.Equal(1, actual.PrincipalType);
+      Assert.Equal("paul@mock.sharepoint.com", actual.Email);
+      Assert.False(actual.IsEmailAuthenticationGuestUser);
+      Assert.False(actual.IsShareByEmailGuestUser);
+      Assert.False(actual.IsSiteAdmin);
+      Assert.Equal("1003200040040c84", actual.UserId.NameId);
+      Assert.Equal("urn:federation:microsoftonline", actual.UserId.NameIdIssuer);
+      Assert.Equal("paul@mock.sharepoint.com", actual.UserPrincipalName);
     }
   }
 }

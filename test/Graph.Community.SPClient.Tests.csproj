@@ -22,6 +22,7 @@
     <None Remove="ExampleResponses\SP.Publishing.SitePage.json" />
     <None Remove="ExampleResponses\SP.RegionalSettings.json" />
     <None Remove="ExampleResponses\SP.TimeZone.json" />
+    <None Remove="ExampleResponses\SP.User.json" />
     <None Remove="ExampleResponses\SP.UserCustomAction.json" />
     <None Remove="ExampleResponses\SP.Web.json" />
   </ItemGroup>
@@ -47,6 +48,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ExampleResponses\SitePagesCollectionResponse.json" />
     <EmbeddedResource Include="ExampleResponses\SP.TimeZone.json" />
+    <EmbeddedResource Include="ExampleResponses\SP.User.json" />
     <EmbeddedResource Include="ExampleResponses\SP.Web.json" />
     <EmbeddedResource Include="ExampleResponses\GetHubSitesResponse.json" />
     <EmbeddedResource Include="ExampleResponses\SP.UserCustomAction.json" />

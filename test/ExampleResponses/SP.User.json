@@ -1,0 +1,21 @@
+{
+  "@odata.context": "https://mock.sharepoint.com/sites/mockSite/_api/$metadata#Users/$entity",
+  "@odata.type": "#SP.User",
+  "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Web/GetUserById(6)",
+  "@odata.editLink": "Web/GetUserById(6)",
+  "Id": 6,
+  "IsHiddenInUI": false,
+  "LoginName": "i:0#.f|membership|paul@mock.sharepoint.com",
+  "Title": "Paul",
+  "PrincipalType": 1,
+  "Email": "paul@mock.sharepoint.com",
+  "Expiration": "",
+  "IsEmailAuthenticationGuestUser": false,
+  "IsShareByEmailGuestUser": false,
+  "IsSiteAdmin": false,
+  "UserId": {
+    "NameId": "1003200040040c84",
+    "NameIdIssuer": "urn:federation:microsoftonline"
+  },
+  "UserPrincipalName": "paul@mock.sharepoint.com"
+}
