@@ -42,6 +42,7 @@ namespace Graph.Community.Tests
       Assert.Equal("0d264f60-1306-48a2-bb16-e36f6225b834", actual.UniqueId.ToString());
       Assert.Equal("https://media.akamai.odsp.cdn.office.net/mock.sharepoint.com/_layouts/15/images/sitepagethumbnail.png", actual.BannerThumbnailUrl);
       Assert.Equal("Example description", actual.Description);
+      Assert.NotEmpty(actual.AdditionalData);
     }
   }
 }

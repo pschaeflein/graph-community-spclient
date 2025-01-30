@@ -25,8 +25,8 @@ namespace Graph.Community.Tests
       Assert.Equal("1;2;b3bb5585-bb7b-4fba-8619-a2bcfa2ff24e;637908031948500000;353893883", actual.CurrentChangeToken.StringValue);
       Assert.True(actual.FooterEnabled);
       Assert.Equal("SitePages/This-one-is-not-posted.aspx", actual.WelcomePage);
-      Assert.NotEmpty(actual.AdditionalData);
       Assert.Single(actual.UserCustomActions);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -69,6 +69,7 @@ namespace Graph.Community.Tests
       Assert.Equal(1020, actual.WorkDayEndHour);
       Assert.Equal(62, actual.WorkDays);
       Assert.Equal(480, actual.WorkDayStartHour);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -87,6 +88,7 @@ namespace Graph.Community.Tests
       Assert.Equal(-360, actual.Information.Bias);
       Assert.Equal(-300, actual.Information.DaylightBias);
       Assert.Equal(-360, actual.Information.StandardBias);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -107,6 +109,7 @@ namespace Graph.Community.Tests
       Assert.False(actual.OnlyAllowMembersViewMembership);
       Assert.Equal("Mock site Owners", actual.OwnerTitle);
       Assert.Equal("", actual.RequestToJoinLeaveEmailSetting);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -135,6 +138,7 @@ namespace Graph.Community.Tests
 
       Assert.Equal("1003200040040c84", actualOwnerUser.UserId.NameId);
       Assert.Equal("urn:federation:microsoftonline", actualOwnerUser.UserId.NameIdIssuer);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -162,6 +166,8 @@ namespace Graph.Community.Tests
       Assert.False(actualOwnerGroup.OnlyAllowMembersViewMembership);
       Assert.Equal("", actualOwnerGroup.RequestToJoinLeaveEmailSetting);
       Assert.Equal("Mock site Owners", actualOwnerGroup.OwnerTitle);
+      Assert.NotEmpty(actual.AdditionalData);
+      Assert.NotEmpty(actualOwnerGroup.AdditionalData);
     }
 
     [Fact]
@@ -194,7 +200,7 @@ namespace Graph.Community.Tests
       Assert.Equal("MockAction", actual.Title);
       Assert.Null(actual.Url);
       Assert.Equal("9.9.12.1", actual.VersionOfUserCustomAction);
-
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]
@@ -221,6 +227,7 @@ namespace Graph.Community.Tests
       Assert.Equal("1003200040040c84", actual.UserId.NameId);
       Assert.Equal("urn:federation:microsoftonline", actual.UserId.NameIdIssuer);
       Assert.Equal("paul@mock.sharepoint.com", actual.UserPrincipalName);
+      Assert.NotEmpty(actual.AdditionalData);
     }
   }
 }

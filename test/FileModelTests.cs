@@ -33,6 +33,7 @@ namespace Graph.Community.Tests
       Assert.Null(actual.Title);
       Assert.Equal("1.0", actual.UIVersionLabel);
       Assert.Equal(new("ffcf9f63-3228-4c02-befa-b6ba387e6cb2"), actual.UniqueId);
+      Assert.NotEmpty(actual.AdditionalData);
     }
   }
 }

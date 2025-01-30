@@ -39,6 +39,7 @@ namespace Graph.Community.Tests
       Assert.Equal("Events", actual.Title);
       Assert.Equal(106, actual.BaseTemplate);
       Assert.Equal(3, actual.Forms.Count);
+      Assert.NotEmpty(actual.AdditionalData);
     }
 
     [Fact]

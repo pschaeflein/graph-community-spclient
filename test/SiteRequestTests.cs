@@ -3,7 +3,7 @@ using NSubstitute;
 
 namespace Graph.Community.Tests
 {
-  public class HubSitesRequestTests
+  public class SiteRequestTests
   {
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
@@ -12,16 +12,16 @@ namespace Graph.Community.Tests
     public void Get_GeneratesRequest()
     {
       // ARRANGE
-      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/HubSites";
+      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/site";
 
       var adapter = Substitute.For<IRequestAdapter>();
       adapter.BaseUrl = mockSpoUrl;
       var client = new Graph.Community.SPClient(adapter);
 
       // ACT
-      var webRequest = client[mockServerRelativeSiteUrl]._api.HubSites.ToGetRequestInformation();
-      webRequest.PathParameters.Add("baseurl", mockSpoUrl);
-      var actualUrl = webRequest.URI.ToString();
+      var siteRequest = client[mockServerRelativeSiteUrl]._api.Site.ToGetRequestInformation();
+      siteRequest.PathParameters.Add("baseurl", mockSpoUrl);
+      var actualUrl = siteRequest.URI.ToString();
 
       // ASSERT
       Assert.Equal(expectedUrl, actualUrl);
