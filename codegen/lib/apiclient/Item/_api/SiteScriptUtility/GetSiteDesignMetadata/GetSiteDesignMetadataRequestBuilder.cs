@@ -42,11 +42,11 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.SiteDesign?> PostAsync(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SiteDesign?> PostAsync(global::Graph.Community.Models.GetSiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.SiteDesign> PostAsync(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SiteDesign> PostAsync(global::Graph.Community.Models.GetSiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -61,11 +61,11 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.GetSiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.GetSiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));

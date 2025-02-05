@@ -14,26 +14,18 @@ namespace Graph.Community.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The DesignPackageId property</summary>
-        public Guid? DesignPackageId { get; set; }
-        /// <summary>The DesignType property</summary>
-        public int? DesignType { get; set; }
-        /// <summary>The IsOutOfBoxTemplate property</summary>
-        public bool? IsOutOfBoxTemplate { get; set; }
-        /// <summary>The IsTenantAdminOnly property</summary>
-        public bool? IsTenantAdminOnly { get; set; }
-        /// <summary>The ListColor property</summary>
-        public int? ListColor { get; set; }
-        /// <summary>The ListIcon property</summary>
-        public int? ListIcon { get; set; }
-        /// <summary>The Order property</summary>
+        /// <summary>The Description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Order { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Order { get; set; }
+        public string Description { get; set; }
 #endif
+        /// <summary>The Id property</summary>
+        public Guid? Id { get; set; }
+        /// <summary>The IsDefault property</summary>
+        public bool? IsDefault { get; set; }
         /// <summary>The PreviewImageAltText property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,12 +42,6 @@ namespace Graph.Community.Models
 #else
         public string PreviewImageUrl { get; set; }
 #endif
-        /// <summary>The RequiresGroupConnected property</summary>
-        public bool? RequiresGroupConnected { get; set; }
-        /// <summary>The RequiresTeamsConnected property</summary>
-        public bool? RequiresTeamsConnected { get; set; }
-        /// <summary>The RequiresYammerConnected property</summary>
-        public bool? RequiresYammerConnected { get; set; }
         /// <summary>The SiteScriptIds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,22 +49,6 @@ namespace Graph.Community.Models
 #nullable restore
 #else
         public List<string> SiteScriptIds { get; set; }
-#endif
-        /// <summary>The SupportedWebTemplates property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? SupportedWebTemplates { get; set; }
-#nullable restore
-#else
-        public List<string> SupportedWebTemplates { get; set; }
-#endif
-        /// <summary>The TemplateFeatures property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? TemplateFeatures { get; set; }
-#nullable restore
-#else
-        public List<string> TemplateFeatures { get; set; }
 #endif
         /// <summary>The ThumbnailUrl property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,6 +66,8 @@ namespace Graph.Community.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>The Version property</summary>
+        public int? Version { get; set; }
         /// <summary>The WebTemplate property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,23 +101,15 @@ namespace Graph.Community.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "DesignPackageId", n => { DesignPackageId = n.GetGuidValue(); } },
-                { "DesignType", n => { DesignType = n.GetIntValue(); } },
-                { "IsOutOfBoxTemplate", n => { IsOutOfBoxTemplate = n.GetBoolValue(); } },
-                { "IsTenantAdminOnly", n => { IsTenantAdminOnly = n.GetBoolValue(); } },
-                { "ListColor", n => { ListColor = n.GetIntValue(); } },
-                { "ListIcon", n => { ListIcon = n.GetIntValue(); } },
-                { "Order", n => { Order = n.GetStringValue(); } },
+                { "Description", n => { Description = n.GetStringValue(); } },
+                { "Id", n => { Id = n.GetGuidValue(); } },
+                { "IsDefault", n => { IsDefault = n.GetBoolValue(); } },
                 { "PreviewImageAltText", n => { PreviewImageAltText = n.GetStringValue(); } },
                 { "PreviewImageUrl", n => { PreviewImageUrl = n.GetStringValue(); } },
-                { "RequiresGroupConnected", n => { RequiresGroupConnected = n.GetBoolValue(); } },
-                { "RequiresTeamsConnected", n => { RequiresTeamsConnected = n.GetBoolValue(); } },
-                { "RequiresYammerConnected", n => { RequiresYammerConnected = n.GetBoolValue(); } },
                 { "SiteScriptIds", n => { SiteScriptIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "SupportedWebTemplates", n => { SupportedWebTemplates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "TemplateFeatures", n => { TemplateFeatures = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ThumbnailUrl", n => { ThumbnailUrl = n.GetStringValue(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
+                { "Version", n => { Version = n.GetIntValue(); } },
                 { "WebTemplate", n => { WebTemplate = n.GetStringValue(); } },
             };
         }
@@ -156,23 +120,15 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteGuidValue("DesignPackageId", DesignPackageId);
-            writer.WriteIntValue("DesignType", DesignType);
-            writer.WriteBoolValue("IsOutOfBoxTemplate", IsOutOfBoxTemplate);
-            writer.WriteBoolValue("IsTenantAdminOnly", IsTenantAdminOnly);
-            writer.WriteIntValue("ListColor", ListColor);
-            writer.WriteIntValue("ListIcon", ListIcon);
-            writer.WriteStringValue("Order", Order);
+            writer.WriteStringValue("Description", Description);
+            writer.WriteGuidValue("Id", Id);
+            writer.WriteBoolValue("IsDefault", IsDefault);
             writer.WriteStringValue("PreviewImageAltText", PreviewImageAltText);
             writer.WriteStringValue("PreviewImageUrl", PreviewImageUrl);
-            writer.WriteBoolValue("RequiresGroupConnected", RequiresGroupConnected);
-            writer.WriteBoolValue("RequiresTeamsConnected", RequiresTeamsConnected);
-            writer.WriteBoolValue("RequiresYammerConnected", RequiresYammerConnected);
             writer.WriteCollectionOfPrimitiveValues<string>("SiteScriptIds", SiteScriptIds);
-            writer.WriteCollectionOfPrimitiveValues<string>("SupportedWebTemplates", SupportedWebTemplates);
-            writer.WriteCollectionOfPrimitiveValues<string>("TemplateFeatures", TemplateFeatures);
             writer.WriteStringValue("ThumbnailUrl", ThumbnailUrl);
             writer.WriteStringValue("Title", Title);
+            writer.WriteIntValue("Version", Version);
             writer.WriteStringValue("WebTemplate", WebTemplate);
             writer.WriteAdditionalData(AdditionalData);
         }

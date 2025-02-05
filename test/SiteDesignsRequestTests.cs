@@ -1,3 +1,4 @@
+using Graph.Community.Item._api.SiteScriptUtility.ApplySiteDesign;
 using Graph.Community.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -52,7 +53,7 @@ namespace Graph.Community.Tests
           Arg.Any<Dictionary<string, ParsableFactory<IParsable>>?>(),
           Arg.Any<CancellationToken>());
 
-      var requestBody = new SiteDesignMetadataRequest() { Id = Guid.NewGuid() };
+      var requestBody = new GetSiteDesignMetadataRequest() { Id = Guid.NewGuid() };
 
       adapter.BaseUrl = mockSpoUrl;
       var client = new SPClient(adapter);
@@ -72,7 +73,7 @@ namespace Graph.Community.Tests
       Assert.Equal(expectedUrl, actualRequest.URI.ToString());
 
       // Deserialize the request body
-      var actualBody = JsonSerializer.Deserialize<SiteDesignMetadataRequest>(
+      var actualBody = JsonSerializer.Deserialize<GetSiteDesignMetadataRequest>(
           actualRequest.Content,
           new JsonSerializerOptions
           {
@@ -81,6 +82,63 @@ namespace Graph.Community.Tests
 
       Assert.NotNull(actualBody);
       Assert.Equal(requestBody.Id, actualBody.Id);
+    }
+
+    [Fact]
+    public async Task Apply_GeneratesCorrectRequest()
+    {
+      // ARRANGE
+      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility.ApplySiteDesign";
+
+      var adapter = Substitute.For<IRequestAdapter>();
+
+      // Add JsonSerializationWriter to serialize Post objects
+      adapter.SerializationWriterFactory.GetSerializationWriter("application/json")
+          .Returns(sw => new JsonSerializationWriter());
+
+      // When the request is sent through the adapter
+      // save it so we can validate the content of the request
+      RequestInformation? actualRequest = null;
+      await adapter.SendAsync(
+          Arg.Do<RequestInformation>(req => actualRequest = req),
+          Arg.Any<ParsableFactory<ApplySiteDesignPostResponse>>(),
+          Arg.Any<Dictionary<string, ParsableFactory<IParsable>>?>(),
+          Arg.Any<CancellationToken>());
+
+      var requestBody = new ApplySiteDesignRequest()
+      {
+        SiteDesignId = Guid.NewGuid(),
+        WebUrl = "https://mock.sharepoint.com/sites/mockSite"
+      };
+
+      adapter.BaseUrl = mockSpoUrl;
+      var client = new SPClient(adapter);
+
+
+      // ACT
+      var applySiteDesignRequest = client[mockServerRelativeSiteUrl]._api.SiteScriptUtility.ApplySiteDesign.ToPostRequestInformation(requestBody);
+      applySiteDesignRequest.PathParameters.Add("baseurl", mockSpoUrl);
+
+      var applySiteDesignResponse = await adapter.SendAsync<ApplySiteDesignPostResponse>(applySiteDesignRequest, ApplySiteDesignPostResponse.CreateFromDiscriminatorValue, null, default);
+
+
+
+      // ASSERT
+      Assert.NotNull(actualRequest);
+      Assert.Equal(expectedUrl, actualRequest.URI.ToString());
+
+      // Deserialize the request body
+      var actualBody = JsonSerializer.Deserialize<ApplySiteDesignRequest>(
+          actualRequest.Content,
+          new JsonSerializerOptions
+          {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+          });
+
+      Assert.NotNull(actualBody);
+      Assert.Equal(requestBody.SiteDesignId, actualBody.SiteDesignId);
+      Assert.Equal(requestBody.WebUrl, actualBody.WebUrl);
+
     }
   }
 }

@@ -9,7 +9,7 @@ namespace Graph.Community.Tests
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 
     [Fact]
-    public void Get_GeneratesRequest()
+    public void GetAll_GeneratesRequest()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/HubSites";
