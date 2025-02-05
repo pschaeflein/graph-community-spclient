@@ -1,0 +1,89 @@
+{
+  "@odata.context": "https://mock.sharepoint.com/sites/mockSite/_api/$metadata#SiteDesignRuns",
+  "value": [
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun1423aa39-6249-4d88-8b5a-d08d8493b8b2",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun1423aa39-6249-4d88-8b5a-d08d8493b8b2",
+      "ActionTrigger": 0,
+      "ID": "9658f830-ba2d-4e29-85b1-8fc6322b5941",
+      "InvokedBy": "SharePoint App",
+      "SiteDesignID": "906791df-9b64-466a-a47b-ffb9ea5a6069",
+      "SiteDesignTitle": "QnA Feedback",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1738359456000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    },
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun18c617d1-e0c0-4291-9570-c1feb44c8390",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun18c617d1-e0c0-4291-9570-c1feb44c8390",
+      "ActionTrigger": 0,
+      "ID": "3d0ae43b-84be-40f3-ac7a-29797bf37520",
+      "InvokedBy": "SharePoint App",
+      "SiteDesignID": "8ae74935-f1ab-4174-b8e1-39bbc9bed925",
+      "SiteDesignTitle": "Community",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1738359106000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    },
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRunc6b0039f-2ea9-4252-a456-e9751c8cb4a3",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRunc6b0039f-2ea9-4252-a456-e9751c8cb4a3",
+      "ActionTrigger": 0,
+      "ID": "d3f5e16d-f0a8-40db-9e17-ef90e4763c63",
+      "InvokedBy": "Paul",
+      "SiteDesignID": "8ae74935-f1ab-4174-b8e1-39bbc9bed925",
+      "SiteDesignTitle": "Community",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1734363972000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    },
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun47e0afcb-6c5c-493f-9da7-8e03a0c8dc69",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun47e0afcb-6c5c-493f-9da7-8e03a0c8dc69",
+      "ActionTrigger": 0,
+      "ID": "dc1574c7-00eb-48ba-ae4b-5477cf52044c",
+      "InvokedBy": "Paul",
+      "SiteDesignID": "8ae74935-f1ab-4174-b8e1-39bbc9bed925",
+      "SiteDesignTitle": "Community",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1734363949000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    },
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRuncd5b6140-40a3-4365-ac4f-c251fcbbcb7f",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRuncd5b6140-40a3-4365-ac4f-c251fcbbcb7f",
+      "ActionTrigger": 0,
+      "ID": "ebf8009c-9462-4113-8aa2-ed1e63b52d68",
+      "InvokedBy": "Paul",
+      "SiteDesignID": "8ae74935-f1ab-4174-b8e1-39bbc9bed925",
+      "SiteDesignTitle": "Community",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1734363523000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    },
+    {
+      "@odata.type": "#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRun",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRunce3911e7-a51a-45a9-8e71-efa3fd8d4c43",
+      "@odata.editLink": "Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteDesignRunce3911e7-a51a-45a9-8e71-efa3fd8d4c43",
+      "ActionTrigger": 4,
+      "ID": "62236a3d-00ba-446d-a444-0f46af7f352b",
+      "InvokedBy": "Paul",
+      "SiteDesignID": "96c933ac-3698-44c7-9f4a-5fd17d71af9e",
+      "SiteDesignTitle": "Standard communication",
+      "SiteDesignVersion": 1,
+      "SiteID": "c1fe3d1c-a525-4deb-b30b-98853ff640d4",
+      "StartTime": 1732292459000,
+      "WebID": "3a0f5c22-d8eb-4603-919e-c75e60021bf3"
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 using Graph.Community.Item._api.HubSites;
 using Graph.Community.Item._api.Site;
 using Graph.Community.Item._api.SitePages;
+using Graph.Community.Item._api.SiteScriptUtility;
 using Graph.Community.Item._api.Web;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
@@ -32,6 +33,11 @@ namespace Graph.Community.Item._api
         public global::Graph.Community.Item._api.SitePages.SitePagesRequestBuilder SitePages
         {
             get => new global::Graph.Community.Item._api.SitePages.SitePagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The SiteScriptUtility property</summary>
+        public global::Graph.Community.Item._api.SiteScriptUtility.SiteScriptUtilityRequestBuilder SiteScriptUtility
+        {
+            get => new global::Graph.Community.Item._api.SiteScriptUtility.SiteScriptUtilityRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The web property</summary>
         public global::Graph.Community.Item._api.Web.WebRequestBuilder Web

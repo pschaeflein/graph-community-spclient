@@ -10,7 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignMetadata.json" />
+    <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignRun.json" />
+    <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteScriptActionResult.json" />
     <None Remove="ExampleResponses\GetHubSitesResponse.json" />
+    <None Remove="ExampleResponses\GetSiteDesignRunsResponse.json" />
     <None Remove="ExampleResponses\ListsGetResponse.json" />
     <None Remove="ExampleResponses\SitePagesCollectionResponse.json" />
     <None Remove="ExampleResponses\SP.File.json" />
@@ -26,9 +30,18 @@
     <None Remove="ExampleResponses\SP.User.json" />
     <None Remove="ExampleResponses\SP.UserCustomAction.json" />
     <None Remove="ExampleResponses\SP.Web.json" />
+    <None Remove="ExampleResponses\WebTemplateExtensions.SiteDesignMetadata.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignRun.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteScriptActionResult.json" />
+    <EmbeddedResource Include="ExampleResponses\WebTemplateExtensions.SiteDesignMetadata.json" />
+    <EmbeddedResource Include="ExampleResponses\GetSiteDesignRunsResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignMetadata.json" />
     <EmbeddedResource Include="ExampleResponses\SP.File.json" />
     <EmbeddedResource Include="ExampleResponses\SP.Form.json" />
     <EmbeddedResource Include="ExampleResponses\SP.GroupOwnedByGroup.json" />

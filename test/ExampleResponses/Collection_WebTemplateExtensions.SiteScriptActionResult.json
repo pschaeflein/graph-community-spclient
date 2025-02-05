@@ -1,0 +1,59 @@
+{
+  "odata.metadata": "https://mock.sharepoint.com/sites/mockTest/_api/$metadata#Collection(Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptActionResult)",
+  "value": [
+    {
+      "ErrorCode": 0,
+      "Outcome": "0",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Create site column Customer name",
+      "Verb": "createSiteColumn"
+    },
+    {
+      "ErrorCode": 0,
+      "Outcome": "0",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Create site column Project name",
+      "Verb": "createSiteColumn"
+    },
+    {
+      "ErrorCode": 0,
+      "Outcome": "2",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Create content type Customer",
+      "Verb": "createContentType"
+    },
+    {
+      "ErrorCode": 0,
+      "Outcome": "2",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Add site column CustomerName to content type",
+      "Verb": "createContentType.addSiteColumn"
+    },
+    {
+      "ErrorCode": 0,
+      "Outcome": "2",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Create content type Project",
+      "Verb": "createContentType"
+    },
+    {
+      "ErrorCode": 0,
+      "Outcome": "2",
+      "OutcomeText": null,
+      "Target": null,
+      "TargetId": null,
+      "Title": "Add site column ProjectName to content type",
+      "Verb": "createContentType.addSiteColumn"
+    }
+  ]
+}
