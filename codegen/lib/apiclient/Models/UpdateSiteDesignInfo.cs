@@ -9,12 +9,12 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class SiteDesign : IAdditionalDataHolder, IParsable
+    public partial class UpdateSiteDesignInfo : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The Description property</summary>
+        /// <summary>The new description of the site script.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -22,11 +22,9 @@ namespace Graph.Community.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The Id property</summary>
+        /// <summary>The ID of the site design to update.</summary>
         public Guid? Id { get; set; }
-        /// <summary>The IsDefault property</summary>
-        public bool? IsDefault { get; set; }
-        /// <summary>The PreviewImageAltText property</summary>
+        /// <summary>The new alt text description of the preview image for accessibility.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PreviewImageAltText { get; set; }
@@ -34,7 +32,7 @@ namespace Graph.Community.Models
 #else
         public string PreviewImageAltText { get; set; }
 #endif
-        /// <summary>The PreviewImageUrl property</summary>
+        /// <summary>The new URL of a preview image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PreviewImageUrl { get; set; }
@@ -42,23 +40,15 @@ namespace Graph.Community.Models
 #else
         public string PreviewImageUrl { get; set; }
 #endif
-        /// <summary>The SiteScriptIds property</summary>
+        /// <summary>A new array of one or more site scripts. Each is identified by an ID. The scripts run in the order listed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SiteScriptIds { get; set; }
+        public List<string>? SiteScripts { get; set; }
 #nullable restore
 #else
-        public List<string> SiteScriptIds { get; set; }
+        public List<string> SiteScripts { get; set; }
 #endif
-        /// <summary>The ThumbnailUrl property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ThumbnailUrl { get; set; }
-#nullable restore
-#else
-        public string ThumbnailUrl { get; set; }
-#endif
-        /// <summary>The Title property</summary>
+        /// <summary>The new display name of the updated site design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -66,9 +56,9 @@ namespace Graph.Community.Models
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The Version property</summary>
+        /// <summary>The new version number of the site script.</summary>
         public int? Version { get; set; }
-        /// <summary>The WebTemplate property</summary>
+        /// <summary>The new template to add the site design to. Use the value 64 for the Team site template, and the value 68 for the Communication site template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WebTemplate { get; set; }
@@ -77,21 +67,21 @@ namespace Graph.Community.Models
         public string WebTemplate { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.SiteDesign"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.UpdateSiteDesignInfo"/> and sets the default values.
         /// </summary>
-        public SiteDesign()
+        public UpdateSiteDesignInfo()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.SiteDesign"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.UpdateSiteDesignInfo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.SiteDesign CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.UpdateSiteDesignInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.SiteDesign();
+            return new global::Graph.Community.Models.UpdateSiteDesignInfo();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,11 +93,9 @@ namespace Graph.Community.Models
             {
                 { "Description", n => { Description = n.GetStringValue(); } },
                 { "Id", n => { Id = n.GetGuidValue(); } },
-                { "IsDefault", n => { IsDefault = n.GetBoolValue(); } },
                 { "PreviewImageAltText", n => { PreviewImageAltText = n.GetStringValue(); } },
                 { "PreviewImageUrl", n => { PreviewImageUrl = n.GetStringValue(); } },
-                { "SiteScriptIds", n => { SiteScriptIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "ThumbnailUrl", n => { ThumbnailUrl = n.GetStringValue(); } },
+                { "SiteScripts", n => { SiteScripts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
                 { "Version", n => { Version = n.GetIntValue(); } },
                 { "WebTemplate", n => { WebTemplate = n.GetStringValue(); } },
@@ -122,11 +110,9 @@ namespace Graph.Community.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("Description", Description);
             writer.WriteGuidValue("Id", Id);
-            writer.WriteBoolValue("IsDefault", IsDefault);
             writer.WriteStringValue("PreviewImageAltText", PreviewImageAltText);
             writer.WriteStringValue("PreviewImageUrl", PreviewImageUrl);
-            writer.WriteCollectionOfPrimitiveValues<string>("SiteScriptIds", SiteScriptIds);
-            writer.WriteStringValue("ThumbnailUrl", ThumbnailUrl);
+            writer.WriteCollectionOfPrimitiveValues<string>("SiteScripts", SiteScripts);
             writer.WriteStringValue("Title", Title);
             writer.WriteIntValue("Version", Version);
             writer.WriteStringValue("WebTemplate", WebTemplate);

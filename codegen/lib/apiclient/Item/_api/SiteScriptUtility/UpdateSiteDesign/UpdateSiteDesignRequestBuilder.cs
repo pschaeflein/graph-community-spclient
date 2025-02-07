@@ -9,32 +9,32 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
+namespace Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign
 {
     /// <summary>
-    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\SiteScriptUtility\GetSiteDesignMetadata
+    /// Builds and executes requests for operations under \{serverRelativeSiteUrl}\_api\SiteScriptUtility\UpdateSiteDesign
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class GetSiteDesignMetadataRequestBuilder : BaseRequestBuilder
+    public partial class UpdateSiteDesignRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata.GetSiteDesignMetadataRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign.UpdateSiteDesignRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GetSiteDesignMetadataRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesignMetadata", pathParameters)
+        public UpdateSiteDesignRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility.UpdateSiteDesign", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata.GetSiteDesignMetadataRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign.UpdateSiteDesignRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GetSiteDesignMetadataRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesignMetadata", rawUrl)
+        public UpdateSiteDesignRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptUtility.UpdateSiteDesign", rawUrl)
         {
         }
         /// <summary>
-        /// Gets information about a specific site design.
+        /// Updates a site design with new values. In the REST call, all parameters are optional except the site script Id.
         /// </summary>
         /// <returns>A <see cref="global::Graph.Community.Models.SiteDesignMetadata"/></returns>
         /// <param name="body">The request body</param>
@@ -42,11 +42,11 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.SiteDesignMetadata?> PostAsync(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SiteDesignMetadata?> PostAsync(global::Graph.Community.Models.UpdateSiteDesignRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.SiteDesignMetadata> PostAsync(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SiteDesignMetadata> PostAsync(global::Graph.Community.Models.UpdateSiteDesignRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -54,18 +54,18 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
             return await RequestAdapter.SendAsync<global::Graph.Community.Models.SiteDesignMetadata>(requestInfo, global::Graph.Community.Models.SiteDesignMetadata.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Gets information about a specific site design.
+        /// Updates a site design with new values. In the REST call, all parameters are optional except the site script Id.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.UpdateSiteDesignRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.SiteDesignMetadataRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graph.Community.Models.UpdateSiteDesignRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -78,11 +78,11 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata.GetSiteDesignMetadataRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign.UpdateSiteDesignRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata.GetSiteDesignMetadataRequestBuilder WithUrl(string rawUrl)
+        public global::Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign.UpdateSiteDesignRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesignMetadata.GetSiteDesignMetadataRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Graph.Community.Item._api.SiteScriptUtility.UpdateSiteDesign.UpdateSiteDesignRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

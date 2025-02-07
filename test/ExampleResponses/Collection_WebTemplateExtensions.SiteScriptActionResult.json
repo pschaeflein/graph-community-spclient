@@ -3,7 +3,7 @@
   "value": [
     {
       "ErrorCode": 0,
-      "Outcome": "0",
+      "Outcome": 0,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
@@ -12,7 +12,7 @@
     },
     {
       "ErrorCode": 0,
-      "Outcome": "0",
+      "Outcome": 0,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
@@ -21,7 +21,7 @@
     },
     {
       "ErrorCode": 0,
-      "Outcome": "2",
+      "Outcome": 2,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
@@ -30,7 +30,7 @@
     },
     {
       "ErrorCode": 0,
-      "Outcome": "2",
+      "Outcome": 2,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
@@ -39,7 +39,7 @@
     },
     {
       "ErrorCode": 0,
-      "Outcome": "2",
+      "Outcome": 2,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
@@ -48,12 +48,24 @@
     },
     {
       "ErrorCode": 0,
-      "Outcome": "2",
+      "Outcome": 2,
       "OutcomeText": null,
       "Target": null,
       "TargetId": null,
       "Title": "Add site column ProjectName to content type",
       "Verb": "createContentType.addSiteColumn"
+    },
+    {
+      "ErrorCode": -1593311200,
+      "Outcome": 1,
+      "OutcomeText": "Theme with name Green could not be found.",
+      "Target": null,
+      "TargetId": null,
+      "Title": "Apply theme \"Green\"",
+      "Verb": "applyTheme"
     }
   ]
 }
+
+
+

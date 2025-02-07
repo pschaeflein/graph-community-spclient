@@ -10,7 +10,7 @@ namespace Graph.Community.Tests
     private readonly Guid mockListId = new ("a5252fcf-f1d0-4baf-aa21-a50e6d91bb17");
 
     [Fact]
-    public void GetAll_GeneratesCorrectRequestUrlAndHeaders()
+    public void List_GeneratesCorrectUrlTemplate()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web/lists";
@@ -30,7 +30,7 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public void GetAll_WithExpand_GeneratesCorrectRequestUrlAndHeaders()
+    public void List_WithExpand_GeneratesCorrectUrlTemplate()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web/lists?%24select=Id,Title";
@@ -54,7 +54,7 @@ namespace Graph.Community.Tests
 
 
     [Fact]
-    public void Get_GeneratesRequest()
+    public void Get_GeneratesCorrectUrlTemplate()
     {
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web/lists/getById('{mockListId}')";

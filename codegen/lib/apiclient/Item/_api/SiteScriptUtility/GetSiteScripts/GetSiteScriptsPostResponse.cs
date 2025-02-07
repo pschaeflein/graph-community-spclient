@@ -6,11 +6,11 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Graph.Community.Item._api.Web.Lists
+namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteScripts
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListsGetResponse : IAdditionalDataHolder, IParsable
+    public partial class GetSiteScriptsPostResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -18,27 +18,27 @@ namespace Graph.Community.Item._api.Web.Lists
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.SPList>? Value { get; set; }
+        public List<global::Graph.Community.Models.SiteScriptMetadata>? Value { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.SPList> Value { get; set; }
+        public List<global::Graph.Community.Models.SiteScriptMetadata> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Item._api.Web.Lists.ListsGetResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteScripts.GetSiteScriptsPostResponse"/> and sets the default values.
         /// </summary>
-        public ListsGetResponse()
+        public GetSiteScriptsPostResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Item._api.Web.Lists.ListsGetResponse"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteScripts.GetSiteScriptsPostResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Item._api.Web.Lists.ListsGetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Item._api.SiteScriptUtility.GetSiteScripts.GetSiteScriptsPostResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Item._api.Web.Lists.ListsGetResponse();
+            return new global::Graph.Community.Item._api.SiteScriptUtility.GetSiteScripts.GetSiteScriptsPostResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +48,7 @@ namespace Graph.Community.Item._api.Web.Lists
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPList>(global::Graph.Community.Models.SPList.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SiteScriptMetadata>(global::Graph.Community.Models.SiteScriptMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Graph.Community.Item._api.Web.Lists
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPList>("value", Value);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SiteScriptMetadata>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

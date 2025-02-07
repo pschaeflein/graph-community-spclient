@@ -32,7 +32,7 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<List>(responseStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPList>(responseStream);
 
       // ASSERT
       Assert.Equal(new("37c55620-e302-4caa-9270-73277ab3964d"), actual.Id);

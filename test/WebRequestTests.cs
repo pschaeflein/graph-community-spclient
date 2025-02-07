@@ -1,14 +1,14 @@
 using Graph.Community.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Serialization.Json;
 using NSubstitute;
-using System.Text.Json;
 
 namespace Graph.Community.Tests
 {
-  public class WebRequestTests
+  public class WebRequestTests(RequestResponseSerializationFixture fixture):IClassFixture<RequestResponseSerializationFixture>
   {
+    readonly RequestResponseSerializationFixture fixture = fixture;
+
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
 
@@ -18,9 +18,7 @@ namespace Graph.Community.Tests
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web";
 
-      var adapter = Substitute.For<IRequestAdapter>();
-      adapter.BaseUrl = mockSpoUrl;
-      var client = new Graph.Community.SPClient(adapter);
+      var client = new Graph.Community.SPClient(fixture.Adapter);
 
       // ACT
       var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation();
@@ -37,9 +35,7 @@ namespace Graph.Community.Tests
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web?%24expand=UserCustomActions,SiteGroups";
 
-      var adapter = Substitute.For<IRequestAdapter>();
-      adapter.BaseUrl = mockSpoUrl;
-      var client = new SPClient(adapter);
+      var client = new Graph.Community.SPClient(fixture.Adapter);
 
       // ACT
       var webRequest = client[mockServerRelativeSiteUrl]._api.Web.ToGetRequestInformation(c =>
@@ -60,9 +56,7 @@ namespace Graph.Community.Tests
       // ARRANGE
       var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web/ensureuser";
 
-      var adapter = Substitute.For<IRequestAdapter>();
-      adapter.BaseUrl = mockSpoUrl;
-      var client = new SPClient(adapter);
+      var client = new Graph.Community.SPClient(fixture.Adapter);
 
       // ACT
       var requestBody = new EnsureUserRequest() { LogonName = "paul@mock.sharepoint.com" };
@@ -76,49 +70,32 @@ namespace Graph.Community.Tests
     }
 
     [Fact]
-    public async Task EnsureUser_GeneratesCorrectRequest()
+    public async Task EnsureUser_GeneratesCorrectRequestBody()
     {
       // ARRANGE
       var expectedLogonName = "paul@mock.sharepoint.com";
 
-      var adapter = Substitute.For<IRequestAdapter>();
-
-      // Add JsonSerializationWriter to serialize Post objects
-      adapter.SerializationWriterFactory.GetSerializationWriter("application/json")
-          .Returns(sw => new JsonSerializationWriter());
-
       // When the request is sent through the adapter
       // save it so we can validate the content of the request
       RequestInformation? postRequest = null;
-      await adapter.SendAsync(
-          Arg.Do<RequestInformation>(req =>
-          {
-            postRequest = req;
-          }),
+      await fixture.Adapter.SendAsync(
+          Arg.Do<RequestInformation>(req => postRequest = req),
           Arg.Any<ParsableFactory<User>>(),
           Arg.Any<Dictionary<string, ParsableFactory<IParsable>>?>(),
           Arg.Any<CancellationToken>());
 
       var requestBody = new EnsureUserRequest() { LogonName = "paul@mock.sharepoint.com" };
 
-      adapter.BaseUrl = mockSpoUrl;
-      var client = new SPClient(adapter);
+      var client = new Graph.Community.SPClient(fixture.Adapter);
 
       // ACT
       await client[mockServerRelativeSiteUrl]._api.Web.Ensureuser.PostAsync(requestBody);
+      var actualBody = await fixture.DeserializeAsync<EnsureUserRequest>(postRequest?.Content);
 
       // ASSERT
       Assert.NotNull(postRequest);
-      // Deserialize the request body
-      var actualRequest = JsonSerializer.Deserialize<EnsureUserRequest>(
-          postRequest.Content,
-          new JsonSerializerOptions
-          {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-          });
-
-      Assert.NotNull(actualRequest);
-      Assert.Equal(expectedLogonName, actualRequest.LogonName);
+      Assert.NotNull(actualBody);
+      Assert.Equal(expectedLogonName, actualBody.LogonName);
 
     }
   }

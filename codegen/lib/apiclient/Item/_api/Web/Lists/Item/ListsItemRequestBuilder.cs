@@ -33,21 +33,27 @@ namespace Graph.Community.Item._api.Web.Lists.Item
         public ListsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/web/lists/getById('{id}'){?%24expand,%24select}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Graph.Community.Models.List"/></returns>
+        /// <summary>
+        /// Returns specific information about the list. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.List?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.Lists.Item.ListsItemRequestBuilder.ListsItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SPList?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.Lists.Item.ListsItemRequestBuilder.ListsItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.List> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.Lists.Item.ListsItemRequestBuilder.ListsItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SPList> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Web.Lists.Item.ListsItemRequestBuilder.ListsItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Graph.Community.Models.List>(requestInfo, global::Graph.Community.Models.List.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graph.Community.Models.SPList>(requestInfo, global::Graph.Community.Models.SPList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Returns specific information about the list. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,10 +79,11 @@ namespace Graph.Community.Item._api.Web.Lists.Item
         {
             return new global::Graph.Community.Item._api.Web.Lists.Item.ListsItemRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Returns specific information about the list. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class ListsItemRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             /// <summary>OData system query option $expand.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

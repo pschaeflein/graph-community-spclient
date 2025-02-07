@@ -18,10 +18,10 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesigns
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.SiteDesign>? Value { get; set; }
+        public List<global::Graph.Community.Models.SiteDesignMetadata>? Value { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.SiteDesign> Value { get; set; }
+        public List<global::Graph.Community.Models.SiteDesignMetadata> Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Graph.Community.Item._api.SiteScriptUtility.GetSiteDesigns.GetSiteDesignsPostResponse"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesigns
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SiteDesign>(global::Graph.Community.Models.SiteDesign.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SiteDesignMetadata>(global::Graph.Community.Models.SiteDesignMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Graph.Community.Item._api.SiteScriptUtility.GetSiteDesigns
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SiteDesign>("value", Value);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SiteDesignMetadata>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

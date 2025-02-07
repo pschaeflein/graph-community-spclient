@@ -31,6 +31,7 @@
     <None Remove="ExampleResponses\SP.UserCustomAction.json" />
     <None Remove="ExampleResponses\SP.Web.json" />
     <None Remove="ExampleResponses\WebTemplateExtensions.SiteDesignMetadata.json" />
+    <None Remove="ExampleResponses\WebTemplateExtensions.SiteScriptMetadata.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +68,7 @@
     <EmbeddedResource Include="ExampleResponses\SP.Web.json" />
     <EmbeddedResource Include="ExampleResponses\GetHubSitesResponse.json" />
     <EmbeddedResource Include="ExampleResponses\SP.UserCustomAction.json" />
+    <EmbeddedResource Include="ExampleResponses\WebTemplateExtensions.SiteScriptMetadata.json" />
   </ItemGroup>
 
   <ItemGroup>

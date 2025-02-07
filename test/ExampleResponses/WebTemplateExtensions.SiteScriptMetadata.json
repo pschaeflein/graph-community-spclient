@@ -1,0 +1,9 @@
+{
+  "@odata.context": "https://mock.sharepoint.com/sites/mockSite/_api/$metadata#Microsoft.SharePoint.Utilities.WebTemplateExtensions.SiteScriptMetadata",
+  "Content": null,
+  "Description": "Apply the Green Theme",
+  "Id": "379e5da0-e7c9-4889-a688-6f86be1a6ed9",
+  "IsSiteScriptPackage": false,
+  "Title": "Green Theme",
+  "Version": 0
+}
