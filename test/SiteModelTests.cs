@@ -17,7 +17,7 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<Site>(resourceStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPSite>(resourceStream);
 
       // ASSERT
       Assert.Equal("57754187-c3d8-43a7-9d0a-3d0a66fa2c21", actual.Id);

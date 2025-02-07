@@ -1,10 +1,16 @@
 using Azure.Identity;
+using Graph.Community.Item._api.SiteScriptUtility.CreateSiteScript;
+using Graph.Community.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Kiota.Abstractions.Serialization;
+using Microsoft.Kiota.Serialization.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Graph.Community.SPClient.Sample
@@ -75,66 +81,84 @@ namespace Graph.Community.SPClient.Sample
       //
       //////////////////////////////////////
 
+
       var scopes = new string[] { $"{sharePointSettings.SpoTenantUrl}/AllSites.FullControl" };
-      var WebUrl = $"{sharePointSettings.SpoTenantUrl}{sharePointSettings.ServerRelativeSiteUrl}";
-
-      //var siteScript = new SiteScriptMetadata()
-      //{
-      //  Title = "Green Theme",
-      //  Description = "Apply the Green Theme",
-      //  Content = "{\"$schema\": \"schema.json\",\"actions\": [{\"verb\": \"applyTheme\",\"themeName\": \"Green\"}],\"bindata\": { },\"version\": 1}",
-      //};
-
-      //try
-      //{
+      var WebUrl = $"{sharePointSettings.SpoTenantUrl}/{sharePointSettings.ServerRelativeSiteUrl}";
 
 
-      //  var createdScript = await graphServiceClient
-      //                              .SharePointAPI(WebUrl)
-      //                              .SiteScripts
-      //                              .Request()
-      //                              .WithScopes(scopes)
-      //                              .CreateAsync(siteScript);
+      var title = "'Green Theme'";
+      var description = "'Apply the Green Theme'";
 
-      //  var siteDesign = new SiteDesignMetadata()
-      //  {
-      //    Title = "Green Theme",
-      //    Description = "Apply the Green theme",
-      //    SiteScriptIds = new System.Collections.Generic.List<Guid>() { new Guid(createdScript.Id) },
-      //    WebTemplate = "64" // 64 = Team Site, 68 = Communication Site, 1 = Groupless Team Site
-      //  };
 
-      //  var createdDesign = await graphServiceClient
-      //                              .SharePointAPI(WebUrl)
-      //                              .SiteDesigns
-      //                              .Request()
-      //                              .WithScopes(scopes)
-      //                              .CreateAsync(siteDesign);
+      // Not defining objects for all the actions (that is Microsoft's job).
+      //
+      // Instead, use Kiota serialization to pass in a JSON string
 
-      //  var applySiteDesignRequest = new ApplySiteDesignRequest
-      //  {
-      //    SiteDesignId = createdDesign.Id,
-      //    WebUrl = WebUrl
-      //  };
+      var scriptJson = "{\"$schema\": \"schema.json\",\"actions\": [{\"verb\": \"applyTheme\",\"themeName\": \"Green\"}],\"bindata\": { },\"version\": 1}";
 
-      //  var applySiteDesignResponse = await graphServiceClient
-      //                                        .SharePointAPI(WebUrl)
-      //                                        .SiteDesigns
-      //                                        .Request()
-      //                                        .WithScopes(scopes)
-      //                                        .ApplyAsync(applySiteDesignRequest);
+      // 1st, get a System.Text.Json.JsonDocument
+      using var jsonDocument = JsonDocument.Parse(scriptJson);
 
-      //  foreach (var outcome in applySiteDesignResponse.CurrentPage)
-      //  {
-      //    Console.WriteLine(outcome.OutcomeText);
-      //  }
+      // 2nd, initialize a Kiota IParseNode
+      var parseNode = new JsonParseNode(jsonDocument.RootElement);
 
-      //}
-      //catch (Exception ex)
-      //{
+      // 3rd, parse the node into the required type
+      var requestBody = parseNode.GetObjectValue(CreateSiteScriptPostRequestBody.CreateFromDiscriminatorValue);  
 
-      //  Console.WriteLine(ex.Message);
-      //}
+
+      try
+      {
+        var createdScript = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api
+                                    .SiteScriptUtility
+                                    .CreateSiteScript
+                                    .PostAsync(
+                                      body: requestBody,
+                                      requestConfiguration: r =>
+                                      {
+                                        r.QueryParameters.Title = title;
+                                        r.QueryParameters.Description = description;
+                                      }
+                                     );
+
+        var createSiteDesignRequest = new CreateSiteDesignRequest
+        {
+          Info = new()
+          {
+            Title = "Green Theme",
+            Description = "Apply the Green theme",
+            SiteScriptIds = [createdScript!.Id!.Value.ToString()],
+            WebTemplate = "64"
+          }
+        };
+
+        var createdDesign = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api
+                                    .SiteScriptUtility
+                                    .CreateSiteDesign
+                                    .PostAsync(createSiteDesignRequest);
+
+        var applySiteDesignRequest = new ApplySiteDesignRequest
+        {
+          SiteDesignId = createdDesign!.Id,
+          WebUrl = WebUrl
+        };
+
+        var applySiteDesignResponse = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api
+                                              .SiteScriptUtility
+                                              .ApplySiteDesign
+                                              .PostAsync(applySiteDesignRequest);
+
+
+        foreach (var outcome in applySiteDesignResponse!.Value!)
+        {
+          Console.WriteLine(outcome.OutcomeText);
+        }
+
+      }
+      catch (Exception ex)
+      {
+
+        Console.WriteLine(ex.Message);
+      }
 
 
       Console.WriteLine("Press enter to show log");

@@ -11,7 +11,7 @@ namespace Graph.Community.Models
     /// Basic information about a file.(To get complete information, use the Microsoft Graph endpoint.)
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class FileObject : IAdditionalDataHolder, IParsable
+    public partial class SPFile : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -90,21 +90,21 @@ namespace Graph.Community.Models
         /// <summary>The UniqueId property</summary>
         public Guid? UniqueId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.FileObject"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.SPFile"/> and sets the default values.
         /// </summary>
-        public FileObject()
+        public SPFile()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.FileObject"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPFile"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.FileObject CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.SPFile CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.FileObject();
+            return new global::Graph.Community.Models.SPFile();
         }
         /// <summary>
         /// The deserialization information for the current model

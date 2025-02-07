@@ -1,16 +1,9 @@
 using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 using NSubstitute;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Graph.Community.Tests
 {
-  public class GetWebFileRequestTests
+  public class WebFileRequestTests
   {
     private readonly string mockSpoUrl = "https://mock.sharepoint.com";
     private readonly string mockServerRelativeSiteUrl = "mockSite";
@@ -61,7 +54,6 @@ namespace Graph.Community.Tests
         r.QueryParameters.Path = $"'{filePath}'";
       });
 
-      //var fileRequest = client[mockServerRelativeSiteUrl]._api.Web.GetFileByServerRelativePathWithPath($"'{filePath}'").ToGetRequestInformation();
       fileRequest.PathParameters.Add("baseurl", mockSpoUrl);
       var actualUrl = fileRequest.URI.ToString();
 

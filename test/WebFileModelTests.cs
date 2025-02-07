@@ -6,7 +6,7 @@ using Microsoft.Kiota.Serialization.Json;
 
 namespace Graph.Community.Tests
 {
-  public class FileModelTests
+  public class WebFileModelTests
   {
     [Fact]
     public async Task DeserializeFile()
@@ -16,7 +16,7 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<Graph.Community.Models.FileObject>(responseStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<Graph.Community.Models.SPFile>(responseStream);
 
       // ASSERT
       Assert.Equal("", actual.CheckInComment);

@@ -33,21 +33,27 @@ namespace Graph.Community.Item._api.Site
         public SiteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/{serverRelativeSiteUrl}/_api/site{?%24expand,%24select}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Graph.Community.Models.Site"/></returns>
+        /// <summary>
+        /// Returns basic information about the site. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPSite"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Graph.Community.Models.Site?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Site.SiteRequestBuilder.SiteRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SPSite?> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Site.SiteRequestBuilder.SiteRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Graph.Community.Models.Site> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Site.SiteRequestBuilder.SiteRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graph.Community.Models.SPSite> GetAsync(Action<RequestConfiguration<global::Graph.Community.Item._api.Site.SiteRequestBuilder.SiteRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Graph.Community.Models.Site>(requestInfo, global::Graph.Community.Models.Site.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graph.Community.Models.SPSite>(requestInfo, global::Graph.Community.Models.SPSite.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Returns basic information about the site. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,10 +79,11 @@ namespace Graph.Community.Item._api.Site
         {
             return new global::Graph.Community.Item._api.Site.SiteRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Returns basic information about the site. (To get complete information, use the Microsoft Graph endpoint.)
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class SiteRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             /// <summary>OData system query option $expand.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
