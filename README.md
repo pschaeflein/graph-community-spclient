@@ -1,91 +1,41 @@
-# Graph SDK Community Extensions (Graph.Community)
+# Graph Community SharePoint Client 
 
-The Graph extension library is a community effort to unblock developers building on .Net Standard who need to call endpoints that are not part of the Microsoft Graph.
+The Graph.Community.SPClient library is a community effort to unblock developers building on .Net Standard who need to call endpoints that are not part of the Microsoft Graph.
 
 [![Build](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/pschaeflein/graph-community-spclient/actions/workflows/build.yml)
 [![NuGet package](https://img.shields.io/nuget/v/Graph.Community.SPClient)](https://www.nuget.org/packages/Graph.Community.SPClient/)
 
-## Documentation
+## Highlights
 
-This community library contains requests and models that extend the Microsoft Graph SDK. Please review the [Roadmap](./docs/ROADMAP.md) for an index of requests that are included and on the roadmap.
+This community library is a Kiota-generate client for a subset of the SharePoint REST API (_api).
+
+The client library allows for using the same coding practices and capabilities of the Microsoft Graph SDK. Key benefits of that library:
+
+- Leverage SDK-provided functionality such as authorization, compression and retries.
+- Provide a consistent coding style to the Microsoft cloud, regardless of the endpoint (Graph, SharePoint REST, etc.)
+
+### SharePoint REST endpoints
+View the [Graph.Community OpenAPI description](https://pschaeflein.github.io/graph-community-metadata/) to see the specific endpoints included.
 
 If there is an endpoint node for which you would like a request, please submit an issue to initiate a conversation. This will help reduce wasted effort.
 
+### SharePoint service handler
+The SharePoint REST endpoint requires a specific request header, and the error messages follow a proprietary format. The SPClient includes a delegating handler that inserts the header, and reformats service exceptions to an in stance of the ODataError class. This handler is automatically added to the Http pipeline when using the client factory class.
+
 ## Getting Started
 
-The library includes a client factory class (`CommunityGraphClientFactory`) that provides methods to setup the Graph Service client with the handlers included in this library.
+The samples folder includes a console application that demonstrates most of the client capabilities. The sample calls follow a standard pattern:
 
-### Using TokenCredential class
+- Create a TokenCredential for authenticating to SharePoint
+- Configure the client to log the request/response information (helpful for troubleshooting)
+- Invoke the endpoint
 
-To use a `TokenCredential` class:
+### Configuring the client via the SPClientOptions class
 
-```csharp
-var credential = new DefaultAzureCredential();
+The SPClientOptions class provides for setting the [UserAgent string as required for SharePoint](https://learn.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online).
 
-CommunityGraphClientOptions clientOptions = new CommunityGraphClientOptions()
-{
-  UserAgent = "ExtendedCapabilitiesSample"
-};
+### Using the client factory
 
-var graphServiceClient = CommunityGraphClientFactory.Create(clientOptions, credential);
-```
+The client factory requires the SharePoint hostname of the tenant. (This differs from Microsoft Graph, which uses a single hostname for all tenants.)
 
-To use an Authorization provider:
-
-```csharp
-IAuthenticationProvider ap = new CustomAuthenticationProvider(pca, scopes);
-
-CommunityGraphClientOptions clientOptions = new CommunityGraphClientOptions()
-{
-  UserAgent = "ExtendedCapabilitiesSample"
-};
-
-var graphServiceClient = CommunityGraphClientFactory.Create(clientOptions, ap);
-```
-
-A complete implementation is included in the [Diagnostic sample](samples/Diagnostics.cs).
-
-The `CommunityGraphClientOptions` provides for specifing information to [decorate SharePoint REST traffic to help mitigate throttling](https://docs.microsoft.com/en-us/sharepoint/dev/general-development/how-to-avoid-getting-throttled-or-blocked-in-sharepoint-online#how-to-decorate-your-http-traffic-to-avoid-throttling).
-
-Once a GraphServiceClient is instantiated, an extension method provides access to the SharePoint REST endpoint. This `SharePointAPI` extension method requires an absolute URL to the SharePoint site collection that is the target of the call. Subsequent methods of the fluent API are used to address the [feature area of the REST API](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/determine-sharepoint-rest-service-endpoint-uris).
-
-### Example
-Statement:
-
-```csharp
-gsc.SharePointAPI('https://mock.sharepoint.com/sites/mockSite')
-     .SiteDesigns
-     .Request()
-     .GetAsync()
-```
-
-Request:
-
-```
-GET https://mock.sharepoint.com/sites/mockSite/_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesigns`
-```
-
-## SharePoint Handler
-
-Starting with v3.21, the library contains middleware (a delegating handler) that will transform errors from SharePoint Online into a ServiceException. This allows consuming code to standardize error handling.
-
-## Breaking change in v3.18
-
-The `SPUser` class returned from the `Web.SiteUsers` request has been renamed to **`User`**. This aligns with the OData.type property returned from the service.
-
-## Versioning
-
-The version number intentionaly aligned with the version of the Microsoft.Graph package.
-
-
-|Version Component|Notes|
-|-|-|
-|Major|Aligned with Microsoft.Graph|
-|Minor|Aligned with Microsoft.Graph|
-|Patch|Incremented as requests/models are added to Graph.Community|
-|Suffix|Release/build type|
-
-Version suffixes (`#` indicates a sequence number that is reset for each major/minor):
-- `-CI-#` Continuous Integration release built from **dev** branch
-- `-preview#` Preview release, built from **prerelease** branch
-- No suffix is release build
+The factory also requires a TokenCredential instance or custom Authentication provider. SharePoint Online will accept a token from Entra Id if the scopes include the SharePoint tenant (https://<tenant>.sharepoint.com/<scope>).

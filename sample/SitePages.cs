@@ -75,20 +75,19 @@ namespace Graph.Community.SPClient.Sample
       //
       //////////////////////////////////////
 
-      var scopes = new string[] { $"{sharePointSettings.SpoTenantUrl}/AllSites.FullControl" };
       var WebUrl = $"{sharePointSettings.SpoTenantUrl}{sharePointSettings.ServerRelativeSiteUrl}";
 
       try
       {
-        //var sitePages = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.Sitepages.Pages.GetAsync();
+        var sitePages = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.SitePages.GetAsync();
 
-        //Console.WriteLine($"Site Pages for {WebUrl}");
-        //Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>" }");
+        Console.WriteLine($"Site Pages for {WebUrl}");
+        Console.WriteLine($"  count: {sitePages?.Value?.Count.ToString() ?? "<null>"}");
 
-        var sitePage = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.SitePages[4].GetAsync();
+        //var sitePage = await spClient[sharePointSettings.ServerRelativeSiteUrl]._api.SitePages[4].GetAsync();
 
-        Console.WriteLine($"Site Page[4]");
-        Console.WriteLine($"  Title: {sitePage?.Title ?? "<null>"}");
+        //Console.WriteLine($"Site Page[4]");
+        //Console.WriteLine($"  Title: {sitePage?.Title ?? "<null>"}");
 
       }
       catch (Exception ex)
