@@ -17,26 +17,26 @@ namespace Graph.Community.Models
         /// <summary>The AssociatedMemberGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.Group? AssociatedMemberGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup? AssociatedMemberGroup { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.Group AssociatedMemberGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup AssociatedMemberGroup { get; set; }
 #endif
         /// <summary>The AssociatedOwnerGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.Group? AssociatedOwnerGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup? AssociatedOwnerGroup { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.Group AssociatedOwnerGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup AssociatedOwnerGroup { get; set; }
 #endif
         /// <summary>The AssociatedVisitorGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.Group? AssociatedVisitorGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup? AssociatedVisitorGroup { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.Group AssociatedVisitorGroup { get; set; }
+        public global::Graph.Community.Models.SPGroup AssociatedVisitorGroup { get; set; }
 #endif
         /// <summary>Represents the unique sequential location of a change within the change log.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,10 +69,10 @@ namespace Graph.Community.Models
         /// <summary>The SiteUsers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.User>? SiteUsers { get; set; }
+        public List<global::Graph.Community.Models.SPUser>? SiteUsers { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.User> SiteUsers { get; set; }
+        public List<global::Graph.Community.Models.SPUser> SiteUsers { get; set; }
 #endif
         /// <summary>The title for the website.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,15 +123,15 @@ namespace Graph.Community.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "AssociatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<global::Graph.Community.Models.Group>(global::Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
-                { "AssociatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<global::Graph.Community.Models.Group>(global::Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
-                { "AssociatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<global::Graph.Community.Models.Group>(global::Graph.Community.Models.Group.CreateFromDiscriminatorValue); } },
+                { "AssociatedMemberGroup", n => { AssociatedMemberGroup = n.GetObjectValue<global::Graph.Community.Models.SPGroup>(global::Graph.Community.Models.SPGroup.CreateFromDiscriminatorValue); } },
+                { "AssociatedOwnerGroup", n => { AssociatedOwnerGroup = n.GetObjectValue<global::Graph.Community.Models.SPGroup>(global::Graph.Community.Models.SPGroup.CreateFromDiscriminatorValue); } },
+                { "AssociatedVisitorGroup", n => { AssociatedVisitorGroup = n.GetObjectValue<global::Graph.Community.Models.SPGroup>(global::Graph.Community.Models.SPGroup.CreateFromDiscriminatorValue); } },
                 { "CurrentChangeToken", n => { CurrentChangeToken = n.GetObjectValue<global::Graph.Community.Models.ChangeToken>(global::Graph.Community.Models.ChangeToken.CreateFromDiscriminatorValue); } },
                 { "FooterEnabled", n => { FooterEnabled = n.GetBoolValue(); } },
                 { "FooterLayout", n => { FooterLayout = n.GetIntValue(); } },
                 { "Id", n => { Id = n.GetStringValue(); } },
                 { "RegionalSettings", n => { RegionalSettings = n.GetObjectValue<global::Graph.Community.Models.RegionalSettings>(global::Graph.Community.Models.RegionalSettings.CreateFromDiscriminatorValue); } },
-                { "SiteUsers", n => { SiteUsers = n.GetCollectionOfObjectValues<global::Graph.Community.Models.User>(global::Graph.Community.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "SiteUsers", n => { SiteUsers = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPUser>(global::Graph.Community.Models.SPUser.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
                 { "UserCustomActions", n => { UserCustomActions = n.GetCollectionOfObjectValues<global::Graph.Community.Models.UserCustomAction>(global::Graph.Community.Models.UserCustomAction.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
@@ -144,15 +144,15 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Graph.Community.Models.Group>("AssociatedMemberGroup", AssociatedMemberGroup);
-            writer.WriteObjectValue<global::Graph.Community.Models.Group>("AssociatedOwnerGroup", AssociatedOwnerGroup);
-            writer.WriteObjectValue<global::Graph.Community.Models.Group>("AssociatedVisitorGroup", AssociatedVisitorGroup);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPGroup>("AssociatedMemberGroup", AssociatedMemberGroup);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPGroup>("AssociatedOwnerGroup", AssociatedOwnerGroup);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPGroup>("AssociatedVisitorGroup", AssociatedVisitorGroup);
             writer.WriteObjectValue<global::Graph.Community.Models.ChangeToken>("CurrentChangeToken", CurrentChangeToken);
             writer.WriteBoolValue("FooterEnabled", FooterEnabled);
             writer.WriteIntValue("FooterLayout", FooterLayout);
             writer.WriteStringValue("Id", Id);
             writer.WriteObjectValue<global::Graph.Community.Models.RegionalSettings>("RegionalSettings", RegionalSettings);
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.User>("SiteUsers", SiteUsers);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPUser>("SiteUsers", SiteUsers);
             writer.WriteStringValue("Title", Title);
             writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.UserCustomAction>("UserCustomActions", UserCustomActions);
             writer.WriteStringValue("WelcomePage", WelcomePage);

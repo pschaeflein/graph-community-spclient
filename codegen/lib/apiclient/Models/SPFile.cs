@@ -18,10 +18,10 @@ namespace Graph.Community.Models
         /// <summary>The CheckedOutByUser property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.User? CheckedOutByUser { get; set; }
+        public global::Graph.Community.Models.SPUser? CheckedOutByUser { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.User CheckedOutByUser { get; set; }
+        public global::Graph.Community.Models.SPUser CheckedOutByUser { get; set; }
 #endif
         /// <summary>The CheckInComment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,10 +42,10 @@ namespace Graph.Community.Models
         /// <summary>The LockedByUser property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.User? LockedByUser { get; set; }
+        public global::Graph.Community.Models.SPUser? LockedByUser { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.User LockedByUser { get; set; }
+        public global::Graph.Community.Models.SPUser LockedByUser { get; set; }
 #endif
         /// <summary>The MajorVersion property</summary>
         public int? MajorVersion { get; set; }
@@ -116,11 +116,11 @@ namespace Graph.Community.Models
             {
                 { "CheckInComment", n => { CheckInComment = n.GetStringValue(); } },
                 { "CheckOutType", n => { CheckOutType = n.GetIntValue(); } },
-                { "CheckedOutByUser", n => { CheckedOutByUser = n.GetObjectValue<global::Graph.Community.Models.User>(global::Graph.Community.Models.User.CreateFromDiscriminatorValue); } },
+                { "CheckedOutByUser", n => { CheckedOutByUser = n.GetObjectValue<global::Graph.Community.Models.SPUser>(global::Graph.Community.Models.SPUser.CreateFromDiscriminatorValue); } },
                 { "CustomizedPageStatus", n => { CustomizedPageStatus = n.GetIntValue(); } },
                 { "Exists", n => { Exists = n.GetBoolValue(); } },
                 { "Level", n => { Level = n.GetIntValue(); } },
-                { "LockedByUser", n => { LockedByUser = n.GetObjectValue<global::Graph.Community.Models.User>(global::Graph.Community.Models.User.CreateFromDiscriminatorValue); } },
+                { "LockedByUser", n => { LockedByUser = n.GetObjectValue<global::Graph.Community.Models.SPUser>(global::Graph.Community.Models.SPUser.CreateFromDiscriminatorValue); } },
                 { "MajorVersion", n => { MajorVersion = n.GetIntValue(); } },
                 { "MinorVersion", n => { MinorVersion = n.GetIntValue(); } },
                 { "Name", n => { Name = n.GetStringValue(); } },
@@ -139,13 +139,13 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Graph.Community.Models.User>("CheckedOutByUser", CheckedOutByUser);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPUser>("CheckedOutByUser", CheckedOutByUser);
             writer.WriteStringValue("CheckInComment", CheckInComment);
             writer.WriteIntValue("CheckOutType", CheckOutType);
             writer.WriteIntValue("CustomizedPageStatus", CustomizedPageStatus);
             writer.WriteBoolValue("Exists", Exists);
             writer.WriteIntValue("Level", Level);
-            writer.WriteObjectValue<global::Graph.Community.Models.User>("LockedByUser", LockedByUser);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPUser>("LockedByUser", LockedByUser);
             writer.WriteIntValue("MajorVersion", MajorVersion);
             writer.WriteIntValue("MinorVersion", MinorVersion);
             writer.WriteStringValue("Name", Name);

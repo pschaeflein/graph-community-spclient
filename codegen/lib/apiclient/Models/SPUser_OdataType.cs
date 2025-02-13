@@ -5,7 +5,7 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum User_OdataType
+    public enum SPUser_OdataType
     #pragma warning restore CS1591
     {
         [EnumMember(Value = "#SP.User")]

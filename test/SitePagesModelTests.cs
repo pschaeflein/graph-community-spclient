@@ -14,7 +14,7 @@ namespace Graph.Community.Tests
     public async Task DeserializeSitePagesGetResponse()
     {
       // ARRANGE
-      var responseStream = ResourceManager.GetEmbeddedResource("SitePagesCollectionResponse.json");
+      var responseStream = ResourceManager.GetEmbeddedResource("Collection_SitePages.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
@@ -32,7 +32,7 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<SitePage>(responseStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPSitePage>(responseStream);
 
       // ASSERT
       Assert.Equal(2, actual.Id);

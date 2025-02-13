@@ -99,7 +99,7 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPGroup>(resourceStream);
 
       // ASSERT
       Assert.True(actual.AllowMembersEditMembership);
@@ -120,11 +120,11 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
-      var actualOwnerUser = actual.Owner as User;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPGroup>(resourceStream);
+      var actualOwnerUser = actual.Owner as SPUser;
 
       // ASSERT
-      Assert.IsType<User>(actual.Owner);
+      Assert.IsType<SPUser>(actual.Owner);
       Assert.False(actual.Owner.IsHiddenInUI);
       Assert.Equal(1, actual.Owner.PrincipalType);
       Assert.Equal("i:0#.f|membership|paul@mock.sharepoint.com", actual.Owner.LoginName);
@@ -149,11 +149,11 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<Group>(resourceStream);
-      var actualOwnerGroup = actual.Owner as Group;
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPGroup>(resourceStream);
+      var actualOwnerGroup = actual.Owner as SPGroup;
 
       // ASSERT
-      Assert.IsType<Group>(actual.Owner);
+      Assert.IsType<SPGroup>(actual.Owner);
       Assert.False(actual.Owner.IsHiddenInUI);
       Assert.Equal(8, actual.Owner.PrincipalType);
       Assert.Equal("Mock site Owners", actual.Owner.LoginName);
@@ -211,10 +211,10 @@ namespace Graph.Community.Tests
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
-      var actual = await KiotaJsonSerializer.DeserializeAsync<User>(resourceStream);
+      var actual = await KiotaJsonSerializer.DeserializeAsync<SPUser>(resourceStream);
 
       // ASSERT
-      Assert.IsType<User>(actual);
+      Assert.IsType<SPUser>(actual);
       //Id
       Assert.False(actual.IsHiddenInUI);
       Assert.Equal("i:0#.f|membership|paul@mock.sharepoint.com", actual.LoginName);

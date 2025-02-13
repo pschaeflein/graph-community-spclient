@@ -12,7 +12,7 @@ namespace Graph.Community.Tests
     public async Task DeserializeHubSitesList()
     {
       // ARRANGE
-      var responseStream = ResourceManager.GetEmbeddedResource("GetHubSitesResponse.json");
+      var responseStream = ResourceManager.GetEmbeddedResource("Collection_HubSites.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT
@@ -26,7 +26,7 @@ namespace Graph.Community.Tests
     public async Task DeserializeHubSite()
     {
       // ARRANGE
-      var responseStream = ResourceManager.GetEmbeddedResource("GetHubSitesResponse.json");
+      var responseStream = ResourceManager.GetEmbeddedResource("Collection_HubSites.json");
       ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
 
       // ACT

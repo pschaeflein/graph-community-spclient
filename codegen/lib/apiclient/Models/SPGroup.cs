@@ -9,7 +9,7 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Group : global::Graph.Community.Models.Principal, IParsable
+    public partial class SPGroup : global::Graph.Community.Models.SPPrincipal, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Whether group members can modify membership in the group.</summary>
@@ -31,10 +31,10 @@ namespace Graph.Community.Models
         /// <summary>The owner for the group, which can be a user or another group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Graph.Community.Models.Principal? Owner { get; set; }
+        public global::Graph.Community.Models.SPPrincipal? Owner { get; set; }
 #nullable restore
 #else
-        public global::Graph.Community.Models.Principal Owner { get; set; }
+        public global::Graph.Community.Models.SPPrincipal Owner { get; set; }
 #endif
         /// <summary>The name for the owner of this group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,20 +55,20 @@ namespace Graph.Community.Models
         /// <summary>The Users property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.User>? Users { get; set; }
+        public List<global::Graph.Community.Models.SPUser>? Users { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.User> Users { get; set; }
+        public List<global::Graph.Community.Models.SPUser> Users { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.Group"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPGroup"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Graph.Community.Models.Group CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Graph.Community.Models.SPGroup CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.Group();
+            return new global::Graph.Community.Models.SPGroup();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,10 +83,10 @@ namespace Graph.Community.Models
                 { "AutoAcceptRequestToJoinLeave", n => { AutoAcceptRequestToJoinLeave = n.GetBoolValue(); } },
                 { "Description", n => { Description = n.GetStringValue(); } },
                 { "OnlyAllowMembersViewMembership", n => { OnlyAllowMembersViewMembership = n.GetBoolValue(); } },
-                { "Owner", n => { Owner = n.GetObjectValue<global::Graph.Community.Models.Principal>(global::Graph.Community.Models.Principal.CreateFromDiscriminatorValue); } },
+                { "Owner", n => { Owner = n.GetObjectValue<global::Graph.Community.Models.SPPrincipal>(global::Graph.Community.Models.SPPrincipal.CreateFromDiscriminatorValue); } },
                 { "OwnerTitle", n => { OwnerTitle = n.GetStringValue(); } },
                 { "RequestToJoinLeaveEmailSetting", n => { RequestToJoinLeaveEmailSetting = n.GetStringValue(); } },
-                { "Users", n => { Users = n.GetCollectionOfObjectValues<global::Graph.Community.Models.User>(global::Graph.Community.Models.User.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Users", n => { Users = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPUser>(global::Graph.Community.Models.SPUser.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -102,10 +102,10 @@ namespace Graph.Community.Models
             writer.WriteBoolValue("AutoAcceptRequestToJoinLeave", AutoAcceptRequestToJoinLeave);
             writer.WriteStringValue("Description", Description);
             writer.WriteBoolValue("OnlyAllowMembersViewMembership", OnlyAllowMembersViewMembership);
-            writer.WriteObjectValue<global::Graph.Community.Models.Principal>("Owner", Owner);
+            writer.WriteObjectValue<global::Graph.Community.Models.SPPrincipal>("Owner", Owner);
             writer.WriteStringValue("OwnerTitle", OwnerTitle);
             writer.WriteStringValue("RequestToJoinLeaveEmailSetting", RequestToJoinLeaveEmailSetting);
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.User>("Users", Users);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPUser>("Users", Users);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Graph.Community.Tests
       RequestInformation? postRequest = null;
       await fixture.Adapter.SendAsync(
           Arg.Do<RequestInformation>(req => postRequest = req),
-          Arg.Any<ParsableFactory<User>>(),
+          Arg.Any<ParsableFactory<SPUser>>(),
           Arg.Any<Dictionary<string, ParsableFactory<IParsable>>?>(),
           Arg.Any<CancellationToken>());
 

@@ -9,7 +9,7 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Principal : IAdditionalDataHolder, IParsable
+    public partial class SPPrincipal : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,7 +26,7 @@ namespace Graph.Community.Models
 #else
         public string LoginName { get; set; }
 #endif
-        /// <summary>Discriminator property for Principal.</summary>
+        /// <summary>Discriminator property for SPPrincipal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OdataType { get; set; }
@@ -45,26 +45,26 @@ namespace Graph.Community.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.Principal"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.SPPrincipal"/> and sets the default values.
         /// </summary>
-        public Principal()
+        public SPPrincipal()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.Principal"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPPrincipal"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.Principal CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.SPPrincipal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("@odata.type")?.GetStringValue();
             return mappingValue switch
             {
-                "#SP.Group" => new global::Graph.Community.Models.Group(),
-                "#SP.User" => new global::Graph.Community.Models.User(),
-                _ => new global::Graph.Community.Models.Principal(),
+                "#SP.Group" => new global::Graph.Community.Models.SPGroup(),
+                "#SP.User" => new global::Graph.Community.Models.SPUser(),
+                _ => new global::Graph.Community.Models.SPPrincipal(),
             };
         }
         /// <summary>

@@ -14,13 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ExampleResponses\Collection_HubSites.json" />
+    <None Remove="ExampleResponses\Collection_Lists.json" />
+    <None Remove="ExampleResponses\Collection_SitePages.json" />
     <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignMetadata.json" />
     <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignRun.json" />
     <None Remove="ExampleResponses\Collection_WebTemplateExtensions.SiteScriptActionResult.json" />
-    <None Remove="ExampleResponses\GetHubSitesResponse.json" />
-    <None Remove="ExampleResponses\GetSiteDesignRunsResponse.json" />
-    <None Remove="ExampleResponses\ListsGetResponse.json" />
-    <None Remove="ExampleResponses\SitePagesCollectionResponse.json" />
     <None Remove="ExampleResponses\SP.File.json" />
     <None Remove="ExampleResponses\SP.Form.json" />
     <None Remove="ExampleResponses\SP.Group.json" />
@@ -39,13 +38,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ExampleResponses\Collection_HubSites.json" />
+    <EmbeddedResource Include="ExampleResponses\Collection_Lists.json" />
     <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignMetadata.json" />
     <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteDesignRun.json" />
     <EmbeddedResource Include="ExampleResponses\Collection_WebTemplateExtensions.SiteScriptActionResult.json" />
-    <EmbeddedResource Include="ExampleResponses\GetHubSitesResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\GetSiteDesignRunsResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\ListsGetResponse.json" />
-    <EmbeddedResource Include="ExampleResponses\SitePagesCollectionResponse.json" />
+    <EmbeddedResource Include="ExampleResponses\Collection_SitePages.json" />
     <EmbeddedResource Include="ExampleResponses\SP.File.json" />
     <EmbeddedResource Include="ExampleResponses\SP.Form.json" />
     <EmbeddedResource Include="ExampleResponses\SP.Group.json" />

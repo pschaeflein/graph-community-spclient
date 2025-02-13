@@ -18,10 +18,10 @@ namespace Graph.Community.Item._api.SitePages
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.SitePage>? Value { get; set; }
+        public List<global::Graph.Community.Models.SPSitePage>? Value { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.SitePage> Value { get; set; }
+        public List<global::Graph.Community.Models.SPSitePage> Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Graph.Community.Item._api.SitePages.SitePagesGetResponse"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Graph.Community.Item._api.SitePages
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SitePage>(global::Graph.Community.Models.SitePage.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPSitePage>(global::Graph.Community.Models.SPSitePage.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Graph.Community.Item._api.SitePages
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SitePage>("value", Value);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPSitePage>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

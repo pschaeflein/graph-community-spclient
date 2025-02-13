@@ -99,5 +99,31 @@ namespace Graph.Community.Tests
       // ASSERT
       Assert.Equal(expectedUrl, actualUrl);
     }
+
+    [Fact]
+    public void GetByTitle_GeneratesCorrectUrlTemplate()
+    {
+      // ARRANGE
+      var mockListTitle = "MockList";
+      var expectedUrl = $"{mockSpoUrl}/{mockServerRelativeSiteUrl}/_api/web/lists/GetByTitle('{mockListTitle}')";
+
+      var adapter = Substitute.For<IRequestAdapter>();
+      adapter.BaseUrl = mockSpoUrl;
+      var client = new Graph.Community.SPClient(adapter);
+
+      // ACT
+      var listsRequest = client[mockServerRelativeSiteUrl]
+                          ._api
+                          .Web
+                          .Lists.GetByTitle(mockListTitle)
+                          .ToGetRequestInformation();
+      listsRequest.PathParameters.Add("baseurl", mockSpoUrl);
+
+      var actualUrl = listsRequest.URI.ToString();
+
+      // ASSERT
+      Assert.Equal(expectedUrl, actualUrl);
+    }
+
   }
 }

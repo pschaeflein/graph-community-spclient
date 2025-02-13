@@ -9,7 +9,7 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class User : global::Graph.Community.Models.Principal, IParsable
+    public partial class SPUser : global::Graph.Community.Models.SPPrincipal, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The e-mail address of the user.</summary>
@@ -45,12 +45,12 @@ namespace Graph.Community.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.User"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPUser"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Graph.Community.Models.User CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Graph.Community.Models.SPUser CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.User();
+            return new global::Graph.Community.Models.SPUser();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -9,7 +9,7 @@ namespace Graph.Community.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class SitePage : IAdditionalDataHolder, IParsable
+    public partial class SPSitePage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The AbsoluteUrl property</summary>
@@ -115,21 +115,21 @@ namespace Graph.Community.Models
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.SitePage"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.SPSitePage"/> and sets the default values.
         /// </summary>
-        public SitePage()
+        public SPSitePage()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.SitePage"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPSitePage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.SitePage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.SPSitePage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.SitePage();
+            return new global::Graph.Community.Models.SPSitePage();
         }
         /// <summary>
         /// The deserialization information for the current model

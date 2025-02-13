@@ -20,10 +20,10 @@ namespace Graph.Community.Models
         /// <summary>The Forms property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Graph.Community.Models.Form>? Forms { get; set; }
+        public List<global::Graph.Community.Models.SPForm>? Forms { get; set; }
 #nullable restore
 #else
-        public List<global::Graph.Community.Models.Form> Forms { get; set; }
+        public List<global::Graph.Community.Models.SPForm> Forms { get; set; }
 #endif
         /// <summary>The GUID that identifies the list in the database.</summary>
         public Guid? Id { get; set; }
@@ -61,7 +61,7 @@ namespace Graph.Community.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "BaseTemplate", n => { BaseTemplate = n.GetIntValue(); } },
-                { "Forms", n => { Forms = n.GetCollectionOfObjectValues<global::Graph.Community.Models.Form>(global::Graph.Community.Models.Form.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "Forms", n => { Forms = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPForm>(global::Graph.Community.Models.SPForm.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Id", n => { Id = n.GetGuidValue(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
             };
@@ -74,7 +74,7 @@ namespace Graph.Community.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("BaseTemplate", BaseTemplate);
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.Form>("Forms", Forms);
+            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPForm>("Forms", Forms);
             writer.WriteGuidValue("Id", Id);
             writer.WriteStringValue("Title", Title);
             writer.WriteAdditionalData(AdditionalData);
