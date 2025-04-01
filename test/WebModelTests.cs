@@ -24,6 +24,7 @@ namespace Graph.Community.Tests
       Assert.Equal("Mock Site", actual.Title);
       Assert.Equal("1;2;b3bb5585-bb7b-4fba-8619-a2bcfa2ff24e;637908031948500000;353893883", actual.CurrentChangeToken.StringValue);
       Assert.True(actual.FooterEnabled);
+      Assert.Equal("SITEPAGEPUBLISHING", actual.WebTemplate);
       Assert.Equal("SitePages/This-one-is-not-posted.aspx", actual.WelcomePage);
       Assert.Single(actual.UserCustomActions);
       Assert.NotEmpty(actual.AdditionalData);

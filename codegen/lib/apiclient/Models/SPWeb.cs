@@ -38,7 +38,7 @@ namespace Graph.Community.Models
 #else
         public global::Graph.Community.Models.SPGroup AssociatedVisitorGroup { get; set; }
 #endif
-        /// <summary>Represents the unique sequential location of a change within the change log.</summary>
+        /// <summary>The change token that is used when the next change is logged to the website.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Graph.Community.Models.ChangeToken? CurrentChangeToken { get; set; }
@@ -90,6 +90,14 @@ namespace Graph.Community.Models
 #else
         public List<global::Graph.Community.Models.UserCustomAction> UserCustomActions { get; set; }
 #endif
+        /// <summary>The name of the site definition or site template that was used to create the site.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WebTemplate { get; set; }
+#nullable restore
+#else
+        public string WebTemplate { get; set; }
+#endif
         /// <summary>The WelcomePage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,6 +142,7 @@ namespace Graph.Community.Models
                 { "SiteUsers", n => { SiteUsers = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPUser>(global::Graph.Community.Models.SPUser.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
                 { "UserCustomActions", n => { UserCustomActions = n.GetCollectionOfObjectValues<global::Graph.Community.Models.UserCustomAction>(global::Graph.Community.Models.UserCustomAction.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "WebTemplate", n => { WebTemplate = n.GetStringValue(); } },
                 { "WelcomePage", n => { WelcomePage = n.GetStringValue(); } },
             };
         }
@@ -155,6 +164,7 @@ namespace Graph.Community.Models
             writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPUser>("SiteUsers", SiteUsers);
             writer.WriteStringValue("Title", Title);
             writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.UserCustomAction>("UserCustomActions", UserCustomActions);
+            writer.WriteStringValue("WebTemplate", WebTemplate);
             writer.WriteStringValue("WelcomePage", WelcomePage);
             writer.WriteAdditionalData(AdditionalData);
         }
