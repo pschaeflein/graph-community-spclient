@@ -29,8 +29,38 @@ namespace Graph.Community
         {
           var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-          // first, see if the response is an ODataError...
-          var odataError = await KiotaJsonSerializer.DeserializeAsync(responseContent, ODataError.CreateFromDiscriminatorValue);
+          ODataError? odataError;
+
+          if (response.Content.Headers.ContentType.MediaType != System.Net.Mime.MediaTypeNames.Application.Json)
+          {
+            odataError = new()
+            {
+              Error = new()
+              {
+                Code = "SPSvcHandler:Unknown",
+                Message = responseContent
+              }
+            };
+          }
+          else
+          {
+            if (!string.IsNullOrEmpty(responseContent))
+            {
+              odataError = await KiotaJsonSerializer.DeserializeAsync(responseContent, ODataError.CreateFromDiscriminatorValue);
+            }
+            else
+            {
+              odataError = new()
+              {
+                Error = new()
+                {
+                  Code = "SPSvcHandler:Unknown",
+                  Message = string.Empty
+                }
+              };
+            }
+          }
+
 
           if (odataError!.Error == null)
           {

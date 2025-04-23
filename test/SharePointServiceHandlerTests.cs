@@ -9,22 +9,17 @@ namespace Graph.Community.Tests
 {
   public class SharePointServiceHandlerTests
   {
-    private readonly HttpMessageInvoker _invoker;
-    private readonly HttpClientRequestAdapter requestAdapter;
-
-    public SharePointServiceHandlerTests()
+    [Fact]
+    public async Task HandlerAddsHeaders()
     {
+      // SETUP
+      var requestAdapter = new HttpClientRequestAdapter(new AnonymousAuthenticationProvider());
       var spsvcHandler = new SharePointServiceHandler
       {
         InnerHandler = new FakeSuccessHandler()
       };
-      this._invoker = new HttpMessageInvoker(spsvcHandler);
-      requestAdapter = new HttpClientRequestAdapter(new AnonymousAuthenticationProvider());
-    }
+      var invoker = new HttpMessageInvoker(spsvcHandler);
 
-    [Fact]
-    public async Task HandlerAddsHeaders()
-    {
       // ARRANGE
       var requestInfo = new RequestInformation
       {
@@ -35,13 +30,73 @@ namespace Graph.Community.Tests
       Assert.Empty(requestMessage.Headers);
 
       // ACT
-      var response = await _invoker.SendAsync(requestMessage, new CancellationToken());
+      var response = await invoker.SendAsync(requestMessage, new CancellationToken());
 
       // Assert
       Assert.Single(response.RequestMessage.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName));
       Assert.Equal(SharePointAPIRequestConstants.Headers.ODataVersionHeaderValue, response.RequestMessage.Headers.GetValues(SharePointAPIRequestConstants.Headers.ODataVersionHeaderName).First().ToString(), StringComparer.OrdinalIgnoreCase);
 
       Assert.Equal(requestMessage, response.RequestMessage);
+    }
+
+    [Fact]
+    public async Task HandlerThrowsWhenNotFound()
+    {
+      // SETUP
+      var requestAdapter = new HttpClientRequestAdapter(new AnonymousAuthenticationProvider());
+      var spsvcHandler = new SharePointServiceHandler
+      {
+        InnerHandler = new FakeNotFoundHandler()
+      };
+      var invoker = new HttpMessageInvoker(spsvcHandler);
+
+      // ARRANGE
+      var requestInfo = new RequestInformation
+      {
+        HttpMethod = Method.GET,
+        URI = new("http://localhost")
+      };
+      var requestMessage = await requestAdapter.ConvertToNativeRequestAsync<HttpRequestMessage>(requestInfo);
+      Assert.Empty(requestMessage.Headers);
+
+      // ACT & ASSERT
+      await Assert.ThrowsAsync<ODataError>(async () => await invoker.SendAsync(requestMessage, new CancellationToken()));
+    }
+
+    [Fact]
+    public async Task HandlerParsesOdataError()
+    {
+      // SETUP
+      var requestAdapter = new HttpClientRequestAdapter(new AnonymousAuthenticationProvider());
+      var spsvcHandler = new SharePointServiceHandler
+      {
+        InnerHandler = new FakeNotFoundHandler()
+      };
+      var invoker = new HttpMessageInvoker(spsvcHandler);
+
+      // ARRANGE
+      var requestInfo = new RequestInformation
+      {
+        HttpMethod = Method.GET,
+        URI = new("http://localhost")
+      };
+      var requestMessage = await requestAdapter.ConvertToNativeRequestAsync<HttpRequestMessage>(requestInfo);
+
+      // ACT
+      ODataError error = null;
+      try
+      {
+        var result = await invoker.SendAsync(requestMessage, new CancellationToken());
+      }
+      catch (ODataError ode)
+      {
+        error = ode;
+      }
+
+      // ASSERT
+      Assert.NotNull(error);
+      Assert.Equal("404 FILE NOT FOUND", error.Message);
+
     }
   }
 
@@ -58,4 +113,15 @@ namespace Graph.Community.Tests
     }
   }
 
+  internal class FakeNotFoundHandler : DelegatingHandler
+  {
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+      var response = new HttpResponseMessage(HttpStatusCode.NotFound);
+      var responseContent = new StringContent("404 FILE NOT FOUND", new System.Net.Http.Headers.MediaTypeHeaderValue(System.Net.Mime.MediaTypeNames.Text.Plain));
+      response.Content = responseContent;
+
+      return Task.FromResult(response);
+    }
+  }
 }
