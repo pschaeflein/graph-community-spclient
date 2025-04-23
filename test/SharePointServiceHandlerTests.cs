@@ -96,7 +96,7 @@ namespace Graph.Community.Tests
       // ASSERT
       Assert.NotNull(error);
       Assert.Equal("404 FILE NOT FOUND", error.Message);
-
+      Assert.Equal(404, error.ResponseStatusCode);
     }
   }
 
