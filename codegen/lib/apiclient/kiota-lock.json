@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "62FAB01C56186AAB752F18A8CE416A72C5E01BFCED6589C553259E32B66EA5982E7E20933C5F9DF3F3C69291DD3F0172E20A8E3F8E44C4D858F087A03CA98287",
+  "descriptionHash": "7DFD7AA78F9C8B297E319AF5A042EC4C8E6810DFC8A25FCDE1C2D5651E1B33678D567CB7093160A087D18A567EEE59E13AC9CF22EACE21F3C3288DD24B746D6C",
   "descriptionLocation": "../../../../graph-community-metadata/docs/openapi.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.22.3",
+  "kiotaVersion": "1.27.0",
   "clientClassName": "SPClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Graph.Community",

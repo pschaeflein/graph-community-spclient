@@ -7,35 +7,24 @@ using System.IO;
 using System;
 namespace Graph.Community.Models
 {
-    /// <summary>
-    /// Basic information about a list.(To get complete information, use the Microsoft Graph endpoint.)
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SPList : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class SPView : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The list definition type on which the list is based.</summary>
-        public int? BaseTemplate { get; set; }
-        /// <summary>Requires $expand=DefaultView.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Graph.Community.Models.SPView? DefaultView { get; set; }
-#nullable restore
-#else
-        public global::Graph.Community.Models.SPView DefaultView { get; set; }
-#endif
-        /// <summary>Requires $expand=Forms.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Graph.Community.Models.SPForm>? Forms { get; set; }
-#nullable restore
-#else
-        public List<global::Graph.Community.Models.SPForm> Forms { get; set; }
-#endif
-        /// <summary>The GUID that identifies the list in the database.</summary>
+        /// <summary>The Id property</summary>
         public Guid? Id { get; set; }
-        /// <summary>The displayed title for the list.</summary>
+        /// <summary>The ServerRelativeUrl property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServerRelativeUrl { get; set; }
+#nullable restore
+#else
+        public string ServerRelativeUrl { get; set; }
+#endif
+        /// <summary>The Title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -44,21 +33,21 @@ namespace Graph.Community.Models
         public string Title { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Graph.Community.Models.SPList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graph.Community.Models.SPView"/> and sets the default values.
         /// </summary>
-        public SPList()
+        public SPView()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Graph.Community.Models.SPList"/></returns>
+        /// <returns>A <see cref="global::Graph.Community.Models.SPView"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Graph.Community.Models.SPList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Graph.Community.Models.SPView CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Graph.Community.Models.SPList();
+            return new global::Graph.Community.Models.SPView();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,10 +57,8 @@ namespace Graph.Community.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "BaseTemplate", n => { BaseTemplate = n.GetIntValue(); } },
-                { "DefaultView", n => { DefaultView = n.GetObjectValue<global::Graph.Community.Models.SPView>(global::Graph.Community.Models.SPView.CreateFromDiscriminatorValue); } },
-                { "Forms", n => { Forms = n.GetCollectionOfObjectValues<global::Graph.Community.Models.SPForm>(global::Graph.Community.Models.SPForm.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "Id", n => { Id = n.GetGuidValue(); } },
+                { "ServerRelativeUrl", n => { ServerRelativeUrl = n.GetStringValue(); } },
                 { "Title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -82,10 +69,8 @@ namespace Graph.Community.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("BaseTemplate", BaseTemplate);
-            writer.WriteObjectValue<global::Graph.Community.Models.SPView>("DefaultView", DefaultView);
-            writer.WriteCollectionOfObjectValues<global::Graph.Community.Models.SPForm>("Forms", Forms);
             writer.WriteGuidValue("Id", Id);
+            writer.WriteStringValue("ServerRelativeUrl", ServerRelativeUrl);
             writer.WriteStringValue("Title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }
