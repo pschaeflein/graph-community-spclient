@@ -1,0 +1,29 @@
+{
+  "@odata.context": "https://mock.sharepoint.com/sites/mockSite/_api/$metadata#Web/Lists('a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items",
+  "value": [
+    {
+      "@odata.type": "#SP.ListItem",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(1)",
+      "@odata.etag": "\"1\"",
+      "@odata.editLink": "Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(1)",
+      "Id": 1,
+      "DisplayName": "First Item"
+    },
+    {
+      "@odata.type": "#SP.ListItem",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(2)",
+      "@odata.etag": "\"2\"",
+      "@odata.editLink": "Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(2)",
+      "Id": 2,
+      "DisplayName": "Second Item"
+    },
+    {
+      "@odata.type": "#SP.ListItem",
+      "@odata.id": "https://mock.sharepoint.com/sites/mockSite/_api/Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(3)",
+      "@odata.etag": "\"3\"",
+      "@odata.editLink": "Web/Lists(guid'a5252fcf-f1d0-4baf-aa21-a50e6d91bb17')/Items(3)",
+      "Id": 3,
+      "DisplayName": "Third Item"
+    }
+  ]
+}

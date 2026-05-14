@@ -53,7 +53,7 @@ namespace Graph.Community.SPClient.Sample
                 services.AddTransient<Web>();
                 services.AddTransient<SitePages>();
                 services.AddTransient<SiteDesign>();
-                //services.AddTransient<SiteGroups>();
+                services.AddTransient<ListItem>();
                 //services.AddTransient<SharePointSearch>();
                 //services.AddTransient<GraphGroupExtensions>();
               })

@@ -42,7 +42,7 @@ namespace Graph.Community.SPClient.Sample
         Console.WriteLine("5. Web/EnsureUser");
         Console.WriteLine("6. Site Pages");
         Console.WriteLine("7. Site Design");
-        //Console.WriteLine("8. Group extensions (Graph)");
+        Console.WriteLine("8. List item");
         //Console.WriteLine("9. ");
         Console.WriteLine("");
         Console.WriteLine("");
@@ -99,11 +99,11 @@ namespace Graph.Community.SPClient.Sample
               await siteDesignSample.Run();
               break;
 
-            //case ConsoleKey.D8:
-            //case ConsoleKey.NumPad8:
-            //  var graphGroupSample = serviceProvider.GetRequiredService<GraphGroupExtensions>();
-            //  await graphGroupSample.Run();
-            //  break;
+            case ConsoleKey.D8:
+            case ConsoleKey.NumPad8:
+              var listItemSample = serviceProvider.GetRequiredService<ListItem>();
+              await listItemSample.Run();
+              break;
 
             //case ConsoleKey.D9:
             //case ConsoleKey.NumPad9:
